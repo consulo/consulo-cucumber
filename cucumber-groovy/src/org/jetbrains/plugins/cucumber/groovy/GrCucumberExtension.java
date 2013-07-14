@@ -9,6 +9,7 @@ import com.intellij.psi.*;
 import com.intellij.psi.impl.file.PsiDirectoryFactory;
 import com.intellij.util.PathUtil;
 import com.intellij.util.containers.ContainerUtil;
+import org.consulo.java.platform.module.extension.JavaModuleExtension;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.plugins.cucumber.StepDefinitionCreator;
@@ -113,7 +114,7 @@ public class GrCucumberExtension extends NotIndexedCucumberExtension {
   protected void collectAllStepDefsProviders(@NotNull List<VirtualFile> providers, @NotNull Project project) {
     final Module[] modules = ModuleManager.getInstance(project).getModules();
     for (Module module : modules) {
-      if (ModuleType.get(module) instanceof JavaModuleType) {
+      if (ModuleUtilCore.getExtension(module, JavaModuleExtension.class) != null) {
         final VirtualFile[] roots = ModuleRootManager.getInstance(module).getContentRoots();
         ContainerUtil.addAll(providers, roots);
       }
@@ -126,8 +127,8 @@ public class GrCucumberExtension extends NotIndexedCucumberExtension {
                                        List<PsiDirectory> newStepDefinitionsRoots, Set<String> processedStepDirectories) {
     final ContentEntry[] contentEntries = ModuleRootManager.getInstance(module).getContentEntries();
     for (final ContentEntry contentEntry : contentEntries) {
-      final SourceFolder[] sourceFolders = contentEntry.getSourceFolders();
-      for (SourceFolder sf : sourceFolders) {
+      final ContentFolder[] sourceFolders = contentEntry.getFolders(ContentFolderType.ONLY_SOURCE_ROOTS);
+      for (ContentFolder sf : sourceFolders) {
         // ToDo: check if inside test folder
         VirtualFile sfDirectory = sf.getFile();
         if (sfDirectory != null && sfDirectory.isDirectory()) {

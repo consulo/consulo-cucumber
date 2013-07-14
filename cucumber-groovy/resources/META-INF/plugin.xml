@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <idea-plugin version="2">
-  <id>cucumber-groovy</id>
+  <id>org.jetbrains.cucumber.groovy</id>
   <name>Cucumber for Groovy</name>
   <description>Provides support of Cucumber for Groovy</description>
   <version>1.0</version>
-  <depends>cucumber</depends>
   <depends>org.intellij.groovy</depends>
-  <depends>cucumber-java</depends>
-  <idea-version since-build="123.0" until-build="131.0"/>
+  <depends>org.jetbrains.cucumber.java</depends>
   <vendor>JetBrains</vendor>
 
   <extensions defaultExtensionNs="com.intellij">

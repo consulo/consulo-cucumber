@@ -17,6 +17,14 @@
           <element id="library" level="project" name="cucumber" />
         </element>
       </element>
+      <element id="directory" name="cucumber-groovy">
+        <element id="directory" name="lib">
+          <element id="zip-archive" name="cucumber-groovy.jar">
+            <element id="module-output" name="cucumber-groovy" />
+          </element>
+          <element id="file-copy" path="$PROJECT_DIR$/cucumber-groovy/lib/cucumber-groovy-1.1.3.jar" />
+        </element>
+      </element>
     </root>
   </artifact>
 </component>
