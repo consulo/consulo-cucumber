@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<idea-plugin version="2">
+	<id>org.jetbrains.cucumber.java</id>
+	<name>Cucumber for Java</name>
+	<description>Provides support of Cucumber for Java</description>
+	<version>1.0</version>
+	<depends>org.jetbrains.cucumber</depends>
+	<depends>org.consulo.java</depends>
+	<vendor>JetBrains</vendor>
+
+	<extensions defaultExtensionNs="org.consulo.java.platform">
+		<methodReferencesSearch implementation="org.jetbrains.plugins.cucumber.java.steps.search.CucumberJavaMethodUsageSearcher"/>
+
+	</extensions>
+	<extensions defaultExtensionNs="com.intellij">
+		<errorHandler implementation="com.intellij.diagnostic.ITNReporter"/>
+		<referencesSearch implementation="org.jetbrains.plugins.cucumber.java.steps.search.CucumberJavaStepDefinitionSearch"/>
+		<configurationProducer implementation="org.jetbrains.plugins.cucumber.java.run.CucumberJavaFeatureRunConfigurationProducer"/>
+		<configurationProducer implementation="org.jetbrains.plugins.cucumber.java.run.CucumberJavaScenarioRunConfigurationProducer"/>
+		<configurationProducer implementation="org.jetbrains.plugins.cucumber.java.run.CucumberJavaAllFeaturesInFolderRunConfigurationProducer"/>
+		<configurationType implementation="org.jetbrains.plugins.cucumber.java.run.CucumberJavaRunConfigurationType"/>
+
+		<implicitUsageProvider implementation="org.jetbrains.plugins.cucumber.java.steps.reference.CucumberJavaImplicitUsageProvider"/>
+		<errorHandler implementation="com.intellij.diagnostic.ITNReporter"/>
+
+		<localInspection language="JAVA" shortName="CucumberJavaStepDefClassIsPublic" displayName="Step definition class is not public"
+						 groupBundle="org.jetbrains.plugins.cucumber.java.CucumberJavaBundle" groupKey="cucumber.java.inspection.group.name" enabledByDefault="true"
+						 level="WARNING" implementationClass="org.jetbrains.plugins.cucumber.java.inspections.CucumberJavaStepDefClassIsPublicInspections"/>
+		<localInspection language="JAVA" shortName="CucumberJavaStepDefClassInDefaultPackage" displayName="Step definition class is in default package"
+						 groupBundle="org.jetbrains.plugins.cucumber.java.CucumberJavaBundle" groupKey="cucumber.java.inspection.group.name" enabledByDefault="true"
+						 level="WARNING" implementationClass="org.jetbrains.plugins.cucumber.java.inspections.CucumberJavaStepDefClassInDefaultPackageInspection"/>
+	</extensions>
+
+	<extensions defaultExtensionNs="org.jetbrains.plugins.cucumber.steps">
+		<cucumberJvmExtensionPoint implementation="org.jetbrains.plugins.cucumber.java.CucumberJavaExtension"/>
+	</extensions>
+	<extensions defaultExtensionNs="cucumber">
+		<KeywordProvider implementation="org.jetbrains.plugins.cucumber.java.i18n.JavaGherkinKeywordProviderBuilder"/>
+	</extensions>
+</idea-plugin>

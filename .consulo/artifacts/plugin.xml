@@ -9,6 +9,14 @@
           </element>
         </element>
       </element>
+      <element id="directory" name="cucumber-java">
+        <element id="directory" name="lib">
+          <element id="zip-archive" name="cucumber-java.jar">
+            <element id="module-output" name="cucumber-java" />
+          </element>
+          <element id="library" level="project" name="cucumber" />
+        </element>
+      </element>
     </root>
   </artifact>
 </component>

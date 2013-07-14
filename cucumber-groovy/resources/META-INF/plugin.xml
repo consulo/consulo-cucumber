@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<idea-plugin version="2">
+  <id>cucumber-groovy</id>
+  <name>Cucumber for Groovy</name>
+  <description>Provides support of Cucumber for Groovy</description>
+  <version>1.0</version>
+  <depends>cucumber</depends>
+  <depends>org.intellij.groovy</depends>
+  <depends>cucumber-java</depends>
+  <idea-version since-build="123.0" until-build="131.0"/>
+  <vendor>JetBrains</vendor>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <errorHandler implementation="com.intellij.diagnostic.ITNReporter"/>
+    <referencesSearch implementation="org.jetbrains.plugins.cucumber.groovy.steps.search.GrCucumberStepDefinitionSearcher"/>
+    <findUsagesHandlerFactory implementation="org.jetbrains.plugins.cucumber.groovy.steps.search.GrStepFindUsageHandlerFactory"/>
+    <itemPresentationProvider forClass="org.jetbrains.plugins.groovy.lang.psi.impl.statements.expressions.GrMethodCallImpl"
+                              implementationClass="org.jetbrains.plugins.cucumber.groovy.steps.search.GrStepDefinitionPresentationProvider"/>
+    <elementDescriptionProvider implementation="org.jetbrains.plugins.cucumber.groovy.steps.search.GrStepDefinitionDescriptionProvider"/>
+    <pom.declarationSearcher implementation="org.jetbrains.plugins.cucumber.groovy.steps.search.GrCucumberStepDeclarationSearcher"/>
+    <errorHandler implementation="com.intellij.diagnostic.ITNReporter"/>
+    <codeInsight.lineMarkerProvider implementationClass="org.jetbrains.plugins.cucumber.groovy.steps.GrCucumberLineMarkerProvider" language="Groovy"/>
+  </extensions>
+
+  <extensions defaultExtensionNs="org.jetbrains.plugins.cucumber.steps">
+    <cucumberJvmExtensionPoint implementation="org.jetbrains.plugins.cucumber.groovy.GrCucumberExtension"/>
+  </extensions>
+
+  <extensions defaultExtensionNs="org.intellij.groovy">
+    <membersContributor implementation="org.jetbrains.plugins.cucumber.groovy.resolve.noncode.CustomWorldContributor"/>
+  </extensions>
+</idea-plugin>
