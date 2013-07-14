@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
 <idea-plugin version="2">
-	<id>cucumber</id>
+	<id>org.jetbrains.cucumber</id>
 	<name>Base Cucumber</name>
 	<description>Provides support of Cucumber language</description>
 	<version>1.0</version>
