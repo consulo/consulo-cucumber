@@ -116,7 +116,10 @@ public class CucumberUtil {
     return result;
   }
 
-  public static String getFeatureFileOrFolderNameFromParameters(@NotNull String parameters) {
+  public static String getFeatureFileOrFolderNameFromParameters(@Nullable String parameters) {
+	if(parameters == null) {
+		return null;
+	}
     String featureFile = null;
     parameters = parameters.trim();
     if (parameters.startsWith("\"")) {

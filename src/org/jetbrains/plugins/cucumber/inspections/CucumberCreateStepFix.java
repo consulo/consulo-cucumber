@@ -4,6 +4,7 @@ import com.intellij.codeInsight.FileModificationService;
 import com.intellij.codeInspection.LocalQuickFix;
 import com.intellij.codeInspection.ProblemDescriptor;
 import com.intellij.icons.AllIcons;
+import com.intellij.ide.IconDescriptorUpdaters;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.openapi.extensions.Extensions;
@@ -109,7 +110,7 @@ public class CucumberCreateStepFix implements LocalQuickFix {
 
           @Override
           public Icon getIconFor(PsiFile value) {
-            return value == null ? AllIcons.Actions.CreateFromUsage : value.getIcon(0);
+            return value == null ? AllIcons.Actions.CreateFromUsage : IconDescriptorUpdaters.getIcon(value, 0);
           }
 
           @Override

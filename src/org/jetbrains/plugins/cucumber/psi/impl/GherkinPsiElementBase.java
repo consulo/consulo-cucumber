@@ -1,6 +1,7 @@
 package org.jetbrains.plugins.cucumber.psi.impl;
 
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
+import com.intellij.ide.IconDescriptorUpdaters;
 import com.intellij.lang.ASTNode;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.openapi.util.Iconable;
@@ -57,7 +58,7 @@ public abstract class GherkinPsiElementBase extends ASTWrapperPsiElement impleme
       }
 
       public Icon getIcon(final boolean open) {
-        return GherkinPsiElementBase.this.getIcon(Iconable.ICON_FLAG_VISIBILITY);
+        return IconDescriptorUpdaters.getIcon(GherkinPsiElementBase.this, Iconable.ICON_FLAG_VISIBILITY);
       }
     };
   }
