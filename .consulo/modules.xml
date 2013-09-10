@@ -58,7 +58,7 @@
             <SOURCES />
           </library>
         </orderEntry>
-        <orderEntry type="library" exported="" name="cucumber" level="project" />
+        <orderEntry type="library" exploded="" name="cucumber" level="project" />
       </module>
       <module name="cucumber-groovy" dirurl="file://$PROJECT_DIR$/cucumber-groovy">
         <extension id="java" sdk-module-name="consulo-cucumber" sdk-name="" language-level-module-name="consulo-cucumber" language-level-name="" special-dir-location="MODULE_DIR" />
@@ -75,7 +75,6 @@
             <CLASSES>
               <root url="jar://$APPLICATION_HOME_DIR$/plugins/groovy/lib/groovy-copyright.jar!/" />
               <root url="jar://$APPLICATION_HOME_DIR$/plugins/groovy/lib/groovy-intellilang.jar!/" />
-              <root url="jar://$APPLICATION_HOME_DIR$/plugins/groovy/lib/groovy-jps-plugin.jar!/" />
               <root url="jar://$APPLICATION_HOME_DIR$/plugins/groovy/lib/groovy-rt.jar!/" />
               <root url="jar://$APPLICATION_HOME_DIR$/plugins/groovy/lib/groovy-spellchecker.jar!/" />
               <root url="jar://$APPLICATION_HOME_DIR$/plugins/groovy/lib/groovy.jar!/" />

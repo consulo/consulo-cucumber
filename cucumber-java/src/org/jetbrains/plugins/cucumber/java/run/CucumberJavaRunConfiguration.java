@@ -4,11 +4,9 @@ import com.intellij.diagnostic.logging.LogConfigurationPanel;
 import com.intellij.execution.*;
 import com.intellij.execution.application.ApplicationConfiguration;
 import com.intellij.execution.configurations.*;
-import com.intellij.execution.filters.TextConsoleBuilderFactory;
 import com.intellij.execution.process.ProcessHandler;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.execution.runners.ProgramRunner;
-import com.intellij.execution.testframework.sm.SMRunnerUtil;
 import com.intellij.execution.testframework.sm.SMTestRunnerConnectionUtil;
 import com.intellij.execution.testframework.sm.runner.SMTRunnerConsoleProperties;
 import com.intellij.execution.ui.ConsoleView;
@@ -46,10 +44,7 @@ public class CucumberJavaRunConfiguration extends ApplicationConfiguration {
     super(name, project, factory);
   }
 
-  protected ModuleBasedConfiguration createInstance() {
-    return new CucumberJavaRunConfiguration(getName(), getProject(), CucumberJavaRunConfigurationType.getInstance());
-  }
-
+  @NotNull
   @Override
   public SettingsEditor<? extends RunConfiguration> getConfigurationEditor() {
     SettingsEditorGroup<CucumberJavaRunConfiguration> group = new SettingsEditorGroup<CucumberJavaRunConfiguration>();
@@ -102,8 +97,7 @@ public class CucumberJavaRunConfiguration extends ApplicationConfiguration {
         final SMTRunnerConsoleProperties consoleProperties = new SMTRunnerConsoleProperties(runConfiguration, testFrameworkName, executor);
 
         testRunnerConsole = SMTestRunnerConnectionUtil.createAndAttachConsole(testFrameworkName, processHandler, consoleProperties,
-                                                                              getRunnerSettings(),
-                                                                              getConfigurationSettings());
+            getEnvironment());
 
         return testRunnerConsole;
       }
@@ -116,12 +110,11 @@ public class CucumberJavaRunConfiguration extends ApplicationConfiguration {
         return new DefaultExecutionResult(console, processHandler, createActions(console, processHandler, executor));
       }
     };
-    state.setConsoleBuilder(TextConsoleBuilderFactory.getInstance().createBuilder(getProject()));
     return state;
   }
 
   private static String getSMRunnerPath() {
-    return PathUtil.getJarPathForClass(SMRunnerUtil.class);
+    return PathUtil.getJarPathForClass(CucumberJvmSMFormatter.class);
   }
 
   @Override
