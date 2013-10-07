@@ -1,14 +1,10 @@
 package org.jetbrains.plugins.cucumber.groovy;
 
-import com.intellij.openapi.fileTypes.FileType;
-import com.intellij.openapi.module.*;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.roots.*;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.*;
-import com.intellij.psi.impl.file.PsiDirectoryFactory;
-import com.intellij.util.PathUtil;
-import com.intellij.util.containers.ContainerUtil;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
+
 import org.consulo.java.platform.module.extension.JavaModuleExtension;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -24,8 +20,23 @@ import org.jetbrains.plugins.groovy.GroovyFileType;
 import org.jetbrains.plugins.groovy.lang.psi.GroovyFile;
 import org.jetbrains.plugins.groovy.lang.psi.api.statements.GrStatement;
 import org.jetbrains.plugins.groovy.lang.psi.api.statements.expressions.GrMethodCall;
-
-import java.util.*;
+import com.intellij.openapi.fileTypes.FileType;
+import com.intellij.openapi.module.Module;
+import com.intellij.openapi.module.ModuleManager;
+import com.intellij.openapi.module.ModuleUtilCore;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.roots.ContentEntry;
+import com.intellij.openapi.roots.ContentFolder;
+import com.intellij.openapi.roots.ContentFolderType;
+import com.intellij.openapi.roots.ModuleRootManager;
+import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.psi.PsiDirectory;
+import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiFile;
+import com.intellij.psi.PsiReference;
+import com.intellij.psi.impl.file.PsiDirectoryFactory;
+import com.intellij.util.PathUtil;
+import com.intellij.util.containers.ContainerUtil;
 
 /**
  * @author Max Medvedev
@@ -127,7 +138,7 @@ public class GrCucumberExtension extends NotIndexedCucumberExtension {
                                        List<PsiDirectory> newStepDefinitionsRoots, Set<String> processedStepDirectories) {
     final ContentEntry[] contentEntries = ModuleRootManager.getInstance(module).getContentEntries();
     for (final ContentEntry contentEntry : contentEntries) {
-      final ContentFolder[] sourceFolders = contentEntry.getFolders(ContentFolderType.ONLY_SOURCE_ROOTS);
+      final ContentFolder[] sourceFolders = contentEntry.getFolders(ContentFolderType.ALL_SOURCE_ROOTS);
       for (ContentFolder sf : sourceFolders) {
         // ToDo: check if inside test folder
         VirtualFile sfDirectory = sf.getFile();
