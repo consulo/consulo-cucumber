@@ -1,0 +1,5 @@
+<options>
+	<dep>consulo-spellchecker</dep>
+	<dep>consulo-java</dep>
+	<dep>consulo-groovy</dep>
+</options>

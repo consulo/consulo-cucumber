@@ -20,6 +20,7 @@ import org.jetbrains.plugins.groovy.GroovyFileType;
 import org.jetbrains.plugins.groovy.lang.psi.GroovyFile;
 import org.jetbrains.plugins.groovy.lang.psi.api.statements.GrStatement;
 import org.jetbrains.plugins.groovy.lang.psi.api.statements.expressions.GrMethodCall;
+import org.mustbe.consulo.roots.ContentFolderScopes;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleManager;
@@ -27,7 +28,6 @@ import com.intellij.openapi.module.ModuleUtilCore;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ContentEntry;
 import com.intellij.openapi.roots.ContentFolder;
-import com.intellij.openapi.roots.ContentFolderType;
 import com.intellij.openapi.roots.ModuleRootManager;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiDirectory;
@@ -138,7 +138,7 @@ public class GrCucumberExtension extends NotIndexedCucumberExtension {
                                        List<PsiDirectory> newStepDefinitionsRoots, Set<String> processedStepDirectories) {
     final ContentEntry[] contentEntries = ModuleRootManager.getInstance(module).getContentEntries();
     for (final ContentEntry contentEntry : contentEntries) {
-      final ContentFolder[] sourceFolders = contentEntry.getFolders(ContentFolderType.ALL_SOURCE_ROOTS);
+      final ContentFolder[] sourceFolders = contentEntry.getFolders(ContentFolderScopes.all(false));
       for (ContentFolder sf : sourceFolders) {
         // ToDo: check if inside test folder
         VirtualFile sfDirectory = sf.getFile();
