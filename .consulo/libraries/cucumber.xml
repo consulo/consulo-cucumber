@@ -1,14 +1,13 @@
 <component name="libraryTable">
   <library name="cucumber">
-    <CLASSES>
+    <binaries>
       <root url="jar://$PROJECT_DIR$/cucumber-java/lib/cucumber-core-1.0.14.jar!/" />
       <root url="jar://$PROJECT_DIR$/cucumber-java/lib/cucumber-java-1.0.14.jar!/" />
       <root url="jar://$PROJECT_DIR$/cucumber-java/lib/gherkin-2.11.2.jar!/" />
-    </CLASSES>
-    <DOCUMENTATION />
-    <SOURCES>
+    </binaries>
+    <sources>
       <root url="file://$PROJECT_DIR$/cucumber-java/lib/src" />
-    </SOURCES>
-    <jarDirectory url="file://$PROJECT_DIR$/cucumber-java/lib/src" recursive="false" type="SOURCES" />
+    </sources>
+    <jarDirectory url="file://$PROJECT_DIR$/cucumber-java/lib/src" recursive="false" type="sources" />
   </library>
 </component>

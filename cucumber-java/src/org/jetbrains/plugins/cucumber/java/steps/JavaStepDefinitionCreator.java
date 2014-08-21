@@ -1,5 +1,11 @@
 package org.jetbrains.plugins.cucumber.java.steps;
 
+import java.util.ArrayList;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.plugins.cucumber.StepDefinitionCreator;
+import org.jetbrains.plugins.cucumber.java.CucumberJavaUtil;
+import org.jetbrains.plugins.cucumber.psi.GherkinStep;
 import com.intellij.codeInsight.CodeInsightUtilBase;
 import com.intellij.codeInsight.template.Template;
 import com.intellij.codeInsight.template.TemplateBuilder;
@@ -25,7 +31,8 @@ import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.*;
 import com.intellij.psi.codeStyle.JavaCodeStyleManager;
-import com.intellij.psi.impl.file.PsiDirectoryFactory;
+import com.intellij.psi.impl.PsiManagerImpl;
+import com.intellij.psi.impl.file.PsiDirectoryImpl;
 import com.intellij.psi.util.CreateClassUtil;
 import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.util.ObjectUtils;
@@ -33,12 +40,6 @@ import cucumber.runtime.java.JavaSnippet;
 import cucumber.runtime.snippets.SnippetGenerator;
 import gherkin.formatter.model.Comment;
 import gherkin.formatter.model.Step;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.plugins.cucumber.StepDefinitionCreator;
-import org.jetbrains.plugins.cucumber.java.CucumberJavaUtil;
-import org.jetbrains.plugins.cucumber.psi.GherkinStep;
-
-import java.util.ArrayList;
 
 /**
  * User: Andrey.Vokin
@@ -170,7 +171,7 @@ public class JavaStepDefinitionCreator implements StepDefinitionCreator {
             protected void run(Result result) throws Throwable {
               final VirtualFile packageFile = VfsUtil.createDirectoryIfMissing(path + '/' + packagePath);
               if (packageFile != null) {
-                resultRef.set(PsiDirectoryFactory.getInstance(step.getProject()).createDirectory(packageFile));
+                resultRef.set(new PsiDirectoryImpl((PsiManagerImpl) PsiManager.getInstance(step.getProject()), packageFile));
               }
             }
           }.execute();
