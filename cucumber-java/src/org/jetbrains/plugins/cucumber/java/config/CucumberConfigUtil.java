@@ -1,21 +1,25 @@
 package org.jetbrains.plugins.cucumber.java.config;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleUtilCore;
-import com.intellij.openapi.roots.*;
+import com.intellij.openapi.roots.LibraryOrderEntry;
+import com.intellij.openapi.roots.ModuleRootManager;
+import com.intellij.openapi.roots.OrderEntry;
+import com.intellij.openapi.roots.ProjectRootManager;
 import com.intellij.openapi.roots.libraries.Library;
+import com.intellij.openapi.roots.types.BinariesOrderRootType;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.JavaPsiFacade;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.util.CachedValueProvider;
 import com.intellij.psi.util.CachedValuesManager;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * @author Max Medvedev
@@ -59,7 +63,7 @@ public class CucumberConfigUtil {
 
         //libraryName is null for simple jar entries
         if ((libraryName == null || libraryName.toLowerCase().contains("cucumber")) && library != null) {
-          final VirtualFile[] files = library.getFiles(OrderRootType.CLASSES);
+          final VirtualFile[] files = library.getFiles(BinariesOrderRootType.getInstance());
           for (VirtualFile file : files) {
             final String version = getVersionByFile(file);
             if (version != null) return version;

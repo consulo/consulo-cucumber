@@ -33,8 +33,8 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
+import com.intellij.psi.PsiManager;
 import com.intellij.psi.PsiReference;
-import com.intellij.psi.impl.file.PsiDirectoryFactory;
 import com.intellij.util.PathUtil;
 import com.intellij.util.containers.ContainerUtil;
 
@@ -143,8 +143,8 @@ public class GrCucumberExtension extends NotIndexedCucumberExtension {
         // ToDo: check if inside test folder
         VirtualFile sfDirectory = sf.getFile();
         if (sfDirectory != null && sfDirectory.isDirectory()) {
-          PsiDirectory sourceRoot = PsiDirectoryFactory.getInstance(module.getProject()).createDirectory(sfDirectory);
-          if (!processedStepDirectories.contains(sourceRoot.getVirtualFile().getPath())) {
+          PsiDirectory sourceRoot = PsiManager.getInstance(module.getProject()).findDirectory(sfDirectory);
+          if (sourceRoot != null && !processedStepDirectories.contains(sourceRoot.getVirtualFile().getPath())) {
             newStepDefinitionsRoots.add(sourceRoot);
           }
         }
