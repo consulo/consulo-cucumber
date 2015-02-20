@@ -71,6 +71,8 @@
 		<gotoRelatedProvider implementation="org.jetbrains.plugins.cucumber.navigation.CucumberGoToRelatedProvider"/>
 
 		<errorHandler implementation="com.intellij.diagnostic.ITNReporter"/>
+
+		<psi.treeChangePreprocessor implementation="org.jetbrains.plugins.cucumber.psi.GherkinPsiManager" />
 	</extensions>
 
 	<extensionPoints>
@@ -79,10 +81,4 @@
 		<extensionPoint qualifiedName="org.jetbrains.plugins.cucumber.steps.cucumberJvmExtensionPoint"
 						interface="org.jetbrains.plugins.cucumber.CucumberJvmExtensionPoint"/>
 	</extensionPoints>
-
-	<project-components>
-		<component>
-			<implementation-class>org.jetbrains.plugins.cucumber.psi.GherkinPsiManager</implementation-class>
-		</component>
-	</project-components>
 </idea-plugin>
