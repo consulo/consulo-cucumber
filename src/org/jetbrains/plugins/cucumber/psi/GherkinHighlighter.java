@@ -1,12 +1,13 @@
 package org.jetbrains.plugins.cucumber.psi;
 
+import java.awt.Color;
+import java.awt.Font;
+
+import org.jetbrains.annotations.NonNls;
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
 import com.intellij.openapi.editor.HighlighterColors;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.editor.markup.TextAttributes;
-import org.jetbrains.annotations.NonNls;
-
-import java.awt.*;
 
 /**
  * @author Roman.Chernyatchik
