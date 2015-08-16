@@ -1,7 +1,29 @@
 package org.jetbrains.plugins.cucumber.groovy.steps;
 
+import java.util.Collections;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.plugins.cucumber.StepDefinitionCreator;
+import org.jetbrains.plugins.cucumber.groovy.GrCucumberUtil;
+import org.jetbrains.plugins.cucumber.java.config.CucumberConfigUtil;
+import org.jetbrains.plugins.cucumber.psi.GherkinStep;
+import org.jetbrains.plugins.groovy.GroovyFileType;
+import org.jetbrains.plugins.groovy.actions.GroovyTemplatesFactory;
+import org.jetbrains.plugins.groovy.intentions.base.IntentionUtils;
+import org.jetbrains.plugins.groovy.lang.psi.GroovyFile;
+import org.jetbrains.plugins.groovy.lang.psi.GroovyPsiElementFactory;
+import org.jetbrains.plugins.groovy.lang.psi.api.statements.blocks.GrClosableBlock;
+import org.jetbrains.plugins.groovy.lang.psi.api.statements.expressions.GrMethodCall;
+import org.jetbrains.plugins.groovy.lang.psi.api.statements.expressions.literals.GrLiteral;
+import org.jetbrains.plugins.groovy.lang.psi.api.statements.params.GrParameter;
+import org.jetbrains.plugins.groovy.lang.psi.util.GrStringUtil;
+import org.jetbrains.plugins.groovy.lang.psi.util.PsiUtil;
 import com.intellij.codeInsight.CodeInsightUtilBase;
-import com.intellij.codeInsight.template.*;
+import com.intellij.codeInsight.template.Template;
+import com.intellij.codeInsight.template.TemplateBuilderFactory;
+import com.intellij.codeInsight.template.TemplateBuilderImpl;
+import com.intellij.codeInsight.template.TemplateEditingAdapter;
+import com.intellij.codeInsight.template.TemplateManager;
 import com.intellij.codeInsight.template.impl.TemplateManagerImpl;
 import com.intellij.codeInsight.template.impl.TemplateState;
 import com.intellij.openapi.application.ApplicationManager;
@@ -18,29 +40,12 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.codeStyle.JavaCodeStyleManager;
 import com.intellij.psi.util.PsiTreeUtil;
+import com.intellij.util.ObjectUtil;
 import com.intellij.util.ObjectUtils;
 import cucumber.runtime.groovy.GroovySnippet;
 import cucumber.runtime.snippets.SnippetGenerator;
 import gherkin.formatter.model.Comment;
 import gherkin.formatter.model.Step;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.plugins.cucumber.StepDefinitionCreator;
-import org.jetbrains.plugins.cucumber.groovy.GrCucumberUtil;
-import org.jetbrains.plugins.cucumber.java.config.CucumberConfigUtil;
-import org.jetbrains.plugins.cucumber.psi.GherkinStep;
-import org.jetbrains.plugins.groovy.GroovyFileType;
-import org.jetbrains.plugins.groovy.actions.GroovyTemplatesFactory;
-import org.jetbrains.plugins.groovy.annotator.intentions.QuickfixUtil;
-import org.jetbrains.plugins.groovy.lang.psi.GroovyFile;
-import org.jetbrains.plugins.groovy.lang.psi.GroovyPsiElementFactory;
-import org.jetbrains.plugins.groovy.lang.psi.api.statements.blocks.GrClosableBlock;
-import org.jetbrains.plugins.groovy.lang.psi.api.statements.expressions.GrMethodCall;
-import org.jetbrains.plugins.groovy.lang.psi.api.statements.expressions.literals.GrLiteral;
-import org.jetbrains.plugins.groovy.lang.psi.api.statements.params.GrParameter;
-import org.jetbrains.plugins.groovy.lang.psi.util.GrStringUtil;
-import org.jetbrains.plugins.groovy.lang.psi.util.PsiUtil;
-
-import java.util.Collections;
 
 /**
  * @author Max Medvedev
@@ -57,10 +62,10 @@ public class GrStepDefinitionCreator implements StepDefinitionCreator {
     String fileName = name + '.' + GroovyFileType.DEFAULT_EXTENSION;
     final String version = CucumberConfigUtil.getCucumberCoreVersion(dir);
     if (version != null && version.compareTo(VERSION1_1) >= 0) {
-      return GroovyTemplatesFactory.createFromTemplate(dir, name, fileName, GROOVY_STEP_DEFINITION_FILE_TMPL_1_1);
+      return GroovyTemplatesFactory.createFromTemplate(dir, name, fileName, GROOVY_STEP_DEFINITION_FILE_TMPL_1_1, true);
     }
     else {
-      return GroovyTemplatesFactory.createFromTemplate(dir, name, fileName, GROOVY_STEP_DEFINITION_FILE_TMPL_1_0);
+      return GroovyTemplatesFactory.createFromTemplate(dir, name, fileName, GROOVY_STEP_DEFINITION_FILE_TMPL_1_0, true);
     }
   }
 
@@ -69,7 +74,7 @@ public class GrStepDefinitionCreator implements StepDefinitionCreator {
     if (!(file instanceof GroovyFile)) return false;
 
     final Project project = file.getProject();
-    final VirtualFile vFile = ObjectUtils.assertNotNull(file.getVirtualFile());
+    final VirtualFile vFile = ObjectUtil.assertNotNull(file.getVirtualFile());
     final OpenFileDescriptor descriptor = new OpenFileDescriptor(project, vFile);
     FileEditorManager.getInstance(project).getAllEditors(vFile);
     FileEditorManager.getInstance(project).openTextEditor(descriptor, true);
@@ -119,7 +124,7 @@ public class GrStepDefinitionCreator implements StepDefinitionCreator {
 
     final Editor editorToRunTemplate;
     if (editor == null) {
-      editorToRunTemplate = QuickfixUtil.positionCursor(project, file, methodCall);
+      editorToRunTemplate = IntentionUtils.positionCursor(project, file, methodCall);
     }
     else {
       editorToRunTemplate = editor;
