@@ -1,11 +1,11 @@
 package org.jetbrains.plugins.cucumber.psi;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.plugins.cucumber.psi.impl.*;
 import com.intellij.lang.ASTNode;
-import com.intellij.lang.LanguageVersion;
 import com.intellij.lang.ParserDefinition;
 import com.intellij.lang.PsiParser;
 import com.intellij.lexer.Lexer;
-import com.intellij.openapi.project.Project;
 import com.intellij.psi.FileViewProvider;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
@@ -14,8 +14,7 @@ import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.tree.IFileElementType;
 import com.intellij.psi.tree.TokenSet;
 import com.intellij.psi.util.PsiUtilCore;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.plugins.cucumber.psi.impl.*;
+import consulo.lang.LanguageVersion;
 
 /**
  * @author yole
@@ -25,12 +24,12 @@ public class GherkinParserDefinition implements ParserDefinition {
   private static final TokenSet COMMENTS = TokenSet.create(GherkinTokenTypes.COMMENT);
 
   @NotNull
-  public Lexer createLexer(Project project, LanguageVersion languageVersion) {
-    final CucumberLanguageService instance = CucumberLanguageService.getInstance(project);
+  public Lexer createLexer(LanguageVersion languageVersion) {
+    final CucumberLanguageService instance = null; //CucumberLanguageService.getInstance(project);
     return new GherkinLexer(instance == null? new PlainGherkinKeywordProvider() : instance.getKeywordProvider());
   }
 
-  public PsiParser createParser(Project project, LanguageVersion languageVersion) {
+  public PsiParser createParser(LanguageVersion languageVersion) {
     return new GherkinParser();
   }
 

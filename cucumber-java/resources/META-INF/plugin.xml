@@ -5,15 +5,14 @@
 	<description>Provides support of Cucumber for Java</description>
 	<version>SNAPSHOT</version>
 	<depends>org.jetbrains.cucumber</depends>
-	<depends>org.consulo.java</depends>
+	<depends>consulo.java</depends>
 	<category>Test Frameworks</category>
 	<vendor>JetBrains</vendor>
 
-	<extensions defaultExtensionNs="org.consulo.java">
+	<extensions defaultExtensionNs="consulo.java">
 		<methodReferencesSearch implementation="org.jetbrains.plugins.cucumber.java.steps.search.CucumberJavaMethodUsageSearcher"/>
 	</extensions>
 	<extensions defaultExtensionNs="com.intellij">
-		<errorHandler implementation="com.intellij.diagnostic.ITNReporter"/>
 		<referencesSearch implementation="org.jetbrains.plugins.cucumber.java.steps.search.CucumberJavaStepDefinitionSearch"/>
 		<configurationProducer implementation="org.jetbrains.plugins.cucumber.java.run.CucumberJavaFeatureRunConfigurationProducer"/>
 		<configurationProducer implementation="org.jetbrains.plugins.cucumber.java.run.CucumberJavaScenarioRunConfigurationProducer"/>
@@ -21,7 +20,6 @@
 		<configurationType implementation="org.jetbrains.plugins.cucumber.java.run.CucumberJavaRunConfigurationType"/>
 
 		<implicitUsageProvider implementation="org.jetbrains.plugins.cucumber.java.steps.reference.CucumberJavaImplicitUsageProvider"/>
-		<errorHandler implementation="com.intellij.diagnostic.ITNReporter"/>
 
 		<localInspection language="JAVA" shortName="CucumberJavaStepDefClassIsPublic" displayName="Step definition class is not public"
 						 groupBundle="org.jetbrains.plugins.cucumber.java.CucumberJavaBundle" groupKey="cucumber.java.inspection.group.name" enabledByDefault="true"

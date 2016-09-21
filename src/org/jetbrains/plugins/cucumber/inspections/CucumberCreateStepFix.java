@@ -1,10 +1,27 @@
 package org.jetbrains.plugins.cucumber.inspections;
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import javax.swing.Icon;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.plugins.cucumber.CucumberBundle;
+import org.jetbrains.plugins.cucumber.CucumberJvmExtensionPoint;
+import org.jetbrains.plugins.cucumber.StepDefinitionCreator;
+import org.jetbrains.plugins.cucumber.inspections.model.CreateStepDefinitionFileModel;
+import org.jetbrains.plugins.cucumber.inspections.ui.CreateStepDefinitionFileDialog;
+import org.jetbrains.plugins.cucumber.psi.GherkinFile;
+import org.jetbrains.plugins.cucumber.psi.GherkinStep;
+import org.jetbrains.plugins.cucumber.steps.CucumberStepsIndex;
 import com.intellij.codeInsight.FileModificationService;
 import com.intellij.codeInspection.LocalQuickFix;
 import com.intellij.codeInspection.ProblemDescriptor;
 import com.intellij.icons.AllIcons;
-import com.intellij.ide.IconDescriptorUpdaters;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.openapi.extensions.Extensions;
@@ -26,19 +43,7 @@ import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiManager;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.containers.HashMap;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.plugins.cucumber.CucumberBundle;
-import org.jetbrains.plugins.cucumber.CucumberJvmExtensionPoint;
-import org.jetbrains.plugins.cucumber.StepDefinitionCreator;
-import org.jetbrains.plugins.cucumber.inspections.model.CreateStepDefinitionFileModel;
-import org.jetbrains.plugins.cucumber.inspections.ui.CreateStepDefinitionFileDialog;
-import org.jetbrains.plugins.cucumber.psi.GherkinFile;
-import org.jetbrains.plugins.cucumber.psi.GherkinStep;
-import org.jetbrains.plugins.cucumber.steps.CucumberStepsIndex;
-
-import javax.swing.*;
-import java.util.*;
+import consulo.ide.IconDescriptorUpdaters;
 
 /**
  * @author yole

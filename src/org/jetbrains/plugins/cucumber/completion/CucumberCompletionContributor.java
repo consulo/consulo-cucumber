@@ -1,7 +1,35 @@
 package org.jetbrains.plugins.cucumber.completion;
 
+import static com.intellij.patterns.PlatformPatterns.psiElement;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.plugins.cucumber.psi.GherkinElementTypes;
+import org.jetbrains.plugins.cucumber.psi.GherkinFeature;
+import org.jetbrains.plugins.cucumber.psi.GherkinFile;
+import org.jetbrains.plugins.cucumber.psi.GherkinKeywordTable;
+import org.jetbrains.plugins.cucumber.psi.GherkinScenario;
+import org.jetbrains.plugins.cucumber.psi.GherkinStep;
+import org.jetbrains.plugins.cucumber.psi.impl.GherkinExamplesBlockImpl;
+import org.jetbrains.plugins.cucumber.psi.impl.GherkinScenarioOutlineImpl;
+import org.jetbrains.plugins.cucumber.steps.AbstractStepDefinition;
+import org.jetbrains.plugins.cucumber.steps.CucumberStepsIndex;
 import com.intellij.codeInsight.TailType;
-import com.intellij.codeInsight.completion.*;
+import com.intellij.codeInsight.completion.CompletionContributor;
+import com.intellij.codeInsight.completion.CompletionParameters;
+import com.intellij.codeInsight.completion.CompletionResultSet;
+import com.intellij.codeInsight.completion.CompletionType;
+import com.intellij.codeInsight.completion.InsertHandler;
+import com.intellij.codeInsight.completion.InsertionContext;
+import com.intellij.codeInsight.completion.PlainPrefixMatcher;
+import com.intellij.codeInsight.completion.PrioritizedLookupElement;
 import com.intellij.codeInsight.lookup.LookupElement;
 import com.intellij.codeInsight.lookup.LookupElementBuilder;
 import com.intellij.codeInsight.lookup.TailTypeDecorator;
@@ -16,18 +44,7 @@ import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileSystemItem;
 import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.util.ProcessingContext;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.plugins.cucumber.psi.*;
-import org.jetbrains.plugins.cucumber.psi.impl.GherkinExamplesBlockImpl;
-import org.jetbrains.plugins.cucumber.psi.impl.GherkinScenarioOutlineImpl;
-import org.jetbrains.plugins.cucumber.steps.AbstractStepDefinition;
-import org.jetbrains.plugins.cucumber.steps.CucumberStepsIndex;
-
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import static com.intellij.patterns.PlatformPatterns.psiElement;
+import consulo.codeInsight.completion.CompletionProvider;
 
 /**
  * @author yole
@@ -52,9 +69,9 @@ public class CucumberCompletionContributor extends CompletionContributor {
     final PsiElementPattern.Capture<PsiElement> inScenario = psiElement().inside(psiElement().withElementType(GherkinElementTypes.SCENARIOS));
     final PsiElementPattern.Capture<PsiElement> inStep = psiElement().inside(psiElement().withElementType(GherkinElementTypes.STEP));
 
-    extend(CompletionType.BASIC, psiElement().inFile(psiElement(GherkinFile.class)), new CompletionProvider<CompletionParameters>() {
+    extend(CompletionType.BASIC, psiElement().inFile(psiElement(GherkinFile.class)), new CompletionProvider() {
       @Override
-      protected void addCompletions(@NotNull CompletionParameters parameters,
+	  public void addCompletions(@NotNull CompletionParameters parameters,
                                     ProcessingContext context,
                                     @NotNull CompletionResultSet result) {
         final PsiFile psiFile = parameters.getOriginalFile();
@@ -73,18 +90,18 @@ public class CucumberCompletionContributor extends CompletionContributor {
       }
     });
 
-    extend(CompletionType.BASIC, inScenario.andNot(inStep), new CompletionProvider<CompletionParameters>() {
+    extend(CompletionType.BASIC, inScenario.andNot(inStep), new CompletionProvider() {
       @Override
-      protected void addCompletions(@NotNull CompletionParameters parameters,
+	  public void addCompletions(@NotNull CompletionParameters parameters,
                                     ProcessingContext context,
                                     @NotNull CompletionResultSet result) {
         addStepKeywords(result, parameters.getOriginalFile());
       }
     });
 
-    extend(CompletionType.BASIC, inStep, new CompletionProvider<CompletionParameters>() {
+    extend(CompletionType.BASIC, inStep, new CompletionProvider() {
       @Override
-      protected void addCompletions(@NotNull CompletionParameters parameters,
+	  public void addCompletions(@NotNull CompletionParameters parameters,
                                     ProcessingContext context,
                                     @NotNull CompletionResultSet result) {
         addStepDefinitions(result, parameters.getOriginalFile());

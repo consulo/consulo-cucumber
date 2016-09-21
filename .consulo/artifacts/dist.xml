@@ -2,7 +2,7 @@
   <artifact build-on-make="true" name="dist">
     <output-path>$PROJECT_DIR$/out/artifacts/dist</output-path>
     <root id="root">
-      <element id="directory" name="cucumber">
+      <element id="directory" name="org.jetbrains.cucumber">
         <element id="directory" name="lib">
           <element id="zip-archive" name="cucumber.jar">
             <element id="module-output" name="consulo-cucumber" />
@@ -10,7 +10,7 @@
           </element>
         </element>
       </element>
-      <element id="directory" name="cucumber-java">
+      <element id="directory" name="org.jetbrains.cucumber.java">
         <element id="directory" name="lib">
           <element id="zip-archive" name="cucumber-java.jar">
             <element id="module-output" name="cucumber-java" />
@@ -19,7 +19,7 @@
           <element id="library" level="project" name="cucumber" />
         </element>
       </element>
-      <element id="directory" name="cucumber-groovy">
+      <element id="directory" name="org.jetbrains.cucumber.groovy">
         <element id="directory" name="lib">
           <element id="zip-archive" name="cucumber-groovy.jar">
             <element id="module-output" name="cucumber-groovy" />
