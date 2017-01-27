@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<idea-plugin version="2">
+<idea-plugin>
 	<id>org.jetbrains.cucumber</id>
 	<name>Base Cucumber</name>
 	<description>Provides support of Cucumber language</description>
@@ -68,9 +68,6 @@
 								 implementationClass="org.jetbrains.plugins.cucumber.refactoring.GherkinRefactoringSupportProvider"/>
 
 		<gotoRelatedProvider implementation="org.jetbrains.plugins.cucumber.navigation.CucumberGoToRelatedProvider"/>
-
-		<errorHandler implementation="com.intellij.diagnostic.ITNReporter"/>
-
 		<psi.treeChangePreprocessor implementation="org.jetbrains.plugins.cucumber.psi.GherkinPsiManager" />
 	</extensions>
 

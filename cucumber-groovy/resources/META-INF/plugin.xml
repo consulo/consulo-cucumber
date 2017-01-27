@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<idea-plugin version="2">
+<idea-plugin>
 	<id>org.jetbrains.cucumber.groovy</id>
 	<name>Cucumber for Groovy</name>
 	<description>Provides support of Cucumber for Groovy</description>
