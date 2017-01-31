@@ -68,7 +68,6 @@
 								 implementationClass="org.jetbrains.plugins.cucumber.refactoring.GherkinRefactoringSupportProvider"/>
 
 		<gotoRelatedProvider implementation="org.jetbrains.plugins.cucumber.navigation.CucumberGoToRelatedProvider"/>
-		<psi.treeChangePreprocessor implementation="org.jetbrains.plugins.cucumber.psi.GherkinPsiManager" />
 	</extensions>
 
 	<extensionPoints>
