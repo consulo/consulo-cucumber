@@ -1,11 +1,9 @@
 package org.jetbrains.plugins.cucumber.navigation;
 
-import com.intellij.navigation.GotoRelatedItem;
-import com.intellij.navigation.GotoRelatedProvider;
-import com.intellij.openapi.actionSystem.DataContext;
-import com.intellij.openapi.actionSystem.LangDataKeys;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.plugins.cucumber.psi.GherkinFeature;
 import org.jetbrains.plugins.cucumber.psi.GherkinFile;
@@ -13,10 +11,12 @@ import org.jetbrains.plugins.cucumber.psi.GherkinStep;
 import org.jetbrains.plugins.cucumber.psi.GherkinStepsHolder;
 import org.jetbrains.plugins.cucumber.steps.AbstractStepDefinition;
 import org.jetbrains.plugins.cucumber.steps.CucumberStepsIndex;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import com.intellij.navigation.GotoRelatedItem;
+import com.intellij.navigation.GotoRelatedProvider;
+import com.intellij.openapi.actionSystem.DataContext;
+import com.intellij.openapi.actionSystem.LangDataKeys;
+import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiFile;
 
 /**
  * User: Andrey.Vokin
@@ -25,7 +25,7 @@ import java.util.List;
 public class CucumberGoToRelatedProvider extends GotoRelatedProvider {
   @NotNull
   public List<? extends GotoRelatedItem> getItems(@NotNull DataContext context) {
-    final PsiFile file = LangDataKeys.PSI_FILE.getData(context);
+    final PsiFile file = context.getData(LangDataKeys.PSI_FILE);
     if (file != null) {
       return getItems(file);
     }
