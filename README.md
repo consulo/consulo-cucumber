@@ -1,1 +1,1 @@
-![Build Status](http://must-be.org/vulcan/statusImage?name=consulo-cucumber)
+[![Build Status](https://ci.consulo.io/job/consulo-cucumber/badge/icon)](https://ci.consulo.io/job/consulo-cucumber/)
