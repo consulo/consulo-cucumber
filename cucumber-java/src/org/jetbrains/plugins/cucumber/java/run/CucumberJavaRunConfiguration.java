@@ -1,9 +1,27 @@
 package org.jetbrains.plugins.cucumber.java.run;
 
+import java.io.File;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.plugins.cucumber.CucumberBundle;
+import org.jetbrains.plugins.cucumber.CucumberUtil;
+import org.jetbrains.plugins.cucumber.java.CucumberJavaBundle;
 import com.intellij.diagnostic.logging.LogConfigurationPanel;
-import com.intellij.execution.*;
+import com.intellij.execution.DefaultExecutionResult;
+import com.intellij.execution.ExecutionBundle;
+import com.intellij.execution.ExecutionException;
+import com.intellij.execution.ExecutionResult;
+import com.intellij.execution.Executor;
+import com.intellij.execution.JavaRunConfigurationExtensionManager;
+import com.intellij.execution.RunConfigurationExtension;
 import com.intellij.execution.application.ApplicationConfiguration;
-import com.intellij.execution.configurations.*;
+import com.intellij.execution.configurations.ConfigurationFactory;
+import com.intellij.execution.configurations.JavaCommandLineState;
+import com.intellij.execution.configurations.JavaRunConfigurationModule;
+import com.intellij.execution.configurations.RunConfiguration;
+import com.intellij.execution.configurations.RunProfileState;
+import com.intellij.execution.configurations.RuntimeConfigurationException;
 import com.intellij.execution.process.ProcessHandler;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.execution.runners.ProgramRunner;
@@ -18,13 +36,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.NullableComputable;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.util.PathUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.plugins.cucumber.CucumberBundle;
-import org.jetbrains.plugins.cucumber.CucumberUtil;
-import org.jetbrains.plugins.cucumber.java.CucumberJavaBundle;
-
-import java.io.File;
+import consulo.java.execution.configurations.OwnJavaParameters;
 
 /**
  * User: Andrey.Vokin
@@ -57,11 +69,11 @@ public class CucumberJavaRunConfiguration extends ApplicationConfiguration {
   @Override
   public RunProfileState getState(@NotNull Executor executor, @NotNull ExecutionEnvironment env) throws ExecutionException {
     final JavaCommandLineState state = new JavaApplicationCommandLineState(this, env) {
-      protected JavaParameters createJavaParameters() throws ExecutionException {
-        final JavaParameters params = new JavaParameters();
+      protected OwnJavaParameters createJavaParameters() throws ExecutionException {
+        final OwnJavaParameters params = new OwnJavaParameters();
         final JavaRunConfigurationModule module = getConfigurationModule();
 
-        final int classPathType = JavaParameters.JDK_AND_CLASSES_AND_TESTS;
+        final int classPathType = OwnJavaParameters.JDK_AND_CLASSES_AND_TESTS;
         final String jreHome = CucumberJavaRunConfiguration.this.ALTERNATIVE_JRE_PATH_ENABLED ? ALTERNATIVE_JRE_PATH : null;
         JavaParametersUtil.configureModule(module, params, classPathType, jreHome);
         JavaParametersUtil.configureConfiguration(params, CucumberJavaRunConfiguration.this);
