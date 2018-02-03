@@ -48,10 +48,6 @@ public class CucumberJavaRunConfiguration extends ApplicationConfiguration {
 
   public String GLUE;
 
-  public CucumberJavaRunConfiguration(String name, Project project, CucumberJavaRunConfigurationType applicationConfigurationType) {
-    super(name, project, applicationConfigurationType);
-  }
-
   protected CucumberJavaRunConfiguration(String name, Project project, ConfigurationFactory factory) {
     super(name, project, factory);
   }
