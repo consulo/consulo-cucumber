@@ -1,9 +1,8 @@
 package org.jetbrains.plugins.cucumber.psi;
 
-import com.intellij.openapi.fileTypes.LanguageFileType;
 import org.jetbrains.annotations.NotNull;
-
-import javax.swing.*;
+import com.intellij.openapi.fileTypes.LanguageFileType;
+import consulo.ui.image.Image;
 
 /**
  * @author yole
@@ -30,7 +29,7 @@ public class GherkinFileType extends LanguageFileType {
     return "feature";
   }
 
-  public Icon getIcon() {
+  public Image getIcon() {
     return icons.CucumberIcons.Cucumber;
   }
 }

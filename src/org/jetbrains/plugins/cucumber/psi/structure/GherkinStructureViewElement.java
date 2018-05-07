@@ -19,6 +19,7 @@ import com.intellij.ide.structureView.StructureViewTreeElement;
 import com.intellij.ide.structureView.impl.common.PsiTreeElementBase;
 import com.intellij.navigation.NavigationItem;
 import com.intellij.psi.PsiElement;
+import consulo.awt.TargetAWT;
 
 /**
  * @author yole
@@ -48,10 +49,10 @@ public class GherkinStructureViewElement extends PsiTreeElementBase<PsiElement> 
     final PsiElement element = getElement();
     if (element instanceof GherkinFeature
         || element instanceof GherkinStepsHolder) {
-      return icons.CucumberIcons.Steps_group_closed;
+      return TargetAWT.to(icons.CucumberIcons.Steps_group_closed);
     }
     if (element instanceof GherkinStep) {
-      return icons.CucumberIcons.Cucumber;
+      return TargetAWT.to(icons.CucumberIcons.Cucumber);
     }
     return null;
   }

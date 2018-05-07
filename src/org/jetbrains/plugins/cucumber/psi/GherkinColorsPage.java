@@ -74,11 +74,6 @@ public class GherkinColorsPage implements ColorSettingsPage {
   }
 
   @NotNull
-  public Icon getIcon() {
-    return icons.CucumberIcons.Cucumber;
-  }
-
-  @NotNull
   public AttributesDescriptor[] getAttributeDescriptors() {
     return ATTRS;
   }
