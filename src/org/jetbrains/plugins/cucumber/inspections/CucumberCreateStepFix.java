@@ -43,6 +43,7 @@ import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiManager;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.containers.HashMap;
+import consulo.awt.TargetAWT;
 import consulo.ide.IconDescriptorUpdaters;
 
 /**
@@ -115,7 +116,7 @@ public class CucumberCreateStepFix implements LocalQuickFix {
 
           @Override
           public Icon getIconFor(PsiFile value) {
-            return value == null ? AllIcons.Actions.CreateFromUsage : IconDescriptorUpdaters.getIcon(value, 0);
+            return value == null ? AllIcons.Actions.CreateFromUsage : TargetAWT.to(IconDescriptorUpdaters.getIcon(value, 0));
           }
 
           @Override

@@ -1,7 +1,13 @@
 package org.jetbrains.plugins.cucumber.psi.impl;
 
+import javax.swing.Icon;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.plugins.cucumber.psi.GherkinElementVisitor;
+import org.jetbrains.plugins.cucumber.psi.GherkinPsiElement;
+import org.jetbrains.plugins.cucumber.psi.GherkinTokenTypes;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
-import consulo.ide.IconDescriptorUpdaters;
 import com.intellij.lang.ASTNode;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.openapi.util.Iconable;
@@ -10,13 +16,8 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.tree.TokenSet;
 import com.intellij.util.Function;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.plugins.cucumber.psi.GherkinElementVisitor;
-import org.jetbrains.plugins.cucumber.psi.GherkinPsiElement;
-import org.jetbrains.plugins.cucumber.psi.GherkinTokenTypes;
-
-import javax.swing.*;
+import consulo.awt.TargetAWT;
+import consulo.ide.IconDescriptorUpdaters;
 
 /**
  * @author yole
@@ -58,7 +59,7 @@ public abstract class GherkinPsiElementBase extends ASTWrapperPsiElement impleme
       }
 
       public Icon getIcon(final boolean open) {
-        return IconDescriptorUpdaters.getIcon(GherkinPsiElementBase.this, Iconable.ICON_FLAG_VISIBILITY);
+        return TargetAWT.to(IconDescriptorUpdaters.getIcon(GherkinPsiElementBase.this, Iconable.ICON_FLAG_VISIBILITY));
       }
     };
   }
