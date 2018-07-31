@@ -1,7 +1,8 @@
 package org.jetbrains.plugins.cucumber.resolve;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import org.jetbrains.plugins.cucumber.CucumberCodeInsightTestCase;
 import org.jetbrains.plugins.cucumber.steps.CucumberStepsIndex;
 import org.jetbrains.plugins.cucumber.steps.reference.CucumberStepReference;
@@ -19,7 +20,7 @@ public abstract class CucumberResolveTest extends CucumberCodeInsightTestCase {
     super.setUp();
   }
 
-  protected void checkReference(@NotNull final String step, @Nullable final String stepDefinitionName) {
+  protected void checkReference(@Nonnull final String step, @Nullable final String stepDefinitionName) {
     final CucumberStepReference ref = (CucumberStepReference)findReferenceBySignature(step);
     assert ref != null;
 
@@ -42,7 +43,7 @@ public abstract class CucumberResolveTest extends CucumberCodeInsightTestCase {
     assertTrue(ok);
   }
 
-  public void doTest(@NotNull final String folder, @NotNull final String step, @Nullable final String stepDefinitionName) throws Exception {
+  public void doTest(@Nonnull final String folder, @Nonnull final String step, @Nullable final String stepDefinitionName) throws Exception {
     init(folder);
 
     checkReference(step, stepDefinitionName);
@@ -60,7 +61,7 @@ public abstract class CucumberResolveTest extends CucumberCodeInsightTestCase {
   }
 
   @Nullable
-  protected abstract String getStepDefinitionName(@NotNull PsiElement stepDefinition);
+  protected abstract String getStepDefinitionName(@Nonnull PsiElement stepDefinition);
 
   protected abstract String getRelatedTestDataPath();
 }

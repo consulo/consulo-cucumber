@@ -1,9 +1,10 @@
 package org.jetbrains.plugins.cucumber.inspections;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.codeInspection.LocalQuickFix;
 import com.intellij.codeInspection.ProblemDescriptor;
 import com.intellij.openapi.project.Project;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.plugins.cucumber.psi.GherkinTable;
 import org.jetbrains.plugins.cucumber.psi.GherkinTableRow;
 
@@ -19,17 +20,17 @@ public class RemoveTableColumnFix implements LocalQuickFix {
     myColumnIndex = columnIndex;
   }
 
-  @NotNull
+  @Nonnull
   public String getName() {
     return "Remove unused column";
   }
 
-  @NotNull
+  @Nonnull
   public String getFamilyName() {
     return "RemoveTableColumnFix";
   }
 
-  public void applyFix(@NotNull Project project, @NotNull ProblemDescriptor descriptor) {
+  public void applyFix(@Nonnull Project project, @Nonnull ProblemDescriptor descriptor) {
     final GherkinTableRow headerRow = myTable.getHeaderRow();
     if (headerRow != null) {
       headerRow.deleteCell(myColumnIndex);

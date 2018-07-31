@@ -1,6 +1,7 @@
 package org.jetbrains.plugins.cucumber.spellchecker;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import org.jetbrains.plugins.cucumber.inspections.suppress.GherkinSuppressionUtil;
 import org.jetbrains.plugins.cucumber.psi.GherkinElementType;
 import com.intellij.codeInspection.SuppressQuickFix;
@@ -19,7 +20,7 @@ import com.intellij.spellchecker.tokenizer.Tokenizer;
  * @author oleg
  */
 public class GherkinSpellcheckerStrategy extends SuppressibleSpellcheckingStrategy {
-  @NotNull
+  @Nonnull
   @Override
   public Tokenizer getTokenizer(final PsiElement element) {
     if (element instanceof LeafElement) {
@@ -32,19 +33,19 @@ public class GherkinSpellcheckerStrategy extends SuppressibleSpellcheckingStrate
   }
 
   @Override
-  public boolean isSuppressedFor(@NotNull PsiElement element, @NotNull String name) {
+  public boolean isSuppressedFor(@Nonnull PsiElement element, @Nonnull String name) {
     return GherkinSuppressionUtil.isSuppressedFor(element, name);
   }
 
   @Override
-  public SuppressQuickFix[] getSuppressActions(@NotNull final PsiElement element, @NotNull final String name) {
+  public SuppressQuickFix[] getSuppressActions(@Nonnull final PsiElement element, @Nonnull final String name) {
     return GherkinSuppressionUtil.getDefaultSuppressActions(element, name);
   }
 
   @Override
   public SpellCheckerQuickFix[] getRegularFixes(PsiElement element,
                                                 int offset,
-                                                @NotNull TextRange textRange,
+                                                @Nonnull TextRange textRange,
                                                 boolean useRename,
                                                 String wordWithTypo) {
     return new SpellCheckerQuickFix[]{new ChangeTo(wordWithTypo), new AcceptWordAsCorrect(wordWithTypo)};

@@ -5,7 +5,7 @@ import com.intellij.codeInspection.ex.BaseLocalInspectionTool;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.psi.*;
 import org.jetbrains.annotations.Nls;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.jetbrains.plugins.cucumber.java.CucumberJavaBundle;
 import org.jetbrains.plugins.cucumber.java.CucumberJavaUtil;
 
@@ -19,18 +19,18 @@ public class CucumberJavaStepDefClassInDefaultPackageInspection extends BaseLoca
   }
 
   @Nls
-  @NotNull
+  @Nonnull
   public String getDisplayName() {
     return CucumberJavaBundle.message("cucumber.java.inspections.step.def.class.in.default.package.title");
   }
 
-  @NotNull
+  @Nonnull
   public String getShortName() {
     return "CucumberJavaStepDefClassInDefaultPackage";
   }
 
-  @NotNull
-  public PsiElementVisitor buildVisitor(@NotNull final ProblemsHolder holder, boolean isOnTheFly) {
+  @Nonnull
+  public PsiElementVisitor buildVisitor(@Nonnull final ProblemsHolder holder, boolean isOnTheFly) {
     return new CucumberJavaStepDefClassIsPublicVisitor(holder);
   }
 

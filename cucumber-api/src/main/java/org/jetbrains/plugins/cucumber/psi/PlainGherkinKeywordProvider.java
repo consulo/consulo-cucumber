@@ -1,8 +1,8 @@
 package org.jetbrains.plugins.cucumber.psi;
 
 import com.intellij.psi.tree.IElementType;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.*;
 
@@ -53,7 +53,7 @@ public class PlainGherkinKeywordProvider implements GherkinKeywordProvider {
     return DEFAULT_KEYWORDS.get(keyword) == GherkinTokenTypes.STEP_KEYWORD;
   }
 
-  @NotNull
+  @Nonnull
   public GherkinKeywordTable getKeywordsTable(@Nullable final String language) {
     return DEFAULT_KEYWORD_TABLE;
   }

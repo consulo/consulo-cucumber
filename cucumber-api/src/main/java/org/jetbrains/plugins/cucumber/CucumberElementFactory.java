@@ -4,7 +4,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFileFactory;
 import com.intellij.util.LocalTimeCounter;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.jetbrains.plugins.cucumber.psi.GherkinFileType;
 
 /**
@@ -13,7 +13,7 @@ import org.jetbrains.plugins.cucumber.psi.GherkinFileType;
  */
 public class CucumberElementFactory {
 
-  public static PsiElement createTempPsiFile(@NotNull final Project project, @NotNull final String text) {
+  public static PsiElement createTempPsiFile(@Nonnull final Project project, @Nonnull final String text) {
 
     return PsiFileFactory.getInstance(project).createFileFromText("temp." + GherkinFileType.INSTANCE.getDefaultExtension(),
                                                                   GherkinFileType.INSTANCE,

@@ -1,6 +1,7 @@
 package org.jetbrains.plugins.cucumber.psi;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import org.jetbrains.plugins.cucumber.psi.impl.*;
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.ParserDefinition;
@@ -23,7 +24,7 @@ public class GherkinParserDefinition implements ParserDefinition {
   private static final TokenSet WHITESPACE = TokenSet.create(TokenType.WHITE_SPACE);
   private static final TokenSet COMMENTS = TokenSet.create(GherkinTokenTypes.COMMENT);
 
-  @NotNull
+  @Nonnull
   public Lexer createLexer(LanguageVersion languageVersion) {
     final CucumberLanguageService instance = null; //CucumberLanguageService.getInstance(project);
     return new GherkinLexer(instance == null? new PlainGherkinKeywordProvider() : instance.getKeywordProvider());
@@ -37,22 +38,22 @@ public class GherkinParserDefinition implements ParserDefinition {
     return GherkinElementTypes.GHERKIN_FILE;
   }
 
-  @NotNull
+  @Nonnull
   public TokenSet getWhitespaceTokens(LanguageVersion languageVersion) {
     return WHITESPACE;
   }
 
-  @NotNull
+  @Nonnull
   public TokenSet getCommentTokens(LanguageVersion languageVersion) {
     return COMMENTS;
   }
 
-  @NotNull
+  @Nonnull
   public TokenSet getStringLiteralElements(LanguageVersion languageVersion) {
     return TokenSet.EMPTY;
   }
 
-  @NotNull
+  @Nonnull
   public PsiElement createElement(ASTNode node) {
     if (node.getElementType() == GherkinElementTypes.FEATURE) return new GherkinFeatureImpl(node);
     if (node.getElementType() == GherkinElementTypes.FEATURE_HEADER) return new GherkinFeatureHeaderImpl(node);

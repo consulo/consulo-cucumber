@@ -1,12 +1,13 @@
 package org.jetbrains.plugins.cucumber.inspections;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.codeHighlighting.HighlightDisplayLevel;
 import com.intellij.codeInspection.ProblemsHolder;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import org.jetbrains.annotations.Nls;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.plugins.cucumber.CucumberBundle;
 import org.jetbrains.plugins.cucumber.psi.GherkinElementVisitor;
 import org.jetbrains.plugins.cucumber.psi.impl.GherkinExamplesBlockImpl;
@@ -22,27 +23,27 @@ public class CucumberExamplesColonInspection extends GherkinInspection {
   }
 
   @Nls
-  @NotNull
+  @Nonnull
   @Override
   public String getDisplayName() {
     return CucumberBundle.message("inspection.missed.colon.example.name");
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public String getShortName() {
     return "CucumberExamplesColon";
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public HighlightDisplayLevel getDefaultLevel() {
     return HighlightDisplayLevel.ERROR;
   }
 
-  @NotNull
+  @Nonnull
   @Override
-  public PsiElementVisitor buildVisitor(@NotNull final ProblemsHolder holder, boolean isOnTheFly) {
+  public PsiElementVisitor buildVisitor(@Nonnull final ProblemsHolder holder, boolean isOnTheFly) {
     return new GherkinElementVisitor() {
       @Override
       public void visitExamplesBlock(GherkinExamplesBlockImpl block) {

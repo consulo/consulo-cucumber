@@ -1,6 +1,6 @@
 package org.jetbrains.plugins.cucumber.psi;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.List;
 
@@ -8,6 +8,6 @@ import java.util.List;
  * @author yole
  */
 public interface GherkinScenarioOutline extends GherkinStepsHolder {
-  @NotNull
+  @Nonnull
   List<GherkinExamplesBlock> getExamplesBlocks();
 }

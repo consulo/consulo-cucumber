@@ -5,14 +5,14 @@ import consulo.lang.LanguageVersion;
 import com.intellij.lang.PsiBuilder;
 import com.intellij.lang.PsiParser;
 import com.intellij.psi.tree.IElementType;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * @author yole
  */
 public class GherkinParser implements PsiParser {
 
-  @NotNull
+  @Nonnull
   public ASTNode parse(IElementType root, PsiBuilder builder, LanguageVersion languageVersion) {
     final PsiBuilder.Marker marker = builder.mark();
     parseFileTopLevel(builder);

@@ -6,7 +6,7 @@ import com.intellij.psi.PsiTreeChangeAdapter;
 import com.intellij.psi.PsiTreeChangeEvent;
 import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.util.containers.HashMap;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.Map;
 
@@ -35,23 +35,23 @@ public class CucumberPsiTreeListener extends PsiTreeChangeAdapter {
   }
 
   @Override
-  public void childAdded(@NotNull PsiTreeChangeEvent event) {
+  public void childAdded(@Nonnull PsiTreeChangeEvent event) {
     processChange(event.getParent());
   }
 
-  public void childRemoved(@NotNull final PsiTreeChangeEvent event) {
+  public void childRemoved(@Nonnull final PsiTreeChangeEvent event) {
     processChange(event.getParent());
   }
 
-  public void childReplaced(@NotNull final PsiTreeChangeEvent event) {
+  public void childReplaced(@Nonnull final PsiTreeChangeEvent event) {
     processChange(event.getParent());
   }
 
-  public void childrenChanged(@NotNull final PsiTreeChangeEvent event) {
+  public void childrenChanged(@Nonnull final PsiTreeChangeEvent event) {
     processChange(event.getParent());
   }
 
-  public void childMoved(@NotNull final PsiTreeChangeEvent event) {
+  public void childMoved(@Nonnull final PsiTreeChangeEvent event) {
     processChange(event.getOldParent());
     processChange(event.getNewParent());
   }

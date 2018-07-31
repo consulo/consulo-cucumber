@@ -1,8 +1,9 @@
 package org.jetbrains.plugins.cucumber.inspections.model;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.util.text.StringUtil;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * User: Andrey.Vokin
@@ -14,7 +15,7 @@ public class FileTypeComboboxItem {
 
   private final String myDefaultFileName;
 
-  public FileTypeComboboxItem(@NotNull final FileType fileType, @NotNull final String defaultFileName) {
+  public FileTypeComboboxItem(@Nonnull final FileType fileType, @Nonnull final String defaultFileName) {
     myFileType = fileType;
     myDefaultFileName = defaultFileName;
   }

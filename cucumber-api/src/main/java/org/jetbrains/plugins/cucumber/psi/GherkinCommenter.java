@@ -2,7 +2,7 @@ package org.jetbrains.plugins.cucumber.psi;
 
 import com.intellij.lang.Commenter;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 
 /**
  * @author Roman.Chernyatchik

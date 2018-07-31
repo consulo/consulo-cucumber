@@ -2,8 +2,8 @@ package org.jetbrains.plugins.cucumber.java.run;
 
 import java.io.File;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import org.jetbrains.plugins.cucumber.CucumberBundle;
 import org.jetbrains.plugins.cucumber.CucumberUtil;
 import org.jetbrains.plugins.cucumber.java.CucumberJavaBundle;
@@ -52,7 +52,7 @@ public class CucumberJavaRunConfiguration extends ApplicationConfiguration {
     super(name, project, factory);
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public SettingsEditor<? extends RunConfiguration> getConfigurationEditor() {
     SettingsEditorGroup<CucumberJavaRunConfiguration> group = new SettingsEditorGroup<CucumberJavaRunConfiguration>();
@@ -63,7 +63,7 @@ public class CucumberJavaRunConfiguration extends ApplicationConfiguration {
   }
 
   @Override
-  public RunProfileState getState(@NotNull Executor executor, @NotNull ExecutionEnvironment env) throws ExecutionException {
+  public RunProfileState getState(@Nonnull Executor executor, @Nonnull ExecutionEnvironment env) throws ExecutionException {
     final JavaCommandLineState state = new JavaApplicationCommandLineState(this, env) {
       protected OwnJavaParameters createJavaParameters() throws ExecutionException {
         final OwnJavaParameters params = new OwnJavaParameters();
@@ -96,7 +96,7 @@ public class CucumberJavaRunConfiguration extends ApplicationConfiguration {
       }
 
       @Nullable
-      private ConsoleView createConsole(@NotNull final Executor executor, ProcessHandler processHandler) throws ExecutionException {
+      private ConsoleView createConsole(@Nonnull final Executor executor, ProcessHandler processHandler) throws ExecutionException {
         // console view
         final ConsoleView testRunnerConsole;
 
@@ -110,9 +110,9 @@ public class CucumberJavaRunConfiguration extends ApplicationConfiguration {
         return testRunnerConsole;
       }
 
-      @NotNull
+      @Nonnull
       @Override
-      public ExecutionResult execute(@NotNull Executor executor, @NotNull ProgramRunner runner) throws ExecutionException {
+      public ExecutionResult execute(@Nonnull Executor executor, @Nonnull ProgramRunner runner) throws ExecutionException {
         final ProcessHandler processHandler = startProcess();
         final ConsoleView console = createConsole(executor, processHandler);
         return new DefaultExecutionResult(console, processHandler, createActions(console, processHandler, executor));

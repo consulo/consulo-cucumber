@@ -1,6 +1,6 @@
 package org.jetbrains.plugins.cucumber.psi;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.openapi.fileTypes.LanguageFileType;
 import consulo.ui.image.Image;
 
@@ -14,17 +14,17 @@ public class GherkinFileType extends LanguageFileType {
     super(GherkinLanguage.INSTANCE);
   }
 
-  @NotNull
+  @Nonnull
   public String getName() {
     return "Cucumber";
   }
 
-  @NotNull
+  @Nonnull
   public String getDescription() {
     return "Cucumber scenario files";
   }
 
-  @NotNull
+  @Nonnull
   public String getDefaultExtension() {
     return "feature";
   }

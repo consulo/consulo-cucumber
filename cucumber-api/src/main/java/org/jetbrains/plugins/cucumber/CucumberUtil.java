@@ -1,8 +1,10 @@
 package org.jetbrains.plugins.cucumber;
 
+import javax.annotation.Nonnull;
+
 import org.apache.oro.text.regex.Pattern;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 import com.intellij.openapi.util.text.StringUtil;
 
 /**
@@ -32,7 +34,7 @@ public class CucumberUtil {
    * @param word word from cucumber step call
    * @return true if pattern could by found by @param word
    */
-  public static boolean isPatternRelatedToPartOfName(@Nullable Pattern pattern, @NotNull final String word) {
+  public static boolean isPatternRelatedToPartOfName(@Nullable Pattern pattern, @Nonnull final String word) {
     if (pattern == null) {
       return false;
     }
@@ -40,7 +42,7 @@ public class CucumberUtil {
     return keyWord.equals(word);
   }
 
-  public static String getTheBiggestWordToSearchByIndex(@NotNull String regexp) {
+  public static String getTheBiggestWordToSearchByIndex(@Nonnull String regexp) {
     String result = "";
     if (regexp.startsWith(PREFIX_CHAR)) {
       regexp = regexp.substring(1);

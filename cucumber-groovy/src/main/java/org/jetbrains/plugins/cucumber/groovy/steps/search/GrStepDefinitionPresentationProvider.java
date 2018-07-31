@@ -5,7 +5,7 @@ import com.intellij.navigation.ItemPresentationProvider;
 import com.intellij.navigation.ItemPresentationProviders;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.psi.PsiFile;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 import org.jetbrains.plugins.cucumber.CucumberBundle;
 import org.jetbrains.plugins.cucumber.groovy.GrCucumberUtil;
 import org.jetbrains.plugins.groovy.lang.psi.api.statements.expressions.GrMethodCall;

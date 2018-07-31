@@ -1,6 +1,7 @@
 package org.jetbrains.plugins.cucumber.psi.impl;
 
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
+
 import org.jetbrains.plugins.cucumber.psi.GherkinTableRow;
 import com.intellij.psi.PsiElement;
 

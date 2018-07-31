@@ -7,8 +7,9 @@ import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import org.jetbrains.plugins.cucumber.psi.GherkinFileType;
 import org.jetbrains.plugins.cucumber.psi.GherkinTable;
 import org.jetbrains.plugins.cucumber.psi.GherkinTableRow;
@@ -31,7 +32,7 @@ public class GherkinTypedHandler extends TypedHandlerDelegate {
    * @return GherkinTable or null
    */
   @Nullable
-  private static GherkinTable getTable(@NotNull PsiElement element) {
+  private static GherkinTable getTable(@Nonnull PsiElement element) {
     //noinspection ConstantConditions
     while (element != null) {
       if (element instanceof GherkinTable) {
@@ -49,7 +50,7 @@ public class GherkinTypedHandler extends TypedHandlerDelegate {
    * @return GherkinTableRow if caret is inside row, null otherwise
    */
   @Nullable
-  private static GherkinTableRow findCurrentRow(@NotNull final Editor editor, @NotNull final PsiFile file) {
+  private static GherkinTableRow findCurrentRow(@Nonnull final Editor editor, @Nonnull final PsiFile file) {
     int offset = editor.getCaretModel().getOffset();
     PsiElement cursorElement = file.findElementAt(offset - 1);
     if (cursorElement == null) {
@@ -101,7 +102,7 @@ public class GherkinTypedHandler extends TypedHandlerDelegate {
    * @return GherkinTableRow (or header) if there is a row above or null otherwise
    */
   @Nullable
-  private static GherkinTableRow getPreviousRow(@NotNull final GherkinTableRow currentRow) {
+  private static GherkinTableRow getPreviousRow(@Nonnull final GherkinTableRow currentRow) {
     if (currentRow.getParent() != null && currentRow.getParent() instanceof GherkinTable) {
       final GherkinTable table = (GherkinTable)currentRow.getParent();
       int i = table.getDataRows().indexOf(currentRow);
@@ -120,7 +121,7 @@ public class GherkinTypedHandler extends TypedHandlerDelegate {
    * @param caretPosition
    * @return number of column
    */
-  private static int getColumnNumber(@NotNull final GherkinTableRow row, final int caretPosition) {
+  private static int getColumnNumber(@Nonnull final GherkinTableRow row, final int caretPosition) {
     final String rowText = row.getText();
     final int length = Math.min(caretPosition, rowText.length());
     int count = 0;
@@ -146,7 +147,7 @@ public class GherkinTypedHandler extends TypedHandlerDelegate {
    * @param columnNumber
    * @return offset in parent that corresponds preferred position of typed pipe symbol
    */
-  private static int getPreferredPipeOffset(@NotNull final GherkinTableRow row, final int columnNumber) {
+  private static int getPreferredPipeOffset(@Nonnull final GherkinTableRow row, final int columnNumber) {
     final String rowText = row.getText();
     int i = 0;
     int passedPipeCount = 0;

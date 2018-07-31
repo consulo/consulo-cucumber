@@ -4,7 +4,7 @@ import com.intellij.pom.PomDeclarationSearcher;
 import com.intellij.pom.PomTarget;
 import com.intellij.psi.PsiElement;
 import com.intellij.util.Consumer;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.jetbrains.plugins.cucumber.groovy.GrCucumberUtil;
 import org.jetbrains.plugins.cucumber.groovy.steps.GrStepDefinition;
 import org.jetbrains.plugins.groovy.lang.psi.api.statements.expressions.GrMethodCall;
@@ -16,7 +16,7 @@ import org.jetbrains.plugins.groovy.lang.psi.api.statements.expressions.literals
 public class GrCucumberStepDeclarationSearcher extends PomDeclarationSearcher {
 
   @Override
-  public void findDeclarationsAt(@NotNull PsiElement element, int offsetInElement, Consumer<PomTarget> consumer) {
+  public void findDeclarationsAt(@Nonnull PsiElement element, int offsetInElement, Consumer<PomTarget> consumer) {
     if (element.getParent() instanceof GrLiteral) {
       final PsiElement literal = element.getParent();
       final PsiElement parent = literal.getParent();    //~literal

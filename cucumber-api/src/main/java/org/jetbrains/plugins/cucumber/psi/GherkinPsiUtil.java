@@ -6,8 +6,8 @@ import com.intellij.psi.PsiFile;
 import org.apache.oro.text.regex.MatchResult;
 import org.apache.oro.text.regex.Pattern;
 import org.apache.oro.text.regex.Perl5Matcher;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import org.jetbrains.plugins.cucumber.psi.impl.GherkinFileImpl;
 import org.jetbrains.plugins.cucumber.steps.AbstractStepDefinition;
 
@@ -23,7 +23,7 @@ public class GherkinPsiUtil {
   }
 
   @Nullable
-  public static GherkinFileImpl getGherkinFile(@NotNull final PsiElement element) {
+  public static GherkinFileImpl getGherkinFile(@Nonnull final PsiElement element) {
     if (!element.isValid()){
       return null;
     }
@@ -32,8 +32,8 @@ public class GherkinPsiUtil {
   }
 
   @Nullable
-  public static List<TextRange> buildParameterRanges(@NotNull GherkinStep step,
-                                                     @NotNull AbstractStepDefinition definition,
+  public static List<TextRange> buildParameterRanges(@Nonnull GherkinStep step,
+                                                     @Nonnull AbstractStepDefinition definition,
                                                      final int shiftOffset) {
     final List<TextRange> parameterRanges = new ArrayList<TextRange>();
     final Pattern pattern = definition.getPattern();

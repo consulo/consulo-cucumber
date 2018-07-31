@@ -1,8 +1,9 @@
 package org.jetbrains.plugins.cucumber.psi;
 
+import javax.annotation.Nullable;
+
 import com.intellij.openapi.extensions.ExtensionPointName;
 import com.intellij.openapi.project.Project;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * User: Andrey.Vokin

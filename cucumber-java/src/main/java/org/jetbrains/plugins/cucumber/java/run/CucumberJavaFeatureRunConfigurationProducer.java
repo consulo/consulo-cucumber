@@ -8,8 +8,8 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.util.PsiTreeUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import org.jetbrains.plugins.cucumber.CucumberJvmExtensionPoint;
 import org.jetbrains.plugins.cucumber.psi.GherkinFile;
 import org.jetbrains.plugins.cucumber.psi.GherkinScenario;
@@ -52,7 +52,7 @@ public class CucumberJavaFeatureRunConfigurationProducer extends CucumberJavaRun
     return "Feature: " + getFileToRun().getNameWithoutExtension();
   }
 
-  @NotNull
+  @Nonnull
   @Override
   protected VirtualFile getFileToRun() {
     PsiFile psiFile = mySourceElement.getContainingFile();

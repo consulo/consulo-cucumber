@@ -1,6 +1,8 @@
 
 package org.jetbrains.plugins.cucumber.groovy.steps.search;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.util.Computable;
 import com.intellij.openapi.util.NullableComputable;
@@ -16,8 +18,8 @@ import com.intellij.psi.search.UsageSearchContext;
 import com.intellij.psi.search.searches.ReferencesSearch;
 import com.intellij.util.Processor;
 import com.intellij.util.QueryExecutor;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 import org.jetbrains.plugins.cucumber.CucumberUtil;
 import org.jetbrains.plugins.cucumber.groovy.GrCucumberUtil;
 import org.jetbrains.plugins.cucumber.groovy.steps.GrStepDefinition;
@@ -29,7 +31,7 @@ import org.jetbrains.plugins.groovy.lang.psi.api.statements.expressions.GrMethod
  */
 public class GrCucumberStepDefinitionSearcher implements QueryExecutor<PsiReference, ReferencesSearch.SearchParameters> {
   @Override
-  public boolean execute(@NotNull final ReferencesSearch.SearchParameters queryParameters, @NotNull final Processor<PsiReference> consumer) {
+  public boolean execute(@Nonnull final ReferencesSearch.SearchParameters queryParameters, @Nonnull final Processor<PsiReference> consumer) {
     final PsiElement element = ApplicationManager.getApplication().runReadAction(new NullableComputable<PsiElement>() {
       @Override
       public PsiElement compute() {
@@ -63,7 +65,7 @@ public class GrCucumberStepDefinitionSearcher implements QueryExecutor<PsiRefere
       @Override
       public boolean execute(final PsiElement occurrence, int offsetInElement) {
         return ApplicationManager.getApplication().runReadAction(new Computable<Boolean>() {
-          @NotNull
+          @Nonnull
           @Override
           public Boolean compute() {
             if (!processRefs(occurrence, element, consumer)) return false;

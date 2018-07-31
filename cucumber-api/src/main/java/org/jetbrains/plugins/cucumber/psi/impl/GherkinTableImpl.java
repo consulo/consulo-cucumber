@@ -3,8 +3,8 @@ package org.jetbrains.plugins.cucumber.psi.impl;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.tree.TokenSet;
 import com.intellij.psi.util.PsiTreeUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import org.jetbrains.plugins.cucumber.psi.GherkinElementTypes;
 import org.jetbrains.plugins.cucumber.psi.GherkinElementVisitor;
 import org.jetbrains.plugins.cucumber.psi.GherkinTable;
@@ -20,7 +20,7 @@ public class GherkinTableImpl extends GherkinPsiElementBase implements GherkinTa
   private static final TokenSet HEADER_ROW_TOKEN_SET = TokenSet.create(GherkinElementTypes.TABLE_HEADER_ROW);
   private static final TokenSet ROW_TOKEN_SET = TokenSet.create(GherkinElementTypes.TABLE_ROW);
 
-  public GherkinTableImpl(@NotNull final ASTNode node) {
+  public GherkinTableImpl(@Nonnull final ASTNode node) {
     super(node);
   }
 

@@ -4,7 +4,7 @@ import com.intellij.lang.annotation.AnnotationHolder;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.psi.PsiElement;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.jetbrains.plugins.cucumber.psi.impl.*;
 import org.jetbrains.plugins.cucumber.psi.GherkinElementVisitor;
 import org.jetbrains.plugins.cucumber.psi.GherkinHighlighter;
@@ -18,7 +18,7 @@ import java.util.List;
 public class GherkinAnnotatorVisitor extends GherkinElementVisitor {
   private final AnnotationHolder myHolder;
 
-  public GherkinAnnotatorVisitor(@NotNull final AnnotationHolder holder) {
+  public GherkinAnnotatorVisitor(@Nonnull final AnnotationHolder holder) {
     myHolder = holder;
   }
 

@@ -7,7 +7,7 @@ import com.intellij.navigation.NavigationItem;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.psi.tree.TokenSet;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.jetbrains.plugins.cucumber.psi.impl.GherkinExamplesBlockImpl;
 
 import java.util.ArrayList;
@@ -23,8 +23,8 @@ public class GherkinFoldingBuilder implements FoldingBuilder, DumbAware {
                                                                  GherkinTokenTypes.PYSTRING);
 
 
-  @NotNull
-  public FoldingDescriptor[] buildFoldRegions(@NotNull ASTNode node, @NotNull Document document) {
+  @Nonnull
+  public FoldingDescriptor[] buildFoldRegions(@Nonnull ASTNode node, @Nonnull Document document) {
     List<FoldingDescriptor> descriptors = new ArrayList<FoldingDescriptor>();
     appendDescriptors(node, descriptors);
     return descriptors.toArray(new FoldingDescriptor[descriptors.size()]);
@@ -41,7 +41,7 @@ public class GherkinFoldingBuilder implements FoldingBuilder, DumbAware {
     }
   }
 
-  public String getPlaceholderText(@NotNull ASTNode node) {
+  public String getPlaceholderText(@Nonnull ASTNode node) {
     if (node.getPsi() instanceof GherkinStepsHolder ||
         node.getPsi() instanceof GherkinExamplesBlockImpl) {
       return ((NavigationItem) node.getPsi()).getPresentation().getPresentableText();
@@ -49,7 +49,7 @@ public class GherkinFoldingBuilder implements FoldingBuilder, DumbAware {
     return "...";
   }
 
-  public boolean isCollapsedByDefault(@NotNull ASTNode node) {
+  public boolean isCollapsedByDefault(@Nonnull ASTNode node) {
     return false;
   }
 }

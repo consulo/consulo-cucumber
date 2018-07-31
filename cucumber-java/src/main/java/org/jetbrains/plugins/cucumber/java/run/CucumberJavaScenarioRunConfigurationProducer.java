@@ -3,7 +3,7 @@ package org.jetbrains.plugins.cucumber.java.run;
 import com.intellij.openapi.module.Module;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.util.PsiTreeUtil;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.jetbrains.plugins.cucumber.psi.GherkinScenario;
 import org.jetbrains.plugins.cucumber.psi.GherkinScenarioOutline;
 import org.jetbrains.plugins.cucumber.psi.GherkinStepsHolder;
@@ -16,7 +16,7 @@ public class CucumberJavaScenarioRunConfigurationProducer extends CucumberJavaFe
   private GherkinStepsHolder scenario;
 
   @Override
-  protected void processConfiguration(@NotNull final CucumberJavaRunConfiguration configuration) {
+  protected void processConfiguration(@Nonnull final CucumberJavaRunConfiguration configuration) {
     final String programParameters = configuration.getProgramParameters();
     final GherkinStepsHolder scenario = PsiTreeUtil.getParentOfType(mySourceElement, GherkinScenario.class, GherkinScenarioOutline.class);
     if (scenario != null) {

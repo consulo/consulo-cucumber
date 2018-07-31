@@ -1,8 +1,8 @@
 package org.jetbrains.plugins.cucumber.psi;
 
 import com.intellij.psi.tree.IElementType;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.Collection;
 
@@ -15,6 +15,6 @@ public interface GherkinKeywordProvider {
   String getBaseKeyword(String language, String keyword);
   boolean isSpaceAfterKeyword(String language, String keyword);
   boolean isStepKeyword(String keyword);
-  @NotNull
+  @Nonnull
   GherkinKeywordTable getKeywordsTable(@Nullable String language);
 }

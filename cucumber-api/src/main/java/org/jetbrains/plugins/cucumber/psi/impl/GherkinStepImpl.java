@@ -10,8 +10,8 @@ import com.intellij.psi.tree.TokenSet;
 import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.util.Function;
 import com.intellij.util.containers.HashSet;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import org.jetbrains.plugins.cucumber.psi.*;
 
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ public class GherkinStepImpl extends GherkinPsiElementBase implements GherkinSte
 
   private List<String> mySubstitutions;
 
-  public GherkinStepImpl(@NotNull ASTNode node) {
+  public GherkinStepImpl(@Nonnull ASTNode node) {
     super(node);
   }
 
@@ -53,7 +53,7 @@ public class GherkinStepImpl extends GherkinPsiElementBase implements GherkinSte
   }
 
   @Override
-  @NotNull
+  @Nonnull
   protected String getElementText() {
     final ASTNode node = getNode();
     final ASTNode[] children = node.getChildren(TEXT_FILTER);
@@ -82,7 +82,7 @@ public class GherkinStepImpl extends GherkinPsiElementBase implements GherkinSte
     return prefix + getStepName();
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public PsiReference[] getReferences() {
     return ReferenceProvidersRegistry.getReferencesFromProviders(this, GherkinStepImpl.class);
@@ -92,7 +92,7 @@ public class GherkinStepImpl extends GherkinPsiElementBase implements GherkinSte
     gherkinElementVisitor.visitStep(this);
   }
 
-  @NotNull
+  @Nonnull
   public List<String> getParamsSubstitutions() {
     synchronized (LOCK) {
       if (mySubstitutions == null) {
@@ -194,7 +194,7 @@ public class GherkinStepImpl extends GherkinPsiElementBase implements GherkinSte
     return result;
   }
 
-  @NotNull
+  @Nonnull
   public Set<String> getSubstitutedNameList() {
     return getSubstitutedNameList(Integer.MAX_VALUE);
   }

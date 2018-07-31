@@ -12,7 +12,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiDocumentManager;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.jetbrains.plugins.cucumber.psi.*;
 import org.jetbrains.plugins.cucumber.psi.impl.GherkinExamplesBlockImpl;
 import org.jetbrains.plugins.cucumber.psi.impl.GherkinScenarioOutlineImpl;
@@ -26,17 +26,17 @@ import java.util.List;
 public class CucumberCreateExamplesSectionFix implements LocalQuickFix {
   private static final Logger LOG = Logger.getInstance(CucumberCreateExamplesSectionFix.class.getName());
 
-  @NotNull
+  @Nonnull
   public String getName() {
     return "Create Examples Section";
   }
 
-  @NotNull
+  @Nonnull
   public String getFamilyName() {
     return getName();
   }
 
-  public void applyFix(@NotNull final Project project, @NotNull ProblemDescriptor descriptor) {
+  public void applyFix(@Nonnull final Project project, @Nonnull ProblemDescriptor descriptor) {
     final GherkinScenarioOutlineImpl outline = (GherkinScenarioOutlineImpl) descriptor.getPsiElement();
 
     final PsiFile featureFile = outline.getContainingFile();

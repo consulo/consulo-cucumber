@@ -23,10 +23,11 @@ import com.intellij.ui.EditorTextFieldWithBrowseButton;
 import com.intellij.ui.PanelWithAnchor;
 import com.intellij.ui.RawCommandLineEditor;
 import com.intellij.util.ui.UIUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+
 import org.jetbrains.plugins.cucumber.java.CucumberJavaBundle;
 
+import javax.annotation.Nullable;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -143,7 +144,7 @@ public class CucumberJavaApplicationConfigurable extends SettingsEditor<Cucumber
     configuration.setGlue(myGlue.getComponent().getText());
   }
 
-  @NotNull
+  @Nonnull
   @Override
   protected JComponent createEditor() {
     return myWholePanel;

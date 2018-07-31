@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.annotation.Nonnull;
 import javax.swing.Icon;
 
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.plugins.cucumber.psi.GherkinFeature;
 import org.jetbrains.plugins.cucumber.psi.GherkinPsiElement;
 import org.jetbrains.plugins.cucumber.psi.GherkinPystring;
@@ -29,7 +29,7 @@ public class GherkinStructureViewElement extends PsiTreeElementBase<PsiElement> 
     super(psiElement);
   }
 
-  @NotNull
+  @Nonnull
   public Collection<StructureViewTreeElement> getChildrenBase() {
     List<StructureViewTreeElement> result = new ArrayList<StructureViewTreeElement>();
     for (PsiElement element : getElement().getChildren()) {

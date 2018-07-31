@@ -15,8 +15,8 @@ import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.update.MergingUpdateQueue;
 import com.intellij.util.ui.update.Update;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import org.jetbrains.plugins.cucumber.psi.GherkinFile;
 
 import java.util.*;
@@ -34,14 +34,14 @@ public abstract class NotIndexedCucumberExtension extends AbstractCucumberExtens
 
   private final CucumberPsiTreeListener myCucumberPsiTreeListener = new CucumberPsiTreeListener();
 
-  public void init(@NotNull final Project project) {
+  public void init(@Nonnull final Project project) {
     myUpdateQueue.setPassThrough(false);
 
     PsiManager.getInstance(project).addPsiTreeChangeListener(myCucumberPsiTreeListener);
 
     PsiManager.getInstance(project).addPsiTreeChangeListener(new PsiTreeChangeAdapter() {
       @Override
-      public void childAdded(@NotNull PsiTreeChangeEvent event) {
+      public void childAdded(@Nonnull PsiTreeChangeEvent event) {
         final PsiElement parent = event.getParent();
         PsiElement child = event.getChild();
         if (isStepLikeFile(child, parent)) {
@@ -58,7 +58,7 @@ public abstract class NotIndexedCucumberExtension extends AbstractCucumberExtens
       }
 
       @Override
-      public void childRemoved(@NotNull PsiTreeChangeEvent event) {
+      public void childRemoved(@Nonnull PsiTreeChangeEvent event) {
         final PsiElement parent = event.getParent();
         final PsiElement child = event.getChild();
         if (isStepLikeFile(child, parent)) {
@@ -110,7 +110,7 @@ public abstract class NotIndexedCucumberExtension extends AbstractCucumberExtens
   }
 
   @Override
-  public Collection<? extends PsiFile> getStepDefinitionContainers(@NotNull final GherkinFile featureFile) {
+  public Collection<? extends PsiFile> getStepDefinitionContainers(@Nonnull final GherkinFile featureFile) {
     final Set<PsiDirectory> stepDefRoots = findStepDefsRoots(featureFile);
 
     final Set<PsiFile> stepDefs = ContainerUtil.newHashSet();
@@ -120,7 +120,7 @@ public abstract class NotIndexedCucumberExtension extends AbstractCucumberExtens
     return stepDefs.isEmpty() ? Collections.<PsiFile>emptySet() : stepDefs;
   }
 
-  protected Set<PsiDirectory> findStepDefsRoots(@NotNull final GherkinFile featureFile) {
+  protected Set<PsiDirectory> findStepDefsRoots(@Nonnull final GherkinFile featureFile) {
     final Module module = ModuleUtilCore.findModuleForPsiElement(featureFile);
 
     final VirtualFile file = featureFile.getVirtualFile();
@@ -181,8 +181,8 @@ public abstract class NotIndexedCucumberExtension extends AbstractCucumberExtens
     }
   }
 
-  @NotNull
-  private List<PsiFile> gatherStepDefinitionsFilesFromDirectory(@NotNull final PsiDirectory dir, final boolean writableOnly) {
+  @Nonnull
+  private List<PsiFile> gatherStepDefinitionsFilesFromDirectory(@Nonnull final PsiDirectory dir, final boolean writableOnly) {
     final List<PsiFile> result = new ArrayList<PsiFile>();
 
     // find step definitions in current folder
@@ -205,7 +205,7 @@ public abstract class NotIndexedCucumberExtension extends AbstractCucumberExtens
     return result;
   }
 
-  public List<AbstractStepDefinition> loadStepsFor(@Nullable final PsiFile featureFile, @NotNull final Module module) {
+  public List<AbstractStepDefinition> loadStepsFor(@Nullable final PsiFile featureFile, @Nonnull final Module module) {
     // New step definitions folders roots
     final List<PsiDirectory> notLoadedStepDefinitionsRoots = new ArrayList<PsiDirectory>();
     try {
@@ -254,9 +254,9 @@ public abstract class NotIndexedCucumberExtension extends AbstractCucumberExtens
   }
 
   protected static void addStepDefsRootIfNecessary(final VirtualFile root,
-                                                @NotNull final List<PsiDirectory> newStepDefinitionsRoots,
-                                                @NotNull final Set<String> processedStepDirectories,
-                                                @NotNull final Project project) {
+                                                @Nonnull final List<PsiDirectory> newStepDefinitionsRoots,
+                                                @Nonnull final Set<String> processedStepDirectories,
+                                                @Nonnull final Project project) {
     if (root == null || !root.isValid()) {
       return;
     }
@@ -275,13 +275,13 @@ public abstract class NotIndexedCucumberExtension extends AbstractCucumberExtens
 
   protected abstract void loadStepDefinitionRootsFromLibraries(Module module, List<PsiDirectory> roots, Set<String> directories);
 
-  protected abstract Collection<AbstractStepDefinition> getStepDefinitions(@NotNull final PsiFile file);
+  protected abstract Collection<AbstractStepDefinition> getStepDefinitions(@Nonnull final PsiFile file);
 
-  protected abstract void collectAllStepDefsProviders(@NotNull final List<VirtualFile> providers, @NotNull final Project project);
+  protected abstract void collectAllStepDefsProviders(@Nonnull final List<VirtualFile> providers, @Nonnull final Project project);
 
-  public abstract void findRelatedStepDefsRoots(@NotNull final Module module, @NotNull final PsiFile featureFile,
-                                                final List<PsiDirectory> newStepDefinitionsRoots,
-                                                final Set<String> processedStepDirectories);
+  public abstract void findRelatedStepDefsRoots(@Nonnull final Module module, @Nonnull final PsiFile featureFile,
+												final List<PsiDirectory> newStepDefinitionsRoots,
+												final Set<String> processedStepDirectories);
 
     public void reset() {
     myUpdateQueue.cancelAllUpdates();

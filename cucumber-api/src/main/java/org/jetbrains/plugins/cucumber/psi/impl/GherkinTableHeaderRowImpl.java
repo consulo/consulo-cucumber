@@ -1,14 +1,14 @@
 package org.jetbrains.plugins.cucumber.psi.impl;
 
 import com.intellij.lang.ASTNode;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.jetbrains.plugins.cucumber.psi.GherkinElementVisitor;
 
 /**
  * @author yole
  */
 public class GherkinTableHeaderRowImpl extends GherkinTableRowImpl {
-  public GherkinTableHeaderRowImpl(@NotNull final ASTNode node) {
+  public GherkinTableHeaderRowImpl(@Nonnull final ASTNode node) {
     super(node);
   }
 

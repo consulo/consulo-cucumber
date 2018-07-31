@@ -5,11 +5,11 @@ import com.intellij.openapi.fileTypes.SyntaxHighlighter;
 import com.intellij.openapi.options.colors.AttributesDescriptor;
 import com.intellij.openapi.options.colors.ColorDescriptor;
 import com.intellij.openapi.options.colors.ColorSettingsPage;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import org.jetbrains.plugins.cucumber.CucumberBundle;
 
-import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -68,27 +68,27 @@ public class GherkinColorsPage implements ColorSettingsPage {
     return ADDITIONAL_HIGHLIGHT_DESCRIPTORS;
   }
 
-  @NotNull
+  @Nonnull
   public String getDisplayName() {
     return CucumberBundle.message("color.settings.gherkin.name");
   }
 
-  @NotNull
+  @Nonnull
   public AttributesDescriptor[] getAttributeDescriptors() {
     return ATTRS;
   }
 
-  @NotNull
+  @Nonnull
   public ColorDescriptor[] getColorDescriptors() {
     return COLORS;
   }
 
-  @NotNull
+  @Nonnull
   public SyntaxHighlighter getHighlighter() {
     return new GherkinSyntaxHighlighter(new PlainGherkinKeywordProvider());
   }
 
-  @NotNull
+  @Nonnull
   public String getDemoText() {
     return DEMO_TEXT;
   }

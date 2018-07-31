@@ -7,8 +7,8 @@ import org.apache.oro.text.regex.MalformedPatternException;
 import org.apache.oro.text.regex.Pattern;
 import org.apache.oro.text.regex.Perl5Compiler;
 import org.apache.oro.text.regex.Perl5Matcher;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ public abstract class AbstractStepDefinition {
 
   private String myCucumberRegex = null;
 
-  public AbstractStepDefinition(@NotNull final PsiElement element) {
+  public AbstractStepDefinition(@Nonnull final PsiElement element) {
     myElementPointer = SmartPointerManager.getInstance(element.getProject()).createSmartPsiElementPointer(element);
 
     myCucumberRegex = getCucumberRegexFromElement(element);

@@ -1,12 +1,13 @@
 package org.jetbrains.plugins.cucumber.psi.impl;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiNamedElement;
 import com.intellij.psi.PsiReference;
 import com.intellij.util.ArrayUtil;
 import com.intellij.util.IncorrectOperationException;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.plugins.cucumber.psi.GherkinPsiElement;
 
 /**
@@ -36,7 +37,7 @@ public class GherkinSimpleReference implements PsiReference {
     return myElement;
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public String getCanonicalText() {
     return myElement.getText();
@@ -51,7 +52,7 @@ public class GherkinSimpleReference implements PsiReference {
   }
 
   @Override
-  public PsiElement bindToElement(@NotNull PsiElement element) throws IncorrectOperationException {
+  public PsiElement bindToElement(@Nonnull PsiElement element) throws IncorrectOperationException {
     return myElement;
   }
 
@@ -65,7 +66,7 @@ public class GherkinSimpleReference implements PsiReference {
     return resolved != null && myResolved != null && resolved.equals(myResolved);
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public Object[] getVariants() {
     return ArrayUtil.EMPTY_OBJECT_ARRAY;

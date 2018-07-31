@@ -7,8 +7,9 @@ import com.intellij.psi.PsiPolyVariantReference;
 import com.intellij.psi.ResolveResult;
 import com.intellij.util.ArrayUtil;
 import com.intellij.util.IncorrectOperationException;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import org.jetbrains.plugins.cucumber.psi.impl.GherkinStepImpl;
 import org.jetbrains.plugins.cucumber.steps.AbstractStepDefinition;
 import org.jetbrains.plugins.cucumber.CucumberJvmExtensionPoint;
@@ -43,7 +44,7 @@ public class CucumberStepReference implements PsiPolyVariantReference {
     return result.length == 1 ? result[0].getElement() : null;
   }
 
-  @NotNull
+  @Nonnull
   public String getCanonicalText() {
     return myStep.getText();
   }
@@ -52,7 +53,7 @@ public class CucumberStepReference implements PsiPolyVariantReference {
     return myStep;
   }
 
-  public PsiElement bindToElement(@NotNull PsiElement element) throws IncorrectOperationException {
+  public PsiElement bindToElement(@Nonnull PsiElement element) throws IncorrectOperationException {
     return myStep;
   }
 
@@ -66,7 +67,7 @@ public class CucumberStepReference implements PsiPolyVariantReference {
     return false;
   }
 
-  @NotNull
+  @Nonnull
   public Object[] getVariants() {
     return ArrayUtil.EMPTY_OBJECT_ARRAY;
   }
@@ -75,7 +76,7 @@ public class CucumberStepReference implements PsiPolyVariantReference {
     return false;
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public ResolveResult[] multiResolve(boolean incompleteCode) {
     final List<ResolveResult> result = new ArrayList<ResolveResult>();

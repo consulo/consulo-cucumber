@@ -1,6 +1,6 @@
 package org.jetbrains.plugins.cucumber.psi.structure;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.jetbrains.plugins.cucumber.psi.GherkinFeature;
 import org.jetbrains.plugins.cucumber.psi.GherkinFile;
 import org.jetbrains.plugins.cucumber.psi.GherkinStep;
@@ -25,7 +25,7 @@ public class GherkinStructureViewFactory implements PsiStructureViewFactory
 	{
 		return new TreeBasedStructureViewBuilder()
 		{
-			@NotNull
+			@Nonnull
 			@Override
 			public StructureViewModel createStructureViewModel(Editor editor)
 			{

@@ -3,7 +3,7 @@ package org.jetbrains.plugins.cucumber.psi.impl;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiWhiteSpace;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.jetbrains.plugins.cucumber.psi.GherkinElementVisitor;
 import org.jetbrains.plugins.cucumber.psi.GherkinTableCell;
 import org.jetbrains.plugins.cucumber.psi.GherkinTableRow;
@@ -17,7 +17,7 @@ import java.util.List;
  * @author yole
  */
 public class GherkinTableRowImpl extends GherkinPsiElementBase implements GherkinTableRow {
-  public GherkinTableRowImpl(@NotNull final ASTNode node) {
+  public GherkinTableRowImpl(@Nonnull final ASTNode node) {
     super(node);
   }
 
@@ -32,7 +32,7 @@ public class GherkinTableRowImpl extends GherkinPsiElementBase implements Gherki
   }
 
   // ToDo: Andrey Vokin, remove code duplication
-  @NotNull
+  @Nonnull
   public static <T extends PsiElement> List<T> getChildrenByFilter(final PsiElement psiElement, final Class<T> c) {
     LinkedList<T> list = new LinkedList<T>();
     for (PsiElement element : psiElement.getChildren()) {
@@ -45,7 +45,7 @@ public class GherkinTableRowImpl extends GherkinPsiElementBase implements Gherki
     return list.isEmpty() ? Collections.<T>emptyList() : list;
   }
 
-  @NotNull
+  @Nonnull
   public List<GherkinTableCell> getPsiCells() {
 
     return getChildrenByFilter(this, GherkinTableCell.class);

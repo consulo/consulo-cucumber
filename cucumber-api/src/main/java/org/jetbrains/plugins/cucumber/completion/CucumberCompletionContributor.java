@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.jetbrains.plugins.cucumber.psi.GherkinElementTypes;
 import org.jetbrains.plugins.cucumber.psi.GherkinFeature;
 import org.jetbrains.plugins.cucumber.psi.GherkinFile;
@@ -71,9 +71,9 @@ public class CucumberCompletionContributor extends CompletionContributor {
 
     extend(CompletionType.BASIC, psiElement().inFile(psiElement(GherkinFile.class)), new CompletionProvider() {
       @Override
-	  public void addCompletions(@NotNull CompletionParameters parameters,
+	  public void addCompletions(@Nonnull CompletionParameters parameters,
                                     ProcessingContext context,
-                                    @NotNull CompletionResultSet result) {
+                                    @Nonnull CompletionResultSet result) {
         final PsiFile psiFile = parameters.getOriginalFile();
         if (psiFile instanceof GherkinFile) {
           final PsiElement position = parameters.getPosition();
@@ -92,18 +92,18 @@ public class CucumberCompletionContributor extends CompletionContributor {
 
     extend(CompletionType.BASIC, inScenario.andNot(inStep), new CompletionProvider() {
       @Override
-	  public void addCompletions(@NotNull CompletionParameters parameters,
+	  public void addCompletions(@Nonnull CompletionParameters parameters,
                                     ProcessingContext context,
-                                    @NotNull CompletionResultSet result) {
+                                    @Nonnull CompletionResultSet result) {
         addStepKeywords(result, parameters.getOriginalFile());
       }
     });
 
     extend(CompletionType.BASIC, inStep, new CompletionProvider() {
       @Override
-	  public void addCompletions(@NotNull CompletionParameters parameters,
+	  public void addCompletions(@Nonnull CompletionParameters parameters,
                                     ProcessingContext context,
-                                    @NotNull CompletionResultSet result) {
+                                    @Nonnull CompletionResultSet result) {
         addStepDefinitions(result, parameters.getOriginalFile());
       }
     });

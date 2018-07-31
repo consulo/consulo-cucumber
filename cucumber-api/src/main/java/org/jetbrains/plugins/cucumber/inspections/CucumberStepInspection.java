@@ -13,8 +13,9 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.PsiReference;
 import org.jetbrains.annotations.Nls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import org.jetbrains.plugins.cucumber.CucumberBundle;
 import org.jetbrains.plugins.cucumber.psi.*;
 import org.jetbrains.plugins.cucumber.psi.impl.GherkinScenarioOutlineImpl;
@@ -37,19 +38,19 @@ public class CucumberStepInspection extends GherkinInspection implements UnfairL
   }
 
   @Nls
-  @NotNull
+  @Nonnull
   public String getDisplayName() {
     return CucumberBundle.message("cucumber.inspection.undefined.step.name");
   }
 
-  @NotNull
+  @Nonnull
   public String getShortName() {
     return "CucumberUndefinedStep";
   }
 
-  @NotNull
+  @Nonnull
   @Override
-  public PsiElementVisitor buildVisitor(@NotNull final ProblemsHolder holder, final boolean isOnTheFly) {
+  public PsiElementVisitor buildVisitor(@Nonnull final ProblemsHolder holder, final boolean isOnTheFly) {
     return new GherkinElementVisitor() {
       @Override
       public void visitStep(GherkinStep step) {
@@ -91,9 +92,9 @@ public class CucumberStepInspection extends GherkinInspection implements UnfairL
     };
   }
 
-  private static void highlightOutlineParams(@NotNull final GherkinStep step,
-                                             @NotNull final CucumberStepReference reference,
-                                             @NotNull final ProblemsHolder holder) {
+  private static void highlightOutlineParams(@Nonnull final GherkinStep step,
+                                             @Nonnull final CucumberStepReference reference,
+                                             @Nonnull final ProblemsHolder holder) {
     final List<String> realSubstitutions = getRealSubstitutions(step);
     if (realSubstitutions != null && !realSubstitutions.isEmpty()) {
       // regexp for searching outline parameters substitutions
@@ -163,7 +164,7 @@ public class CucumberStepInspection extends GherkinInspection implements UnfairL
   }
 
   @Nullable
-  private static List<String> getRealSubstitutions(@NotNull final GherkinStep step) {
+  private static List<String> getRealSubstitutions(@Nonnull final GherkinStep step) {
     final List<String> possibleSubstitutions = step.getParamsSubstitutions();
     if (!possibleSubstitutions.isEmpty()) {
       // get step definition

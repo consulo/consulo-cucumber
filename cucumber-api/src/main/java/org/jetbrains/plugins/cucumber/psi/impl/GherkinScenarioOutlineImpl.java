@@ -2,7 +2,7 @@ package org.jetbrains.plugins.cucumber.psi.impl;
 
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.tree.TokenSet;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.jetbrains.plugins.cucumber.psi.*;
 
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import java.util.List;
 public class GherkinScenarioOutlineImpl extends GherkinStepsHolderBase implements GherkinScenarioOutline {
   private static final TokenSet EXAMPLES_BLOCK_FILTER = TokenSet.create(GherkinElementTypes.EXAMPLES_BLOCK);
 
-  public GherkinScenarioOutlineImpl(@NotNull final ASTNode node) {
+  public GherkinScenarioOutlineImpl(@Nonnull final ASTNode node) {
     super(node);
   }
 
@@ -32,7 +32,7 @@ public class GherkinScenarioOutlineImpl extends GherkinStepsHolderBase implement
     gherkinElementVisitor.visitScenarioOutline(this);
   }
 
-  @NotNull
+  @Nonnull
   public List<GherkinExamplesBlock> getExamplesBlocks() {
     List<GherkinExamplesBlock> result = new ArrayList<GherkinExamplesBlock>();
     final ASTNode[] nodes = getNode().getChildren(EXAMPLES_BLOCK_FILTER);

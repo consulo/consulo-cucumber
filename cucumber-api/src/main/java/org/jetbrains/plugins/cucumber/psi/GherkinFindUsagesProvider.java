@@ -1,12 +1,13 @@
 package org.jetbrains.plugins.cucumber.psi;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.lang.cacheBuilder.DefaultWordsScanner;
 import com.intellij.lang.cacheBuilder.WordsScanner;
 import com.intellij.lang.findUsages.FindUsagesProvider;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiNamedElement;
 import com.intellij.psi.tree.TokenSet;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.plugins.cucumber.CucumberBundle;
 
 /**
@@ -20,7 +21,7 @@ public class GherkinFindUsagesProvider implements FindUsagesProvider {
   }
 
   @Override
-  public boolean canFindUsagesFor(@NotNull PsiElement psiElement) {
+  public boolean canFindUsagesFor(@Nonnull PsiElement psiElement) {
     if (psiElement instanceof GherkinStep) {
       return true;
     }
@@ -29,13 +30,13 @@ public class GherkinFindUsagesProvider implements FindUsagesProvider {
   }
 
   @Override
-  public String getHelpId(@NotNull PsiElement psiElement) {
+  public String getHelpId(@Nonnull PsiElement psiElement) {
     return "reference.dialogs.findUsages.other";
   }
 
-  @NotNull
+  @Nonnull
   @Override
-  public String getType(@NotNull PsiElement element) {
+  public String getType(@Nonnull PsiElement element) {
     if (element instanceof GherkinStep) {
       return CucumberBundle.message("cucumber.step");
     } else if (element instanceof GherkinStepParameter) {
@@ -44,15 +45,15 @@ public class GherkinFindUsagesProvider implements FindUsagesProvider {
     return element.toString();
   }
 
-  @NotNull
+  @Nonnull
   @Override
-  public String getDescriptiveName(@NotNull PsiElement element) {
+  public String getDescriptiveName(@Nonnull PsiElement element) {
     return element instanceof PsiNamedElement ? ((PsiNamedElement)element).getName() : "";
   }
 
-  @NotNull
+  @Nonnull
   @Override
-  public String getNodeText(@NotNull PsiElement element, boolean useFullName) {
+  public String getNodeText(@Nonnull PsiElement element, boolean useFullName) {
     return getDescriptiveName(element);
   }
 }

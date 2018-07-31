@@ -2,8 +2,8 @@ package org.jetbrains.plugins.cucumber.psi;
 
 import com.intellij.lang.ASTNode;
 import com.intellij.pom.PomTarget;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.List;
 import java.util.Set;
@@ -32,6 +32,6 @@ public interface GherkinStep extends GherkinPsiElement, GherkinSuppressionHolder
   @Nullable
   String getSubstitutedName();
 
-  @NotNull
+  @Nonnull
   Set<String> getSubstitutedNameList();
 }

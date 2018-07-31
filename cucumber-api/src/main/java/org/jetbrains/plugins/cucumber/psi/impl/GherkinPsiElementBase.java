@@ -1,9 +1,9 @@
 package org.jetbrains.plugins.cucumber.psi.impl;
 
+import javax.annotation.Nonnull;
 import javax.swing.Icon;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 import org.jetbrains.plugins.cucumber.psi.GherkinElementVisitor;
 import org.jetbrains.plugins.cucumber.psi.GherkinPsiElement;
 import org.jetbrains.plugins.cucumber.psi.GherkinTokenTypes;
@@ -25,11 +25,11 @@ import consulo.ide.IconDescriptorUpdaters;
 public abstract class GherkinPsiElementBase extends ASTWrapperPsiElement implements GherkinPsiElement {
   private static final TokenSet TEXT_FILTER = TokenSet.create(GherkinTokenTypes.TEXT);
 
-  public GherkinPsiElementBase(@NotNull final ASTNode node) {
+  public GherkinPsiElementBase(@Nonnull final ASTNode node) {
     super(node);
   }
 
-  @NotNull
+  @Nonnull
   protected String getElementText() {
     final ASTNode node = getNode();
     final ASTNode[] children = node.getChildren(TEXT_FILTER);
@@ -78,7 +78,7 @@ public abstract class GherkinPsiElementBase extends ASTWrapperPsiElement impleme
   }
 
   @Override
-  public void accept(@NotNull PsiElementVisitor visitor) {
+  public void accept(@Nonnull PsiElementVisitor visitor) {
     if (visitor instanceof GherkinElementVisitor) {
       acceptGherkin((GherkinElementVisitor) visitor);
     }

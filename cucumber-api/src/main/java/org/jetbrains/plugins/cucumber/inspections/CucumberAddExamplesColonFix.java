@@ -1,6 +1,6 @@
 package org.jetbrains.plugins.cucumber.inspections;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.jetbrains.plugins.cucumber.psi.GherkinElementFactory;
 import com.intellij.codeInsight.FileModificationService;
 import com.intellij.codeInspection.LocalQuickFix;
@@ -14,18 +14,18 @@ import com.intellij.psi.PsiFile;
  */
 public class CucumberAddExamplesColonFix implements LocalQuickFix {
 
-  @NotNull
+  @Nonnull
   public String getName() {
     return "Add missing ':' after examples keyword";
   }
 
-  @NotNull
+  @Nonnull
   public String getFamilyName() {
     return getName();
   }
 
 
-  public void applyFix(@NotNull Project project, @NotNull ProblemDescriptor descriptor) {
+  public void applyFix(@Nonnull Project project, @Nonnull ProblemDescriptor descriptor) {
     final PsiElement examples = descriptor.getPsiElement();
 
     final PsiFile featureFile = examples.getContainingFile();

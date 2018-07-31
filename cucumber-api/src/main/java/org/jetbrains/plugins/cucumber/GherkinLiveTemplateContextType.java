@@ -4,7 +4,7 @@ import com.intellij.codeInsight.template.TemplateContextType;
 import com.intellij.openapi.fileTypes.SyntaxHighlighter;
 import com.intellij.psi.PsiFile;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.jetbrains.plugins.cucumber.psi.GherkinSyntaxHighlighter;
 import org.jetbrains.plugins.cucumber.psi.PlainGherkinKeywordProvider;
 import org.jetbrains.plugins.cucumber.psi.impl.GherkinFileImpl;
@@ -21,7 +21,7 @@ public class GherkinLiveTemplateContextType extends TemplateContextType {
     super(CONTEXT_NAME, CucumberBundle.message("live.templates.context.cucumber.name"));
   }
 
-  public boolean isInContext(@NotNull final PsiFile file, final int offset) {
+  public boolean isInContext(@Nonnull final PsiFile file, final int offset) {
     return file instanceof GherkinFileImpl;
   }
 

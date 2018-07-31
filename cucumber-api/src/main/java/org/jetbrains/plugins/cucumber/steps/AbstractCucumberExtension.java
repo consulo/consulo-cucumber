@@ -4,7 +4,7 @@ import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleUtilCore;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiElement;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.jetbrains.plugins.cucumber.CucumberJvmExtensionPoint;
 import org.jetbrains.plugins.cucumber.psi.GherkinStep;
 
@@ -19,7 +19,7 @@ import java.util.Set;
  */
 public abstract class AbstractCucumberExtension implements CucumberJvmExtensionPoint {
   @Override
-  public List<PsiElement> resolveStep(@NotNull final PsiElement element) {
+  public List<PsiElement> resolveStep(@Nonnull final PsiElement element) {
     final Module module = ModuleUtilCore.findModuleForPsiElement(element);
     if (module == null) {
       return Collections.emptyList();
@@ -41,7 +41,7 @@ public abstract class AbstractCucumberExtension implements CucumberJvmExtensionP
     return result;
   }
 
-  protected Set<String> getAllPossibleStepVariants(@NotNull final PsiElement element) {
+  protected Set<String> getAllPossibleStepVariants(@Nonnull final PsiElement element) {
     if (element instanceof GherkinStep) {
       return ((GherkinStep)element).getSubstitutedNameList();
     }
@@ -57,6 +57,6 @@ public abstract class AbstractCucumberExtension implements CucumberJvmExtensionP
   }
 
   @Override
-  public void init(@NotNull Project project) {
+  public void init(@Nonnull Project project) {
   }
 }

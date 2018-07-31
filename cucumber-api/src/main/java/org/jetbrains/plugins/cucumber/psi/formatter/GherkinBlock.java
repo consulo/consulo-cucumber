@@ -7,8 +7,8 @@ import com.intellij.psi.TokenType;
 import com.intellij.psi.impl.source.tree.TreeUtil;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.tree.TokenSet;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import org.jetbrains.plugins.cucumber.psi.GherkinElementTypes;
 import org.jetbrains.plugins.cucumber.psi.GherkinTable;
 import org.jetbrains.plugins.cucumber.psi.GherkinTokenTypes;
@@ -59,12 +59,12 @@ public class GherkinBlock implements ASTBlock {
     return myNode;
   }
 
-  @NotNull
+  @Nonnull
   public TextRange getTextRange() {
     return myTextRange;
   }
 
-  @NotNull
+  @Nonnull
   public List<Block> getSubBlocks() {
     if (myLeaf) return Collections.emptyList();
     if (myChildren == null) {
@@ -110,7 +110,7 @@ public class GherkinBlock implements ASTBlock {
   }
 
   @Override
-  public Spacing getSpacing(@Nullable Block child1, @NotNull Block child2) {
+  public Spacing getSpacing(@Nullable Block child1, @Nonnull Block child2) {
     if (child1 == null) {
       return null;
     }
@@ -153,7 +153,7 @@ public class GherkinBlock implements ASTBlock {
     return pipeCount-1;
   }
 
-  @NotNull
+  @Nonnull
   public ChildAttributes getChildAttributes(int newChildIndex) {
     Indent childIndent = BLOCKS_TO_INDENT_CHILDREN.contains(getNode().getElementType()) ? Indent.getNormalIndent() : Indent.getNoneIndent();
     return new ChildAttributes(childIndent, null);

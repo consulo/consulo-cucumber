@@ -1,5 +1,7 @@
 package org.jetbrains.plugins.cucumber.java.run;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.execution.JavaRunConfigurationExtensionManager;
 import com.intellij.execution.Location;
 import com.intellij.execution.RunnerAndConfigurationSettings;
@@ -13,8 +15,8 @@ import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 import org.jetbrains.plugins.cucumber.psi.GherkinFile;
 
 /**
@@ -36,7 +38,7 @@ public abstract class CucumberJavaRunConfigurationProducer extends JavaRuntimeCo
 
   protected abstract String getName();
 
-  @NotNull
+  @Nonnull
   protected abstract VirtualFile getFileToRun();
 
   @Override
@@ -73,10 +75,10 @@ public abstract class CucumberJavaRunConfigurationProducer extends JavaRuntimeCo
     return locationElement != null && locationElement.getContainingFile() instanceof GherkinFile;
   }
 
-  protected void processConfiguration(@NotNull final CucumberJavaRunConfiguration configuration) {
+  protected void processConfiguration(@Nonnull final CucumberJavaRunConfiguration configuration) {
   }
 
-  protected RunnerAndConfigurationSettings createConfiguration(Location location, ConfigurationContext context, @NotNull final String mainClassName) {
+  protected RunnerAndConfigurationSettings createConfiguration(Location location, ConfigurationContext context, @Nonnull final String mainClassName) {
     final Project project = context.getProject();
     final RunnerAndConfigurationSettings settings = cloneTemplateConfiguration(project, context);
     final CucumberJavaRunConfiguration configuration = (CucumberJavaRunConfiguration)settings.getConfiguration();

@@ -8,8 +8,8 @@ import com.intellij.psi.PsiComment;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiWhiteSpace;
 import com.intellij.psi.util.PsiTreeUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import org.jetbrains.plugins.cucumber.psi.GherkinSuppressionHolder;
 
 import java.util.regex.Matcher;
@@ -28,7 +28,7 @@ public class GherkinSuppressionUtil {
   }
 
   public static SuppressQuickFix[] getDefaultSuppressActions(@Nullable final PsiElement element,
-                                                                    @NotNull final String actionShortName) {
+                                                                    @Nonnull final String actionShortName) {
     return new SuppressQuickFix[]{
       new GherkinSuppressForStepCommentFix(actionShortName),
       new GherkinSuppressForScenarioCommentFix(actionShortName),
@@ -36,7 +36,7 @@ public class GherkinSuppressionUtil {
     };
   }
 
-  public static boolean isSuppressedFor(@NotNull final PsiElement element, @NotNull final String toolId) {
+  public static boolean isSuppressedFor(@Nonnull final PsiElement element, @Nonnull final String toolId) {
     return ApplicationManager.getApplication().runReadAction(new Computable<Boolean>() {
       public Boolean compute() {
         return getSuppressedIn(element, toolId) != null;

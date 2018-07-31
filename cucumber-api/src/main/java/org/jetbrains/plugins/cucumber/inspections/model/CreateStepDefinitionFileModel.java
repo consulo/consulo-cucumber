@@ -3,9 +3,9 @@ package org.jetbrains.plugins.cucumber.inspections.model;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiDirectory;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
 
+import javax.annotation.Nullable;
 import javax.swing.*;
 import java.io.File;
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ public class CreateStepDefinitionFileModel {
 
   private Project myProject;
 
-  public CreateStepDefinitionFileModel(@NotNull final Project project, @NotNull final Map<FileType, String> fileTypeToDefaultNameMap, @NotNull final Map<FileType, PsiDirectory> fileTypeToDefaultDirectoryMap) {
+  public CreateStepDefinitionFileModel(@Nonnull final Project project, @Nonnull final Map<FileType, String> fileTypeToDefaultNameMap, @Nonnull final Map<FileType, PsiDirectory> fileTypeToDefaultDirectoryMap) {
     myProject = project;
     List<FileTypeComboboxItem> myFileTypeList = new ArrayList<FileTypeComboboxItem>();
     for (Map.Entry<FileType, String> entry : fileTypeToDefaultNameMap.entrySet()) {
@@ -60,7 +60,7 @@ public class CreateStepDefinitionFileModel {
     return myFileName;
   }
 
-  public void setFileName(@NotNull final String fileName) {
+  public void setFileName(@Nonnull final String fileName) {
     myFileName = fileName;
   }
 

@@ -1,7 +1,8 @@
 package org.jetbrains.plugins.cucumber.groovy.steps;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import org.jetbrains.plugins.cucumber.groovy.GrCucumberUtil;
 import org.jetbrains.plugins.groovy.lang.psi.api.statements.expressions.GrMethodCall;
 import com.intellij.codeHighlighting.Pass;
@@ -20,7 +21,7 @@ public class GrCucumberLineMarkerProvider implements LineMarkerProvider
 
 	@Nullable
 	@Override
-	public LineMarkerInfo getLineMarkerInfo(@NotNull PsiElement element)
+	public LineMarkerInfo getLineMarkerInfo(@Nonnull PsiElement element)
 	{
 		if(GrCucumberUtil.isStepDefinition(element))
 		{

@@ -12,13 +12,14 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiManager;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+
 import org.jetbrains.plugins.cucumber.CucumberBundle;
 import org.jetbrains.plugins.cucumber.inspections.model.CreateStepDefinitionFileModel;
 import org.jetbrains.plugins.cucumber.inspections.model.FileTypeComboboxItem;
 import org.jetbrains.plugins.cucumber.steps.CucumberStepsIndex;
 
+import javax.annotation.Nullable;
 import javax.swing.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
@@ -42,8 +43,8 @@ public class CreateStepDefinitionFileDialog extends DialogWrapper {
 
   private CreateStepDefinitionFileModel myModel;
 
-  public CreateStepDefinitionFileDialog(@NotNull final Project project, @NotNull final CreateStepDefinitionFileModel model,
-                                        @NotNull final InputValidator validator) {
+  public CreateStepDefinitionFileDialog(@Nonnull final Project project, @Nonnull final CreateStepDefinitionFileModel model,
+										@Nonnull final InputValidator validator) {
     super(project);
     myModel = model;
     myValidator = validator;

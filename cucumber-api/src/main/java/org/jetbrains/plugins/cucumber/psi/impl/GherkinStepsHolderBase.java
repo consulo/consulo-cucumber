@@ -1,17 +1,18 @@
 package org.jetbrains.plugins.cucumber.psi.impl;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.intellij.lang.ASTNode;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.util.PsiTreeUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.plugins.cucumber.psi.GherkinStep;
 import org.jetbrains.plugins.cucumber.psi.GherkinStepsHolder;
 import org.jetbrains.plugins.cucumber.psi.GherkinTag;
 
 public abstract class GherkinStepsHolderBase extends GherkinPsiElementBase implements GherkinStepsHolder {
-  protected GherkinStepsHolderBase(@NotNull ASTNode node) {
+  protected GherkinStepsHolderBase(@Nonnull ASTNode node) {
     super(node);
   }
 

@@ -1,7 +1,7 @@
 package org.jetbrains.plugins.cucumber.java.steps;
 
 import com.intellij.psi.*;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 import org.jetbrains.plugins.cucumber.java.CucumberJavaUtil;
 import org.jetbrains.plugins.cucumber.steps.AbstractStepDefinition;
 

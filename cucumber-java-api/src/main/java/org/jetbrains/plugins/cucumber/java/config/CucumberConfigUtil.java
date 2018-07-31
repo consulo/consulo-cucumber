@@ -3,9 +3,11 @@ package org.jetbrains.plugins.cucumber.java.config;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.annotation.Nonnull;
+
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleUtilCore;
 import com.intellij.openapi.roots.LibraryOrderEntry;
@@ -41,7 +43,7 @@ public class CucumberConfigUtil {
   public static final String CUCUMBER_VERSION_1_1 = "1.1";
 
   @Nullable
-  public static String getCucumberCoreVersion(@NotNull PsiElement place) {
+  public static String getCucumberCoreVersion(@Nonnull PsiElement place) {
     final Module module = ModuleUtilCore.findModuleForPsiElement(place);
     if (module == null) return null;
 

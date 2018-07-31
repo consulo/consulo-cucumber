@@ -1,8 +1,9 @@
 package org.jetbrains.plugins.cucumber.psi.impl;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.util.PsiTreeUtil;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.plugins.cucumber.psi.GherkinElementVisitor;
 import org.jetbrains.plugins.cucumber.psi.GherkinFeature;
 import org.jetbrains.plugins.cucumber.psi.GherkinStepsHolder;
@@ -12,7 +13,7 @@ import org.jetbrains.plugins.cucumber.psi.GherkinTokenTypes;
  * @author yole
  */
 public class GherkinFeatureImpl extends GherkinPsiElementBase implements GherkinFeature {
-  public GherkinFeatureImpl(@NotNull final ASTNode node) {
+  public GherkinFeatureImpl(@Nonnull final ASTNode node) {
     super(node);
   }
 

@@ -1,7 +1,7 @@
 package org.jetbrains.plugins.cucumber.java.i18n;
 
 import com.intellij.openapi.project.Project;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 import org.jetbrains.plugins.cucumber.psi.GherkinKeywordProvider;
 import org.jetbrains.plugins.cucumber.psi.GherkinKeywordProviderBuilder;
 import org.jetbrains.plugins.cucumber.psi.i18n.JsonGherkinKeywordProvider;

@@ -5,8 +5,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import org.jetbrains.plugins.cucumber.StepDefinitionCreator;
 import org.jetbrains.plugins.cucumber.groovy.steps.GrStepDefinition;
 import org.jetbrains.plugins.cucumber.groovy.steps.GrStepDefinitionCreator;
@@ -43,29 +44,29 @@ import consulo.roots.ContentFolderScopes;
  */
 public class GrCucumberExtension extends NotIndexedCucumberExtension {
   @Override
-  public boolean isStepLikeFile(@NotNull PsiElement child, @NotNull PsiElement parent) {
+  public boolean isStepLikeFile(@Nonnull PsiElement child, @Nonnull PsiElement parent) {
     return child instanceof GroovyFile && ((GroovyFile)child).getName().endsWith(".groovy");
   }
 
   @Override
-  public boolean isWritableStepLikeFile(@NotNull PsiElement child, @NotNull PsiElement parent) {
+  public boolean isWritableStepLikeFile(@Nonnull PsiElement child, @Nonnull PsiElement parent) {
     return isStepLikeFile(child, parent);
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public FileType getStepFileType() {
     return GroovyFileType.GROOVY_FILE_TYPE;
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public StepDefinitionCreator getStepDefinitionCreator() {
     return new GrStepDefinitionCreator();
   }
 
   @Nullable
-  public String getGlue(@NotNull GherkinStep step) {
+  public String getGlue(@Nonnull GherkinStep step) {
     for (PsiReference ref : step.getReferences()) {
       PsiElement refElement = ref.resolve();
       if (refElement != null && refElement instanceof GrMethodCall) {
@@ -80,9 +81,9 @@ public class GrCucumberExtension extends NotIndexedCucumberExtension {
     return null;
   }
 
-  @NotNull
+  @Nonnull
   @Override
-  public Collection<String> getGlues(@NotNull GherkinFile file, Set<String> gluesFromOtherFiles) {
+  public Collection<String> getGlues(@Nonnull GherkinFile file, Set<String> gluesFromOtherFiles) {
     if (gluesFromOtherFiles == null) {
       gluesFromOtherFiles = ContainerUtil.newHashSet();
     }
@@ -106,9 +107,9 @@ public class GrCucumberExtension extends NotIndexedCucumberExtension {
 
   }
 
-  @NotNull
+  @Nonnull
   @Override
-  public List<AbstractStepDefinition> getStepDefinitions(@NotNull PsiFile psiFile) {
+  public List<AbstractStepDefinition> getStepDefinitions(@Nonnull PsiFile psiFile) {
     final List<AbstractStepDefinition> newDefs = new ArrayList<AbstractStepDefinition>();
     if (psiFile instanceof GroovyFile) {
       GrStatement[] statements = ((GroovyFile)psiFile).getStatements();
@@ -122,7 +123,7 @@ public class GrCucumberExtension extends NotIndexedCucumberExtension {
   }
 
   @Override
-  protected void collectAllStepDefsProviders(@NotNull List<VirtualFile> providers, @NotNull Project project) {
+  protected void collectAllStepDefsProviders(@Nonnull List<VirtualFile> providers, @Nonnull Project project) {
     final Module[] modules = ModuleManager.getInstance(project).getModules();
     for (Module module : modules) {
       if (ModuleUtilCore.getExtension(module, JavaModuleExtension.class) != null) {
@@ -134,8 +135,8 @@ public class GrCucumberExtension extends NotIndexedCucumberExtension {
 
 
   @Override
-  public void findRelatedStepDefsRoots(@NotNull final Module module, @NotNull final PsiFile featureFile,
-                                       List<PsiDirectory> newStepDefinitionsRoots, Set<String> processedStepDirectories) {
+  public void findRelatedStepDefsRoots(@Nonnull final Module module, @Nonnull final PsiFile featureFile,
+									   List<PsiDirectory> newStepDefinitionsRoots, Set<String> processedStepDirectories) {
     final ContentEntry[] contentEntries = ModuleRootManager.getInstance(module).getContentEntries();
     for (final ContentEntry contentEntry : contentEntries) {
       final ContentFolder[] sourceFolders = contentEntry.getFolders(ContentFolderScopes.all(false));

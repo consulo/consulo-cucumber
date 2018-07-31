@@ -1,14 +1,15 @@
 package org.jetbrains.plugins.cucumber.psi.impl;
 
+import javax.annotation.Nonnull;
+
 import org.jetbrains.plugins.cucumber.psi.GherkinElementVisitor;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.lang.ASTNode;
 
 /**
  * @author yole
  */
 public class GherkinFeatureHeaderImpl extends GherkinPsiElementBase {
-  public GherkinFeatureHeaderImpl(@NotNull final ASTNode node) {
+  public GherkinFeatureHeaderImpl(@Nonnull final ASTNode node) {
     super(node);
   }
 

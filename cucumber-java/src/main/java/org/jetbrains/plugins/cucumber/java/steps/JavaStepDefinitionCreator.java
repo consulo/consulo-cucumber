@@ -2,7 +2,8 @@ package org.jetbrains.plugins.cucumber.java.steps;
 
 import java.util.ArrayList;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import org.jetbrains.plugins.cucumber.StepDefinitionCreator;
 import org.jetbrains.plugins.cucumber.java.CucumberJavaUtil;
 import org.jetbrains.plugins.cucumber.psi.GherkinStep;
@@ -48,16 +49,16 @@ import gherkin.formatter.model.Step;
 public class JavaStepDefinitionCreator implements StepDefinitionCreator {
   public static final String STEP_DEFINITION_SUFFIX = "MyStepdefs";
 
-  @NotNull
+  @Nonnull
   @Override
-  public PsiFile createStepDefinitionContainer(@NotNull PsiDirectory dir, @NotNull String name) {
+  public PsiFile createStepDefinitionContainer(@Nonnull PsiDirectory dir, @Nonnull String name) {
     PsiClass newClass = CreateClassUtil.createClassNamed(name, CreateClassUtil.DEFAULT_CLASS_TEMPLATE, dir);
     assert newClass != null;
     return newClass.getContainingFile();
   }
 
   @Override
-  public boolean createStepDefinition(@NotNull GherkinStep step, @NotNull PsiFile file) {
+  public boolean createStepDefinition(@Nonnull GherkinStep step, @Nonnull PsiFile file) {
     if (!(file instanceof PsiJavaFile)) return false;
 
     final Project project = file.getProject();
@@ -117,7 +118,7 @@ public class JavaStepDefinitionCreator implements StepDefinitionCreator {
   }
 
   @Override
-  public boolean validateNewStepDefinitionFileName(@NotNull final Project project, @NotNull final String name) {
+  public boolean validateNewStepDefinitionFileName(@Nonnull final Project project, @Nonnull final String name) {
     if(name.length() == 0) return false;
     if (! Character.isJavaIdentifierStart(name.charAt(0))) return false;
     for (int i = 1; i < name.length(); i++) {
@@ -126,9 +127,9 @@ public class JavaStepDefinitionCreator implements StepDefinitionCreator {
     return true;
   }
 
-  @NotNull
+  @Nonnull
   @Override
-  public PsiDirectory getDefaultStepDefinitionFolder(@NotNull final GherkinStep step) {
+  public PsiDirectory getDefaultStepDefinitionFolder(@Nonnull final GherkinStep step) {
     PsiFile featureFile = step.getContainingFile();
     if (featureFile != null) {
       PsiDirectory directory = featureFile.getContainingDirectory();
@@ -184,9 +185,9 @@ public class JavaStepDefinitionCreator implements StepDefinitionCreator {
     return ObjectUtils.assertNotNull(featureFile.getParent());
   }
 
-  @NotNull
+  @Nonnull
   @Override
-  public String getStepDefinitionFilePath(@NotNull final PsiFile file) {
+  public String getStepDefinitionFilePath(@Nonnull final PsiFile file) {
     final VirtualFile vFile = file.getVirtualFile();
     if (file instanceof PsiJavaFile && vFile != null) {
       String packageName = ((PsiJavaFile)file).getPackageName();
@@ -200,13 +201,13 @@ public class JavaStepDefinitionCreator implements StepDefinitionCreator {
     return file.getName();
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public String getDefaultStepFileName() {
     return STEP_DEFINITION_SUFFIX;
   }
 
-  private static PsiMethod buildStepDefinitionByStep(@NotNull final GherkinStep step) {
+  private static PsiMethod buildStepDefinitionByStep(@Nonnull final GherkinStep step) {
     String annotationPackage = new AnnotationPackageProvider().getAnnotationPackageFor(step);
     String methodAnnotation = String.format("@%s.", annotationPackage);
 

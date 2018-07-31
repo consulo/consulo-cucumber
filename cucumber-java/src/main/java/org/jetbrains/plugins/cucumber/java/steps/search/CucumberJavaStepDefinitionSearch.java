@@ -1,5 +1,7 @@
 package org.jetbrains.plugins.cucumber.java.steps.search;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.util.Computable;
 import com.intellij.openapi.util.Ref;
@@ -15,7 +17,6 @@ import com.intellij.psi.search.UsageSearchContext;
 import com.intellij.psi.search.searches.ReferencesSearch;
 import com.intellij.util.Processor;
 import com.intellij.util.QueryExecutor;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.plugins.cucumber.CucumberUtil;
 import org.jetbrains.plugins.cucumber.java.CucumberJavaUtil;
 import org.jetbrains.plugins.cucumber.steps.search.CucumberStepSearchUtil;
@@ -26,7 +27,7 @@ import org.jetbrains.plugins.cucumber.steps.search.CucumberStepSearchUtil;
  */
 public class CucumberJavaStepDefinitionSearch implements QueryExecutor<PsiReference, ReferencesSearch.SearchParameters> {
   @Override
-  public boolean execute(@NotNull final ReferencesSearch.SearchParameters queryParameters, @NotNull final Processor<PsiReference> consumer) {
+  public boolean execute(@Nonnull final ReferencesSearch.SearchParameters queryParameters, @Nonnull final Processor<PsiReference> consumer) {
     final PsiElement myElement = queryParameters.getElementToSearch();
     if (!(myElement instanceof PsiMethod)){
       return true;

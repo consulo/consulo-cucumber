@@ -5,14 +5,14 @@ import com.intellij.application.options.SmartIndentOptionsEditor;
 import com.intellij.lang.Language;
 import com.intellij.psi.codeStyle.CommonCodeStyleSettings;
 import com.intellij.psi.codeStyle.LanguageCodeStyleSettingsProvider;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.jetbrains.plugins.cucumber.psi.GherkinLanguage;
 
 /**
  * @author Rustam Vishnyakov
  */
 public class GherkinLanguageCodeStyleSettingsProvider extends LanguageCodeStyleSettingsProvider {
-  @NotNull
+  @Nonnull
   @Override
   public Language getLanguage() {
     return GherkinLanguage.INSTANCE;
@@ -27,7 +27,7 @@ public class GherkinLanguageCodeStyleSettingsProvider extends LanguageCodeStyleS
   }
 
   @Override
-  public String getCodeSample(@NotNull SettingsType settingsType) {
+  public String getCodeSample(@Nonnull SettingsType settingsType) {
     return "Feature: Formatting\n" +
            "    Scenario: Reformat Cucumber file\n";
   }

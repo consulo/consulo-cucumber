@@ -5,7 +5,7 @@ import com.intellij.codeInspection.ProblemsHolder;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.util.containers.IntArrayList;
 import org.jetbrains.annotations.Nls;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.jetbrains.plugins.cucumber.CucumberBundle;
 import org.jetbrains.plugins.cucumber.psi.*;
 
@@ -24,21 +24,21 @@ public class CucumberTableInspection extends GherkinInspection {
   }
 
   @Nls
-  @NotNull
+  @Nonnull
   @Override
   public String getDisplayName() {
     return CucumberBundle.message("unused.or.missing.columns.in.cucumber.tables");
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public String getShortName() {
     return "CucumberTableInspection";
   }
 
-  @NotNull
+  @Nonnull
   @Override
-  public PsiElementVisitor buildVisitor(@NotNull final ProblemsHolder holder, boolean isOnTheFly) {
+  public PsiElementVisitor buildVisitor(@Nonnull final ProblemsHolder holder, boolean isOnTheFly) {
     return new GherkinElementVisitor() {
       @Override
       public void visitScenarioOutline(GherkinScenarioOutline outline) {

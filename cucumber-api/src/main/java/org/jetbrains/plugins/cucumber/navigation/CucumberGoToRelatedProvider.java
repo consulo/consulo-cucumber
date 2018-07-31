@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import org.jetbrains.plugins.cucumber.psi.GherkinFeature;
 import org.jetbrains.plugins.cucumber.psi.GherkinFile;
 import org.jetbrains.plugins.cucumber.psi.GherkinStep;
@@ -23,8 +24,8 @@ import com.intellij.psi.PsiFile;
  * Date: 3/25/13
  */
 public class CucumberGoToRelatedProvider extends GotoRelatedProvider {
-  @NotNull
-  public List<? extends GotoRelatedItem> getItems(@NotNull DataContext context) {
+  @Nonnull
+  public List<? extends GotoRelatedItem> getItems(@Nonnull DataContext context) {
     final PsiFile file = context.getData(LangDataKeys.PSI_FILE);
     if (file != null) {
       return getItems(file);
@@ -32,9 +33,9 @@ public class CucumberGoToRelatedProvider extends GotoRelatedProvider {
     return Collections.emptyList();
   }
 
-  @NotNull
+  @Nonnull
   @Override
-  public List<? extends GotoRelatedItem> getItems(@NotNull PsiElement psiElement) {
+  public List<? extends GotoRelatedItem> getItems(@Nonnull PsiElement psiElement) {
     final PsiFile file = psiElement.getContainingFile();
     if (file instanceof GherkinFile) {
       final List<GherkinStep> steps = new ArrayList<GherkinStep>();

@@ -2,7 +2,8 @@ package org.jetbrains.plugins.cucumber.java.resolve;
 
 import java.io.IOException;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import org.jetbrains.plugins.cucumber.steps.CucumberStepsIndex;
 import com.intellij.openapi.application.PathManager;
 import com.intellij.openapi.application.Result;
@@ -44,7 +45,7 @@ public class CucumberPsiTreeListenerTest extends BaseCucumberJavaResolveTest {
     return psiClass;
   }
 
-  private String createStepDefinition(@NotNull final String stepDef) {
+  private String createStepDefinition(@Nonnull final String stepDef) {
     final PsiClass psiClass = getStepDefClass();
     final PsiFile psiFile = psiClass.getContainingFile();
 
@@ -63,7 +64,7 @@ public class CucumberPsiTreeListenerTest extends BaseCucumberJavaResolveTest {
     return createdMethodName.get();
   }
 
-  private void deleteStepDefinition(@NotNull final String stepDefName) {
+  private void deleteStepDefinition(@Nonnull final String stepDefName) {
     final PsiClass psiClass = getStepDefClass();
     final PsiFile psiFile = psiClass.getContainingFile();
 
@@ -81,7 +82,7 @@ public class CucumberPsiTreeListenerTest extends BaseCucumberJavaResolveTest {
     }.execute();
   }
 
-  private void doTestCreation(@NotNull final String folder, @NotNull final String step, @NotNull final String stepDefinitionContent)
+  private void doTestCreation(@Nonnull final String folder, @Nonnull final String step, @Nonnull final String stepDefinitionContent)
     throws Exception {
     init(folder);
 
@@ -91,7 +92,7 @@ public class CucumberPsiTreeListenerTest extends BaseCucumberJavaResolveTest {
     checkReference(step, stepDefinitionName);
   }
 
-  private void doTestDeletion(@NotNull final String folder, @NotNull final String step, @NotNull final String stepDefinitionName)
+  private void doTestDeletion(@Nonnull final String folder, @Nonnull final String step, @Nonnull final String stepDefinitionName)
     throws IOException {
     init(folder);
 

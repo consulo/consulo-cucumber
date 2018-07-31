@@ -2,7 +2,8 @@ package org.jetbrains.plugins.cucumber.groovy.steps;
 
 import java.util.Collections;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import org.jetbrains.plugins.cucumber.StepDefinitionCreator;
 import org.jetbrains.plugins.cucumber.groovy.GrCucumberUtil;
 import org.jetbrains.plugins.cucumber.java.config.CucumberConfigUtil;
@@ -56,9 +57,9 @@ public class GrStepDefinitionCreator implements StepDefinitionCreator {
   public static final String GROOVY_STEP_DEFINITION_FILE_TMPL_1_1 = "GroovyStepDefinitionFile1_1.groovy";
   public static final String VERSION1_1 = "1.1";
 
-  @NotNull
+  @Nonnull
   @Override
-  public PsiFile createStepDefinitionContainer(@NotNull PsiDirectory dir, @NotNull String name) {
+  public PsiFile createStepDefinitionContainer(@Nonnull PsiDirectory dir, @Nonnull String name) {
     String fileName = name + '.' + GroovyFileType.DEFAULT_EXTENSION;
     final String version = CucumberConfigUtil.getCucumberCoreVersion(dir);
     if (version != null && version.compareTo(VERSION1_1) >= 0) {
@@ -70,7 +71,7 @@ public class GrStepDefinitionCreator implements StepDefinitionCreator {
   }
 
   @Override
-  public boolean createStepDefinition(@NotNull GherkinStep step, @NotNull final PsiFile file) {
+  public boolean createStepDefinition(@Nonnull GherkinStep step, @Nonnull final PsiFile file) {
     if (!(file instanceof GroovyFile)) return false;
 
     final Project project = file.getProject();
@@ -175,7 +176,7 @@ public class GrStepDefinitionCreator implements StepDefinitionCreator {
     }
   }
 
-  private static GrMethodCall buildStepDefinitionByStep(@NotNull final GherkinStep step) {
+  private static GrMethodCall buildStepDefinitionByStep(@Nonnull final GherkinStep step) {
     final GroovyPsiElementFactory factory = GroovyPsiElementFactory.getInstance(step.getProject());
 
     final Step cucumberStep = new Step(Collections.<Comment>emptyList(), step.getKeyword().getText(), step.getStepName(), 0, null, null);
@@ -186,8 +187,8 @@ public class GrStepDefinitionCreator implements StepDefinitionCreator {
     return (GrMethodCall)factory.createStatementFromText(snippet, step);
   }
 
-  @NotNull
-  private static StringBuilder escapePattern(@NotNull String snippet) {
+  @Nonnull
+  private static StringBuilder escapePattern(@Nonnull String snippet) {
     final int start = snippet.indexOf('\'') + 1;
     final int end = snippet.lastIndexOf('\'');
     String pattern = snippet.substring(start, end);
@@ -201,20 +202,20 @@ public class GrStepDefinitionCreator implements StepDefinitionCreator {
   }
 
   @Override
-  public boolean validateNewStepDefinitionFileName(@NotNull final Project project, @NotNull final String fileName) {
+  public boolean validateNewStepDefinitionFileName(@Nonnull final Project project, @Nonnull final String fileName) {
     return true;
   }
 
-  @NotNull
+  @Nonnull
   @Override
-  public PsiDirectory getDefaultStepDefinitionFolder(@NotNull GherkinStep step) {
+  public PsiDirectory getDefaultStepDefinitionFolder(@Nonnull GherkinStep step) {
     final PsiFile featureFile = step.getContainingFile();
     return ObjectUtils.assertNotNull(featureFile.getParent());
   }
 
-  @NotNull
+  @Nonnull
   @Override
-  public String getStepDefinitionFilePath(@NotNull PsiFile file) {
+  public String getStepDefinitionFilePath(@Nonnull PsiFile file) {
     final VirtualFile vFile = file.getVirtualFile();
     if (file instanceof GroovyFile && vFile != null) {
       String packageName = ((GroovyFile)file).getPackageName();
@@ -228,7 +229,7 @@ public class GrStepDefinitionCreator implements StepDefinitionCreator {
     return file.getName();
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public String getDefaultStepFileName() {
     return "StepDef";

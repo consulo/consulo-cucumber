@@ -1,7 +1,8 @@
 package org.jetbrains.plugins.cucumber.java.inspections;
 
+import javax.annotation.Nonnull;
+
 import org.jetbrains.annotations.Nls;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.plugins.cucumber.java.CucumberJavaBundle;
 import org.jetbrains.plugins.cucumber.java.CucumberJavaUtil;
 import com.intellij.codeInspection.ProblemsHolder;
@@ -22,18 +23,18 @@ public class CucumberJavaStepDefClassIsPublicInspections extends BaseLocalInspec
   }
 
   @Nls
-  @NotNull
+  @Nonnull
   public String getDisplayName() {
     return CucumberJavaBundle.message("cucumber.java.inspections.step.def.class.is.public.title");
   }
 
-  @NotNull
+  @Nonnull
   public String getShortName() {
     return "CucumberJavaStepDefClassIsPublic";
   }
 
-  @NotNull
-  public PsiElementVisitor buildVisitor(@NotNull final ProblemsHolder holder, boolean isOnTheFly) {
+  @Nonnull
+  public PsiElementVisitor buildVisitor(@Nonnull final ProblemsHolder holder, boolean isOnTheFly) {
     return new CucumberJavaStepDefClassIsPublicVisitor(holder);
   }
 

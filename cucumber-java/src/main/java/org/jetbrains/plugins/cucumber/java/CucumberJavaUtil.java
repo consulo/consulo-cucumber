@@ -4,8 +4,8 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.util.Ref;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.psi.*;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import org.jetbrains.plugins.cucumber.java.steps.reference.CucumberJavaAnnotationProvider;
 import org.jetbrains.plugins.cucumber.psi.*;
 
@@ -22,7 +22,7 @@ public class CucumberJavaUtil {
   public static final String CUCUMBER_STEP_ANNOTATION_PREFIX_1_0 = "cucumber.annotation.";
   public static final String CUCUMBER_STEP_ANNOTATION_PREFIX_1_1 = "cucumber.api.java.";
 
-  private static String getCucumberAnnotationSuffix(@NotNull String name) {
+  private static String getCucumberAnnotationSuffix(@Nonnull String name) {
     if (name.startsWith(CUCUMBER_STEP_ANNOTATION_PREFIX_1_0)) {
       return name.substring(CUCUMBER_STEP_ANNOTATION_PREFIX_1_0.length());
     }
@@ -36,7 +36,7 @@ public class CucumberJavaUtil {
   }
 
   @Nullable
-  private static String getAnnotationName(@NotNull final PsiAnnotation annotation) {
+  private static String getAnnotationName(@Nonnull final PsiAnnotation annotation) {
     final Ref<String> qualifiedAnnotationName = new Ref<String>();
     ApplicationManager.getApplication().runReadAction(new Runnable() {
       public void run() {
@@ -48,7 +48,7 @@ public class CucumberJavaUtil {
     return qualifiedAnnotationName.get();
   }
 
-  public static boolean isCucumberStepAnnotation(@NotNull final PsiAnnotation annotation) {
+  public static boolean isCucumberStepAnnotation(@Nonnull final PsiAnnotation annotation) {
     final String annotationName = getAnnotationName(annotation);
     if (annotationName == null) return false;
 
@@ -64,7 +64,7 @@ public class CucumberJavaUtil {
     return false;
   }
 
-  public static boolean isCucumberHookAnnotation(@NotNull final PsiAnnotation annotation) {
+  public static boolean isCucumberHookAnnotation(@Nonnull final PsiAnnotation annotation) {
     final String annotationName = getAnnotationName(annotation);
     if (annotationName == null) return false;
 
@@ -78,7 +78,7 @@ public class CucumberJavaUtil {
   }
 
   @Nullable
-  public static PsiAnnotationMemberValue getAnnotationValue(@NotNull final PsiAnnotation stepAnnotation) {
+  public static PsiAnnotationMemberValue getAnnotationValue(@Nonnull final PsiAnnotation stepAnnotation) {
     final PsiNameValuePair[] attributes = stepAnnotation.getParameterList().getAttributes();
     PsiNameValuePair valuePair = null;
     if (attributes.length > 0) {
@@ -97,16 +97,16 @@ public class CucumberJavaUtil {
     return valuePair != null ? valuePair.getValue() : null;
   }
 
-  public static boolean isStepDefinition(@NotNull final PsiMethod method) {
+  public static boolean isStepDefinition(@Nonnull final PsiMethod method) {
     final PsiAnnotation stepAnnotation = getCucumberStepAnnotation(method);
     return stepAnnotation != null && getAnnotationValue(stepAnnotation) != null;
   }
 
-  public static boolean isHook(@NotNull final PsiMethod method) {
+  public static boolean isHook(@Nonnull final PsiMethod method) {
     return getCucumberHookAnnotation(method) != null;
   }
 
-  public static boolean isStepDefinitionClass(@NotNull final PsiClass clazz) {
+  public static boolean isStepDefinitionClass(@Nonnull final PsiClass clazz) {
     PsiMethod[] methods = clazz.getAllMethods();
     for (PsiMethod method : methods) {
       if (getCucumberStepAnnotation(method) != null || getCucumberHookAnnotation(method) != null) return true;
@@ -139,7 +139,7 @@ public class CucumberJavaUtil {
   }
 
   @Nullable
-  public static String getPatternFromStepDefinition(@NotNull final PsiAnnotation stepAnnotation) {
+  public static String getPatternFromStepDefinition(@Nonnull final PsiAnnotation stepAnnotation) {
     String result = null;
     if (stepAnnotation.getParameterList().getAttributes().length > 0) {
       final PsiElement annotationValue = stepAnnotation.getParameterList().getAttributes()[0].getValue();
@@ -163,7 +163,7 @@ public class CucumberJavaUtil {
     return null;
   }
 
-  @NotNull
+  @Nonnull
   public static String getPackageOfStepDef(final PsiElement element) {
     PsiFile file = element.getContainingFile();
     if (file instanceof GherkinFile) {

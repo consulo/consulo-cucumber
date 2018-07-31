@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.swing.Icon;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.plugins.cucumber.CucumberBundle;
 import org.jetbrains.plugins.cucumber.CucumberJvmExtensionPoint;
 import org.jetbrains.plugins.cucumber.StepDefinitionCreator;
@@ -51,12 +51,12 @@ import consulo.ide.IconDescriptorUpdaters;
  */
 public class CucumberCreateStepFix implements LocalQuickFix {
 
-  @NotNull
+  @Nonnull
   public String getName() {
     return "Create Step Definition";
   }
 
-  @NotNull
+  @Nonnull
   public String getFamilyName() {
     return getName();
   }
@@ -65,7 +65,7 @@ public class CucumberCreateStepFix implements LocalQuickFix {
     return CucumberStepsIndex.getInstance(featureFile.getProject()).getStepDefinitionContainers(featureFile);
   }
 
-  public void applyFix(@NotNull final Project project, @NotNull ProblemDescriptor descriptor) {
+  public void applyFix(@Nonnull final Project project, @Nonnull ProblemDescriptor descriptor) {
     final GherkinStep step = (GherkinStep)descriptor.getPsiElement();
     final GherkinFile featureFile = (GherkinFile)step.getContainingFile();
     // TODO + step defs files from other content roots
@@ -99,7 +99,7 @@ public class CucumberCreateStepFix implements LocalQuickFix {
             return true;
           }
 
-          @NotNull
+          @Nonnull
           @Override
           public String getTextFor(PsiFile value) {
             if (value == null) {
@@ -195,7 +195,7 @@ public class CucumberCreateStepFix implements LocalQuickFix {
   }
 
   @Nullable
-  private static CreateStepDefinitionFileModel askUserForFilePath(@NotNull final GherkinStep step) {
+  private static CreateStepDefinitionFileModel askUserForFilePath(@Nonnull final GherkinStep step) {
     final InputValidator validator = new InputValidator() {
       public boolean checkInput(final String filePath) {
         return !StringUtil.isEmpty(filePath);

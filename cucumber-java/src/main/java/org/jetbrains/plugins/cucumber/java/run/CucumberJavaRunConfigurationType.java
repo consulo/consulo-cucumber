@@ -6,9 +6,7 @@ import com.intellij.openapi.project.Project;
 import consulo.ui.image.Image;
 import icons.CucumberJavaIcons;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-
-import javax.swing.*;
+import javax.annotation.Nonnull;
 
 /**
  * User: Andrey.Vokin
@@ -32,7 +30,7 @@ public class CucumberJavaRunConfigurationType implements ConfigurationType {
       }
 
       @Override
-      public void onNewConfigurationCreated(@NotNull RunConfiguration configuration) {
+      public void onNewConfigurationCreated(@Nonnull RunConfiguration configuration) {
         ((ModuleBasedConfiguration)configuration).onNewConfigurationCreated();
       }
     };
@@ -57,7 +55,7 @@ public class CucumberJavaRunConfigurationType implements ConfigurationType {
     return CucumberJavaIcons.CucumberJavaRunConfiguration;
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public String getId() {
     return ID;

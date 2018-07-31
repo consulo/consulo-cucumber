@@ -12,8 +12,9 @@ import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.PsiFile;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import org.jetbrains.plugins.cucumber.CucumberBundle;
 import org.jetbrains.plugins.cucumber.CucumberJvmExtensionPoint;
 import org.jetbrains.plugins.cucumber.psi.GherkinFile;
@@ -71,7 +72,7 @@ public class CucumberJavaAllFeaturesInFolderRunConfigurationProducer extends Cuc
     return CucumberBundle.message("cucumber.run.all.features", ((PsiDirectory) mySourceElement).getVirtualFile().getName());
   }
 
-  @NotNull
+  @Nonnull
   @Override
   protected VirtualFile getFileToRun() {
     return ((PsiDirectory) mySourceElement).getVirtualFile();
@@ -82,7 +83,7 @@ public class CucumberJavaAllFeaturesInFolderRunConfigurationProducer extends Cuc
   }
 
   @Override
-  protected RunnerAndConfigurationSettings createConfiguration(Location location, ConfigurationContext context, @NotNull final String mainClassName) {
+  protected RunnerAndConfigurationSettings createConfiguration(Location location, ConfigurationContext context, @Nonnull final String mainClassName) {
     RunnerAndConfigurationSettings result = super.createConfiguration(location, context, mainClassName);
     CucumberJavaRunConfiguration runConfiguration = (CucumberJavaRunConfiguration)result.getConfiguration();
     runConfiguration.getEnvs().put("current_dir", getFileToRun().getPath());

@@ -1,9 +1,11 @@
 package org.jetbrains.plugins.cucumber.psi.impl;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.tree.TokenSet;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 import org.jetbrains.plugins.cucumber.psi.GherkinElementTypes;
 import org.jetbrains.plugins.cucumber.psi.GherkinElementVisitor;
 import org.jetbrains.plugins.cucumber.psi.GherkinExamplesBlock;
@@ -15,7 +17,7 @@ import org.jetbrains.plugins.cucumber.psi.GherkinTable;
 public class GherkinExamplesBlockImpl extends GherkinPsiElementBase implements GherkinExamplesBlock {
   private static final TokenSet TABLE_FILTER = TokenSet.create(GherkinElementTypes.TABLE);
 
-  public GherkinExamplesBlockImpl(@NotNull final ASTNode node) {
+  public GherkinExamplesBlockImpl(@Nonnull final ASTNode node) {
     super(node);
   }
 

@@ -6,8 +6,8 @@ import com.intellij.psi.util.CachedValueProvider;
 import com.intellij.psi.util.CachedValuesManager;
 import com.intellij.psi.util.PsiTreeUtil;
 import org.codehaus.groovy.runtime.DefaultGroovyMethods;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import org.jetbrains.plugins.cucumber.groovy.GrCucumberCommonClassNames;
 import org.jetbrains.plugins.cucumber.groovy.GrCucumberUtil;
 import org.jetbrains.plugins.cucumber.steps.CucumberStepsIndex;
@@ -27,10 +27,10 @@ import java.util.List;
 
 public class CustomWorldContributor extends NonCodeMembersContributor {
   @Override
-  public void processDynamicElements(@NotNull PsiType qualifierType,
-                                     @NotNull PsiScopeProcessor processor,
+  public void processDynamicElements(@Nonnull PsiType qualifierType,
+                                     @Nonnull PsiScopeProcessor processor,
                                      @Nullable PsiElement place,
-                                     @NotNull ResolveState state) {
+                                     @Nonnull ResolveState state) {
     if (place instanceof GrReferenceExpression &&
         ((GrReferenceExpression)place).getQualifier() == null &&
         qualifierType.equalsToText(GroovyCommonClassNames.GROOVY_LANG_CLOSURE)) {
@@ -49,9 +49,9 @@ public class CustomWorldContributor extends NonCodeMembersContributor {
     }
   }
 
-  private static void doProcessDynamicMethods(@NotNull PsiScopeProcessor processor,
-                                              @NotNull PsiElement place,
-                                              @NotNull ResolveState state,
+  private static void doProcessDynamicMethods(@Nonnull PsiScopeProcessor processor,
+                                              @Nonnull PsiElement place,
+                                              @Nonnull ResolveState state,
                                               final PsiFile stepFile) {
     if (stepFile instanceof GroovyFile) {
       final PsiType worldType = getWorldType((GroovyFile)stepFile);
@@ -76,7 +76,7 @@ public class CustomWorldContributor extends NonCodeMembersContributor {
   }
 
   @Nullable
-  private static PsiType getWorldType(@NotNull final GroovyFile stepFile) {
+  private static PsiType getWorldType(@Nonnull final GroovyFile stepFile) {
     return CachedValuesManager.getManager(stepFile.getProject()).getCachedValue(stepFile, new CachedValueProvider<PsiType>() {
       @Nullable
       @Override
@@ -93,7 +93,7 @@ public class CustomWorldContributor extends NonCodeMembersContributor {
   }
 
   @Nullable
-  private static GrClosableBlock getClosureArg(@NotNull GrMethodCall methodCall) {
+  private static GrClosableBlock getClosureArg(@Nonnull GrMethodCall methodCall) {
     final GrClosableBlock[] closures = methodCall.getClosureArguments();
     if (closures.length == 1) return closures[0];
     if (closures.length > 1) return null;
@@ -107,7 +107,7 @@ public class CustomWorldContributor extends NonCodeMembersContributor {
     return null;
   }
 
-  private static boolean isWorldDeclaration(@NotNull GrMethodCall methodCall) {
+  private static boolean isWorldDeclaration(@Nonnull GrMethodCall methodCall) {
     final GrExpression invoked = methodCall.getInvokedExpression();
     if (invoked instanceof GrReferenceExpression) {
       final PsiMethod method = methodCall.resolveMethod();
@@ -119,7 +119,7 @@ public class CustomWorldContributor extends NonCodeMembersContributor {
     return false;
   }
 
-  private static boolean isLastArg(@NotNull GrArgumentList list, @NotNull GrClosableBlock block) {
+  private static boolean isLastArg(@Nonnull GrArgumentList list, @Nonnull GrClosableBlock block) {
     final GrExpression[] exprs = list.getExpressionArguments();
     return exprs.length > 0 && exprs[exprs.length - 1] == block;
   }

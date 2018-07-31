@@ -10,8 +10,9 @@ import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.psi.search.searches.AnnotatedElementsSearch;
 import com.intellij.util.Query;
 import com.intellij.util.containers.ContainerUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import org.jetbrains.plugins.cucumber.StepDefinitionCreator;
 import org.jetbrains.plugins.cucumber.java.steps.JavaStepDefinition;
 import org.jetbrains.plugins.cucumber.java.steps.JavaStepDefinitionCreator;
@@ -31,7 +32,7 @@ public class CucumberJavaExtension extends AbstractCucumberExtension {
   public static final String CUCUMBER_RUNTIME_JAVA_STEP_DEF_ANNOTATION = "cucumber.runtime.java.StepDefAnnotation";
 
   @Override
-  public boolean isStepLikeFile(@NotNull final PsiElement child, @NotNull final PsiElement parent) {
+  public boolean isStepLikeFile(@Nonnull final PsiElement child, @Nonnull final PsiElement parent) {
     if (child instanceof PsiJavaFile) {
       return true;
     }
@@ -39,25 +40,25 @@ public class CucumberJavaExtension extends AbstractCucumberExtension {
   }
 
   @Override
-  public boolean isWritableStepLikeFile(@NotNull PsiElement child, @NotNull PsiElement parent) {
+  public boolean isWritableStepLikeFile(@Nonnull PsiElement child, @Nonnull PsiElement parent) {
     return isStepLikeFile(child, parent);
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public FileType getStepFileType() {
     return JavaFileType.INSTANCE;
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public StepDefinitionCreator getStepDefinitionCreator() {
     return new JavaStepDefinitionCreator();
   }
 
-  @NotNull
+  @Nonnull
   @Override
-  public Collection<String> getGlues(@NotNull GherkinFile file, Set<String> gluesFromOtherFiles) {
+  public Collection<String> getGlues(@Nonnull GherkinFile file, Set<String> gluesFromOtherFiles) {
     if (gluesFromOtherFiles == null) {
       gluesFromOtherFiles = ContainerUtil.newHashSet();
     }
@@ -95,7 +96,7 @@ public class CucumberJavaExtension extends AbstractCucumberExtension {
   }
 
   @Override
-  public List<AbstractStepDefinition> loadStepsFor(@Nullable PsiFile featureFile, @NotNull Module module) {
+  public List<AbstractStepDefinition> loadStepsFor(@Nullable PsiFile featureFile, @Nonnull Module module) {
     final GlobalSearchScope dependenciesScope = module.getModuleWithDependenciesAndLibrariesScope(true);
 
     Collection<PsiClass> stepDefAnnotationCandidates = JavaFullClassNameIndex.getInstance().get(
@@ -124,7 +125,7 @@ public class CucumberJavaExtension extends AbstractCucumberExtension {
   }
 
   @Override
-  public Collection<? extends PsiFile> getStepDefinitionContainers(@NotNull GherkinFile featureFile) {
+  public Collection<? extends PsiFile> getStepDefinitionContainers(@Nonnull GherkinFile featureFile) {
     final Module module = ModuleUtilCore.findModuleForPsiElement(featureFile);
     if (module == null) {
       return Collections.emptySet();

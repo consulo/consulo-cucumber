@@ -15,24 +15,25 @@
  */
 package org.jetbrains.plugins.cucumber.groovy.steps.search;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.intellij.find.findUsages.FindUsagesHandler;
 import com.intellij.find.findUsages.FindUsagesHandlerFactory;
 import com.intellij.psi.PsiElement;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Max Medvedev
  */
 public class GrStepFindUsageHandlerFactory extends FindUsagesHandlerFactory {
   @Override
-  public boolean canFindUsages(@NotNull PsiElement element) {
+  public boolean canFindUsages(@Nonnull PsiElement element) {
     return GrCucumberStepDefinitionSearcher.getStepDefinition(element) != null;
   }
 
   @Nullable
   @Override
-  public FindUsagesHandler createFindUsagesHandler(@NotNull PsiElement element, boolean forHighlightUsages) {
+  public FindUsagesHandler createFindUsagesHandler(@Nonnull PsiElement element, boolean forHighlightUsages) {
     return new FindUsagesHandler(element) {};
   }
 }

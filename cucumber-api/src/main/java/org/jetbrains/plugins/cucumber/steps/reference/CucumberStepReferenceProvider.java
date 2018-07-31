@@ -8,7 +8,7 @@ import com.intellij.psi.PsiReferenceProvider;
 import com.intellij.psi.TokenType;
 import com.intellij.psi.tree.TokenSet;
 import com.intellij.util.ProcessingContext;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.jetbrains.plugins.cucumber.psi.GherkinElementTypes;
 import org.jetbrains.plugins.cucumber.psi.GherkinTokenTypes;
 import org.jetbrains.plugins.cucumber.psi.impl.GherkinStepImpl;
@@ -18,9 +18,9 @@ import org.jetbrains.plugins.cucumber.psi.impl.GherkinStepImpl;
  * Date: 7/23/12
  */
 public class CucumberStepReferenceProvider extends PsiReferenceProvider {
-  @NotNull
+  @Nonnull
   @Override
-  public PsiReference[] getReferencesByElement(@NotNull PsiElement element, @NotNull ProcessingContext context) {
+  public PsiReference[] getReferencesByElement(@Nonnull PsiElement element, @Nonnull ProcessingContext context) {
     if (element instanceof GherkinStepImpl) {
 
       TokenSet textAndParamSet = TokenSet.create(GherkinTokenTypes.TEXT, GherkinTokenTypes.STEP_PARAMETER_TEXT,

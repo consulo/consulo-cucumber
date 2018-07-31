@@ -6,7 +6,7 @@ import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.psi.FileViewProvider;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.TokenType;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.jetbrains.plugins.cucumber.psi.*;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class GherkinFileImpl extends PsiFileBase implements GherkinFile {
     super(viewProvider, GherkinLanguage.INSTANCE);
   }
 
-  @NotNull
+  @Nonnull
   public FileType getFileType() {
     return GherkinFileType.INSTANCE;
   }

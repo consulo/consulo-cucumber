@@ -1,14 +1,14 @@
 package org.jetbrains.plugins.cucumber.psi.impl;
 
 import com.intellij.lang.ASTNode;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.jetbrains.plugins.cucumber.psi.*;
 
 /**
  * @author yole
  */
 public class GherkinScenarioImpl extends GherkinStepsHolderBase implements GherkinScenario {
-  public GherkinScenarioImpl(@NotNull final ASTNode node) {
+  public GherkinScenarioImpl(@Nonnull final ASTNode node) {
     super(node);
   }
 

@@ -1,7 +1,7 @@
 package org.jetbrains.plugins.cucumber.psi.impl;
 
 import com.intellij.lang.ASTNode;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import org.jetbrains.plugins.cucumber.psi.GherkinElementVisitor;
 import org.jetbrains.plugins.cucumber.psi.GherkinPystring;
 
@@ -10,7 +10,7 @@ import org.jetbrains.plugins.cucumber.psi.GherkinPystring;
  * Date: 4/19/11
  */
 public class GherkinPystringImpl extends GherkinPsiElementBase implements GherkinPystring {
-  public GherkinPystringImpl(@NotNull final ASTNode node) {
+  public GherkinPystringImpl(@Nonnull final ASTNode node) {
     super(node);
   }
 

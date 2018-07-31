@@ -5,8 +5,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.MalformedJsonException;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.psi.tree.IElementType;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import org.jetbrains.plugins.cucumber.psi.GherkinKeywordList;
 import org.jetbrains.plugins.cucumber.psi.GherkinKeywordProvider;
 import org.jetbrains.plugins.cucumber.psi.GherkinKeywordTable;
@@ -89,13 +90,13 @@ public class JsonGherkinKeywordProvider implements GherkinKeywordProvider {
     return myAllStepKeywords.contains(keyword);
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public GherkinKeywordTable getKeywordsTable(@Nullable String language) {
     return getKeywordList(language).getKeywordsTable();
   }
 
-  @NotNull
+  @Nonnull
   private GherkinKeywordList getKeywordList(@Nullable final String language) {
     GherkinKeywordList keywordList = myLanguageKeywords.get(language);
     if (keywordList == null) {
