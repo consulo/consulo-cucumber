@@ -1,9 +1,8 @@
 package org.jetbrains.plugins.cucumber.psi.impl;
 
 import javax.annotation.Nonnull;
-import javax.swing.Icon;
-
 import javax.annotation.Nullable;
+
 import org.jetbrains.plugins.cucumber.psi.GherkinElementVisitor;
 import org.jetbrains.plugins.cucumber.psi.GherkinPsiElement;
 import org.jetbrains.plugins.cucumber.psi.GherkinTokenTypes;
@@ -16,8 +15,8 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.tree.TokenSet;
 import com.intellij.util.Function;
-import consulo.awt.TargetAWT;
 import consulo.ide.IconDescriptorUpdaters;
+import consulo.ui.image.Image;
 
 /**
  * @author yole
@@ -58,8 +57,8 @@ public abstract class GherkinPsiElementBase extends ASTWrapperPsiElement impleme
         return null;
       }
 
-      public Icon getIcon(final boolean open) {
-        return TargetAWT.to(IconDescriptorUpdaters.getIcon(GherkinPsiElementBase.this, Iconable.ICON_FLAG_VISIBILITY));
+      public Image getIcon() {
+        return IconDescriptorUpdaters.getIcon(GherkinPsiElementBase.this, Iconable.ICON_FLAG_VISIBILITY);
       }
     };
   }

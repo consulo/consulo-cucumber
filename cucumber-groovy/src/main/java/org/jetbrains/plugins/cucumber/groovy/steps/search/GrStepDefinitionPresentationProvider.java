@@ -5,6 +5,8 @@ import com.intellij.navigation.ItemPresentationProvider;
 import com.intellij.navigation.ItemPresentationProviders;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.psi.PsiFile;
+import consulo.ui.image.Image;
+
 import javax.annotation.Nullable;
 import org.jetbrains.plugins.cucumber.CucumberBundle;
 import org.jetbrains.plugins.cucumber.groovy.GrCucumberUtil;
@@ -42,7 +44,7 @@ public class GrStepDefinitionPresentationProvider implements ItemPresentationPro
 
       @Nullable
       @Override
-      public Icon getIcon(boolean unused) {
+      public Image getIcon() {
         return null;
       }
     };
