@@ -22,7 +22,7 @@ public class FileTypeComboboxItem {
 
   @Override
   public String toString() {
-    return StringUtil.capitalizeWords(myFileType.getName().toLowerCase(), true);
+    return StringUtil.capitalizeWords(myFileType.getId().toLowerCase(), true);
   }
 
   public FileType getFileType() {

@@ -1,22 +1,21 @@
 package org.jetbrains.plugins.cucumber.steps.reference;
 
-import com.intellij.openapi.extensions.Extensions;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import org.jetbrains.plugins.cucumber.CucumberJvmExtensionPoint;
+import org.jetbrains.plugins.cucumber.psi.impl.GherkinStepImpl;
+import org.jetbrains.plugins.cucumber.steps.AbstractStepDefinition;
+import org.jetbrains.plugins.cucumber.steps.CucumberStepsIndex;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiPolyVariantReference;
 import com.intellij.psi.ResolveResult;
 import com.intellij.util.ArrayUtil;
 import com.intellij.util.IncorrectOperationException;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import org.jetbrains.plugins.cucumber.psi.impl.GherkinStepImpl;
-import org.jetbrains.plugins.cucumber.steps.AbstractStepDefinition;
-import org.jetbrains.plugins.cucumber.CucumberJvmExtensionPoint;
-import org.jetbrains.plugins.cucumber.steps.CucumberStepsIndex;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author yole
@@ -82,7 +81,7 @@ public class CucumberStepReference implements PsiPolyVariantReference {
     final List<ResolveResult> result = new ArrayList<ResolveResult>();
     final List<PsiElement> resolvedElements = new ArrayList<PsiElement>();
 
-    final CucumberJvmExtensionPoint[] extensionList = Extensions.getExtensions(CucumberJvmExtensionPoint.EP_NAME);
+    final CucumberJvmExtensionPoint[] extensionList = CucumberJvmExtensionPoint.EP_NAME.getExtensions();
     for (CucumberJvmExtensionPoint e : extensionList) {
       final List<PsiElement> extensionResult = e.resolveStep(myStep);
       for (final PsiElement element : extensionResult) {

@@ -35,7 +35,7 @@ public class CucumberStepsIndex {
   public CucumberStepsIndex(final Project project) {
     myExtensionMap = new HashMap<FileType, CucumberJvmExtensionPoint>();
 
-    for (CucumberJvmExtensionPoint e : Extensions.getExtensions(CucumberJvmExtensionPoint.EP_NAME)) {
+    for (CucumberJvmExtensionPoint e : CucumberJvmExtensionPoint.EP_NAME.getExtensions()) {
       e.init(project);
       myExtensionMap.put(e.getStepFileType(), e);
     }

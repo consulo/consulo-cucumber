@@ -15,7 +15,7 @@ public class GherkinFileType extends LanguageFileType {
   }
 
   @Nonnull
-  public String getName() {
+  public String getId() {
     return "Cucumber";
   }
 

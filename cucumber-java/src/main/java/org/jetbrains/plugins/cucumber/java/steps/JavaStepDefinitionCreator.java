@@ -36,6 +36,7 @@ import com.intellij.psi.impl.PsiManagerImpl;
 import com.intellij.psi.impl.file.PsiDirectoryImpl;
 import com.intellij.psi.util.CreateClassUtil;
 import com.intellij.psi.util.PsiTreeUtil;
+import com.intellij.util.ObjectUtil;
 import com.intellij.util.ObjectUtils;
 import cucumber.runtime.java.JavaSnippet;
 import cucumber.runtime.snippets.SnippetGenerator;
@@ -62,7 +63,7 @@ public class JavaStepDefinitionCreator implements StepDefinitionCreator {
     if (!(file instanceof PsiJavaFile)) return false;
 
     final Project project = file.getProject();
-    final VirtualFile vFile = ObjectUtils.assertNotNull(file.getVirtualFile());
+    final VirtualFile vFile = ObjectUtil.assertNotNull(file.getVirtualFile());
     final OpenFileDescriptor descriptor = new OpenFileDescriptor(project, vFile);
     FileEditorManager.getInstance(project).getAllEditors(vFile);
     FileEditorManager.getInstance(project).openTextEditor(descriptor, true);

@@ -2,7 +2,13 @@
 package org.jetbrains.plugins.cucumber.groovy.steps.search;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
+import org.jetbrains.plugins.cucumber.CucumberUtil;
+import org.jetbrains.plugins.cucumber.groovy.GrCucumberUtil;
+import org.jetbrains.plugins.cucumber.groovy.steps.GrStepDefinition;
+import org.jetbrains.plugins.cucumber.steps.search.CucumberStepSearchUtil;
+import org.jetbrains.plugins.groovy.lang.psi.api.statements.expressions.GrMethodCall;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.util.Computable;
 import com.intellij.openapi.util.NullableComputable;
@@ -18,13 +24,6 @@ import com.intellij.psi.search.UsageSearchContext;
 import com.intellij.psi.search.searches.ReferencesSearch;
 import com.intellij.util.Processor;
 import com.intellij.util.QueryExecutor;
-
-import javax.annotation.Nullable;
-import org.jetbrains.plugins.cucumber.CucumberUtil;
-import org.jetbrains.plugins.cucumber.groovy.GrCucumberUtil;
-import org.jetbrains.plugins.cucumber.groovy.steps.GrStepDefinition;
-import org.jetbrains.plugins.cucumber.steps.search.CucumberStepSearchUtil;
-import org.jetbrains.plugins.groovy.lang.psi.api.statements.expressions.GrMethodCall;
 
 /**
  * @author Max Medvedev
@@ -81,7 +80,7 @@ public class GrCucumberStepDefinitionSearcher implements QueryExecutor<PsiRefere
     };
 
     short context = UsageSearchContext.IN_STRINGS | UsageSearchContext.IN_CODE;
-    PsiSearchHelper instance = PsiSearchHelper.SERVICE.getInstance(element.getProject());
+    PsiSearchHelper instance = PsiSearchHelper.getInstance(element.getProject());
     return instance.processElementsWithWord(processor, searchScope, word, context, true);
   }
 
