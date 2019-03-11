@@ -20,8 +20,8 @@
 										language="Groovy"/>
 	</extensions>
 
-	<extensions defaultExtensionNs="org.jetbrains.plugins.cucumber.steps">
-		<cucumberJvmExtensionPoint implementation="org.jetbrains.plugins.cucumber.groovy.GrCucumberExtension"/>
+	<extensions defaultExtensionNs="org.jetbrains.cucumber">
+		<steps.cucumberJvmExtensionPoint implementation="org.jetbrains.plugins.cucumber.groovy.GrCucumberExtension"/>
 	</extensions>
 
 	<extensions defaultExtensionNs="org.intellij.groovy">

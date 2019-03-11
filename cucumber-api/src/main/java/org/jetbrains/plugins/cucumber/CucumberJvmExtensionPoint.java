@@ -1,20 +1,20 @@
 package org.jetbrains.plugins.cucumber;
 
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import org.jetbrains.plugins.cucumber.psi.GherkinFile;
+import org.jetbrains.plugins.cucumber.steps.AbstractStepDefinition;
 import com.intellij.openapi.extensions.ExtensionPointName;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import org.jetbrains.plugins.cucumber.psi.GherkinFile;
-import org.jetbrains.plugins.cucumber.steps.AbstractStepDefinition;
-
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
 
 /**
  * User: Andrey.Vokin
@@ -22,7 +22,7 @@ import java.util.Set;
  */
 public interface CucumberJvmExtensionPoint {
   ExtensionPointName<CucumberJvmExtensionPoint> EP_NAME =
-    ExtensionPointName.create("org.jetbrains.plugins.cucumber.steps.cucumberJvmExtensionPoint");
+    ExtensionPointName.create("org.jetbrains.cucumber.steps.cucumberJvmExtensionPoint");
 
   // ToDo: remove parent
   /**
