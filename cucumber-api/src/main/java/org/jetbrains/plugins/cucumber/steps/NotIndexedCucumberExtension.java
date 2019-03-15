@@ -1,5 +1,17 @@
 package org.jetbrains.plugins.cucumber.steps;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import org.jetbrains.plugins.cucumber.psi.GherkinFile;
 import com.intellij.ProjectTopics;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.module.Module;
@@ -8,18 +20,18 @@ import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ModuleRootEvent;
 import com.intellij.openapi.roots.ModuleRootListener;
-import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.*;
+import com.intellij.psi.PsiDirectory;
+import com.intellij.psi.PsiDocumentManager;
+import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiFile;
+import com.intellij.psi.PsiManager;
+import com.intellij.psi.PsiTreeChangeAdapter;
+import com.intellij.psi.PsiTreeChangeEvent;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.update.MergingUpdateQueue;
 import com.intellij.util.ui.update.Update;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import org.jetbrains.plugins.cucumber.psi.GherkinFile;
-
-import java.util.*;
 
 /**
  * User: Andrey.Vokin
@@ -105,8 +117,6 @@ public abstract class NotIndexedCucumberExtension extends AbstractCucumberExtens
         return true;
       }
     });
-
-    Disposer.register(project, connection);
   }
 
   @Override
