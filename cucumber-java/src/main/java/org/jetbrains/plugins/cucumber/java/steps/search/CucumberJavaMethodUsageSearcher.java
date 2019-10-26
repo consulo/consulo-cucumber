@@ -11,10 +11,11 @@ import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.psi.search.searches.MethodReferencesSearch;
 import com.intellij.psi.search.searches.ReferencesSearch;
 import com.intellij.util.Processor;
-import javax.annotation.Nonnull;
 import org.jetbrains.plugins.cucumber.CucumberUtil;
 import org.jetbrains.plugins.cucumber.java.CucumberJavaUtil;
 import org.jetbrains.plugins.cucumber.psi.GherkinFileType;
+
+import javax.annotation.Nonnull;
 
 /**
  * User: Andrey.Vokin
@@ -22,7 +23,7 @@ import org.jetbrains.plugins.cucumber.psi.GherkinFileType;
  */
 public class CucumberJavaMethodUsageSearcher extends QueryExecutorBase<PsiReference, MethodReferencesSearch.SearchParameters> {
   @Override
-  public void processQuery(@Nonnull final MethodReferencesSearch.SearchParameters p, @Nonnull final Processor<PsiReference> consumer) {
+  public void processQuery(@Nonnull final MethodReferencesSearch.SearchParameters p, @Nonnull final Processor<? super PsiReference> consumer) {
     final PsiMethod method = p.getMethod();
 
     final String regexp = ApplicationManager.getApplication().runReadAction(new Computable<String>() {
