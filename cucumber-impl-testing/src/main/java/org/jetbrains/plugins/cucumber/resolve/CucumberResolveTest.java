@@ -57,7 +57,7 @@ public abstract class CucumberResolveTest extends CucumberCodeInsightTestCase {
 
   @Override
   protected String getTestDataPath() {
-    return PathManager.getHomePath() + getRelatedTestDataPath();
+    return getRelatedTestDataPath();
   }
 
   @Nullable
