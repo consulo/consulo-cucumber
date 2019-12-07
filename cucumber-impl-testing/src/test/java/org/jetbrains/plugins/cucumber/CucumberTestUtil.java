@@ -1,7 +1,5 @@
 package org.jetbrains.plugins.cucumber;
 
-import com.intellij.openapi.application.PathManager;
-
 /**
  * User: Andrey.Vokin
  * Date: 1/10/13
@@ -12,7 +10,7 @@ public class CucumberTestUtil {
   }
 
   public static String getPluginPath() {
-    return PathManager.getHomePath() + getShortPluginPath();
+    return getShortPluginPath();
   }
 
   public static String getShortPluginPath() {

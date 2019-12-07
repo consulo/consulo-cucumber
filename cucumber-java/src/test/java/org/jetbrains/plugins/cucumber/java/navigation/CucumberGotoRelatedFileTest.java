@@ -46,7 +46,7 @@ public class CucumberGotoRelatedFileTest extends LightPlatformCodeInsightFixture
   public static final DefaultLightProjectDescriptor DESCRIPTOR = new DefaultLightProjectDescriptor() {
     @Override
     public void configureModule(Module module, ModifiableRootModel model, ContentEntry contentEntry) {
-      PsiTestUtil.addLibrary(module, model, "cucumber-java", PathManager.getHomePath() + "/community/lib", "cucumber-java-1.0.14.jar");
+      PsiTestUtil.addLibrary(module, model, "cucumber-java", "/community/lib", "cucumber-java-1.0.14.jar");
     }
   };
 }
