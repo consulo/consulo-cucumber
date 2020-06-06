@@ -21,7 +21,7 @@ import com.intellij.testFramework.fixtures.LightPlatformCodeInsightFixtureTestCa
  * User: Andrey.Vokin
  * Date: 3/25/13
  */
-public class CucumberGotoRelatedFileTest extends LightPlatformCodeInsightFixtureTestCase {
+public abstract class CucumberGotoRelatedFileTest extends LightPlatformCodeInsightFixtureTestCase {
   public void testGotoRelated() {
     CucumberStepsIndex.getInstance(getProject()).reset();
     myFixture.copyDirectoryToProject("gotoRelated", "");
