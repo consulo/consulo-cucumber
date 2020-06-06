@@ -23,9 +23,8 @@ import static org.junit.Assert.assertThat;
 import org.jetbrains.plugins.cucumber.psi.GherkinStep;
 import org.junit.Test;
 
-public class AnnotationPackageProviderTest
+public abstract class AnnotationPackageProviderTest
 {
-
 	@Test
 	public void returnProperPackageForEnglishFeatureFileBeforeVersion_1_1() throws Exception
 	{

@@ -1,6 +1,5 @@
 package org.jetbrains.plugins.cucumber.java.resolve;
 
-import com.intellij.openapi.application.PathManager;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.roots.ContentEntry;
 import com.intellij.openapi.roots.ModifiableRootModel;
@@ -12,7 +11,7 @@ import com.intellij.testFramework.fixtures.DefaultLightProjectDescriptor;
  * User: Andrey.Vokin
  * Date: 3/4/13
  */
-public class CucumberJavaSrcResolveTest extends BaseCucumberJavaResolveTest {
+public abstract class CucumberJavaSrcResolveTest extends BaseCucumberJavaResolveTest {
   public void testNavigationToSrc() throws Exception {
     doTest("stepResolve_03", "tes<caret>t \"test\"", "test");
   }

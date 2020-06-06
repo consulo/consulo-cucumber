@@ -10,7 +10,7 @@ import java.io.IOException;
  * User: Andrey.Vokin
  * Date: 3/28/13
  */
-public class JavaJsonGherkinProviderTest extends AbstractGherkinKeywordProviderTest {
+public abstract class JavaJsonGherkinProviderTest extends AbstractGherkinKeywordProviderTest {
   @Override
   protected GherkinKeywordProvider buildKeywordProvider() throws IOException {
     return new JsonGherkinKeywordProvider(JavaJsonGherkinProviderTest.class.getClassLoader().getResourceAsStream("gherkin/i18n.json"));

@@ -1,33 +1,26 @@
 package org.jetbrains.plugins.cucumber.java.resolve;
 
-import java.io.IOException;
-
-import javax.annotation.Nonnull;
-
-import org.jetbrains.plugins.cucumber.steps.CucumberStepsIndex;
-import com.intellij.openapi.application.PathManager;
 import com.intellij.openapi.application.Result;
 import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.roots.ContentEntry;
 import com.intellij.openapi.roots.ModifiableRootModel;
 import com.intellij.openapi.util.Ref;
-import com.intellij.psi.JavaPsiFacade;
-import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiElementFactory;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiJavaFile;
-import com.intellij.psi.PsiMethod;
+import com.intellij.psi.*;
 import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.testFramework.PsiTestUtil;
 import com.intellij.testFramework.TestModuleDescriptor;
 import com.intellij.testFramework.fixtures.DefaultLightProjectDescriptor;
+import org.jetbrains.plugins.cucumber.steps.CucumberStepsIndex;
+
+import javax.annotation.Nonnull;
+import java.io.IOException;
 
 /**
  * User: Andrey.Vokin
  * Date: 8/9/12
  */
-public class CucumberPsiTreeListenerTest extends BaseCucumberJavaResolveTest {
+public abstract class CucumberPsiTreeListenerTest extends BaseCucumberJavaResolveTest {
   public void testCreationOfStepDefinition() throws Exception {
     doTestCreation("treeListener", "I p<caret>ay 25", "@cucumber.annotation.en.When(\"^I pay (\\\\d+)$\")\npublic void i_pay(int amount) {}");
   }

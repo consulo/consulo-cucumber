@@ -6,7 +6,7 @@ import org.jetbrains.plugins.cucumber.java.CucumberJavaTestUtil;
  * User: Andrey.Vokin
  * Date: 1/9/13
  */
-public class CucumberJavaStepDefClassIsPublicInspectionTest extends CucumberJavaBaseInspectionTest {
+public abstract class CucumberJavaStepDefClassIsPublicInspectionTest extends CucumberJavaBaseInspectionTest {
   public void testNotPublicStepDef() {
     doTest("NotPublicStepDef.java");
   }

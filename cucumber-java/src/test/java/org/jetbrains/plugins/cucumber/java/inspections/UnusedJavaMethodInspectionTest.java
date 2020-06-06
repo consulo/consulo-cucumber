@@ -8,7 +8,7 @@ import org.jetbrains.plugins.cucumber.java.CucumberJavaTestUtil;
  * User: Andrey.Vokin
  * Date: 10/20/12
  */
-public class UnusedJavaMethodInspectionTest extends CucumberJavaBaseInspectionTest {
+public abstract class UnusedJavaMethodInspectionTest extends CucumberJavaBaseInspectionTest {
   protected void doTest(final String file) {
     myFixture.enableInspections(new UnusedDeclarationInspection(), new UnusedSymbolLocalInspection());
     myFixture.configureByFile(file);

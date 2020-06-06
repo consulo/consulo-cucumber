@@ -19,7 +19,7 @@ import org.jetbrains.plugins.cucumber.steps.CucumberStepsIndex;
 
 import java.io.File;
 
-public class CucumberJavaCompletionTest extends CucumberCodeInsightTestCase {
+public abstract class CucumberJavaCompletionTest extends CucumberCodeInsightTestCase {
   private CompletionTester myCompletionTester;
 
   public void testStepWithRegExGroups() throws Throwable {
