@@ -4,10 +4,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import org.jetbrains.annotations.NonNls;
-
-import javax.annotation.Nullable;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleUtilCore;
 import com.intellij.openapi.roots.LibraryOrderEntry;
@@ -19,6 +18,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.JavaPsiFacade;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiElement;
+import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.psi.util.CachedValueProvider;
 import com.intellij.psi.util.CachedValuesManager;
 import consulo.roots.types.BinariesOrderRootType;
@@ -80,10 +80,10 @@ public class CucumberConfigUtil {
   private static String getSimpleVersionFromMainClass(Module module) {
     final JavaPsiFacade facade = JavaPsiFacade.getInstance(module.getProject());
 
-    final PsiClass oldMain = facade.findClass(CUCUMBER_CLI_MAIN_1_0, module.getModuleWithLibrariesScope());
+    final PsiClass oldMain = facade.findClass(CUCUMBER_CLI_MAIN_1_0, GlobalSearchScope.moduleWithLibrariesScope(module));
     if (oldMain != null) return CUCUMBER_VERSION_1_0;
 
-    final PsiClass newMain = facade.findClass(CUCUMBER_API_CLI_MAIN_1_1, module.getModuleWithLibrariesScope());
+    final PsiClass newMain = facade.findClass(CUCUMBER_API_CLI_MAIN_1_1, GlobalSearchScope.moduleWithLibrariesScope(module));
     if (newMain != null) return CUCUMBER_VERSION_1_0;
 
     return null;
