@@ -1,12 +1,7 @@
 package org.jetbrains.plugins.cucumber.java.navigation;
 
-import java.util.List;
-
-import org.jetbrains.plugins.cucumber.java.CucumberJavaTestUtil;
-import org.jetbrains.plugins.cucumber.steps.CucumberStepsIndex;
 import com.intellij.ide.actions.GotoRelatedFileAction;
 import com.intellij.navigation.GotoRelatedItem;
-import com.intellij.openapi.application.PathManager;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.roots.ContentEntry;
 import com.intellij.openapi.roots.ModifiableRootModel;
@@ -16,6 +11,10 @@ import com.intellij.testFramework.PsiTestUtil;
 import com.intellij.testFramework.TestModuleDescriptor;
 import com.intellij.testFramework.fixtures.DefaultLightProjectDescriptor;
 import com.intellij.testFramework.fixtures.LightPlatformCodeInsightFixtureTestCase;
+import org.jetbrains.plugins.cucumber.java.CucumberJavaTestUtil;
+import org.jetbrains.plugins.cucumber.steps.CucumberStepsIndex;
+
+import java.util.List;
 
 /**
  * User: Andrey.Vokin

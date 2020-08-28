@@ -10,6 +10,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.swing.Icon;
 
+import consulo.ui.image.Image;
 import org.jetbrains.plugins.cucumber.CucumberBundle;
 import org.jetbrains.plugins.cucumber.CucumberJvmExtensionPoint;
 import org.jetbrains.plugins.cucumber.StepDefinitionCreator;
@@ -115,8 +116,8 @@ public class CucumberCreateStepFix implements LocalQuickFix {
           }
 
           @Override
-          public Icon getIconFor(PsiFile value) {
-            return value == null ? AllIcons.Actions.CreateFromUsage : TargetAWT.to(IconDescriptorUpdaters.getIcon(value, 0));
+          public Image getIconFor(PsiFile value) {
+            return value == null ? AllIcons.Actions.CreateFromUsage : IconDescriptorUpdaters.getIcon(value, 0);
           }
 
           @Override
