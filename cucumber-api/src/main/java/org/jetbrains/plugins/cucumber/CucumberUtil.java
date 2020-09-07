@@ -1,11 +1,10 @@
 package org.jetbrains.plugins.cucumber;
 
-import javax.annotation.Nonnull;
-
-import org.apache.oro.text.regex.Pattern;
-
-import javax.annotation.Nullable;
 import com.intellij.openapi.util.text.StringUtil;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.regex.Pattern;
 
 /**
  * User: Andrey.Vokin
@@ -38,7 +37,7 @@ public class CucumberUtil {
     if (pattern == null) {
       return false;
     }
-    final String keyWord = getTheBiggestWordToSearchByIndex(pattern.getPattern());
+    final String keyWord = getTheBiggestWordToSearchByIndex(pattern.pattern());
     return keyWord.equals(word);
   }
 

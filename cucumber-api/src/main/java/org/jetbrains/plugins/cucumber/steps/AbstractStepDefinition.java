@@ -1,16 +1,14 @@
 package org.jetbrains.plugins.cucumber.steps;
 
+import com.intellij.compiler.MalformedPatternException;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.SmartPointerManager;
 import com.intellij.psi.SmartPsiElementPointer;
-import org.apache.oro.text.regex.MalformedPatternException;
-import org.apache.oro.text.regex.Pattern;
-import org.apache.oro.text.regex.Perl5Compiler;
-import org.apache.oro.text.regex.Perl5Matcher;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * @author yole, Andrey Vokin
@@ -36,7 +34,7 @@ public abstract class AbstractStepDefinition {
 
   public boolean matches(String stepName) {
     final Pattern pattern = getPattern();
-    return pattern != null && new Perl5Matcher().contains(stepName, pattern);
+    return pattern != null && pattern.matcher(stepName).find();
   }
 
   public PsiElement getElement() {
@@ -57,7 +55,7 @@ public abstract class AbstractStepDefinition {
         patternText.replace(patternText.length() - CUCUMBER_END_SUFFIX.length(), patternText.length(), "$");
       }
 
-      return new Perl5Compiler().compile(patternText.toString());
+      return Pattern.compile(patternText.toString());
     }
     catch (MalformedPatternException e) {
       return null;
