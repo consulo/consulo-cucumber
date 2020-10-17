@@ -2,6 +2,7 @@ package org.jetbrains.plugins.cucumber.psi;
 
 import javax.annotation.Nonnull;
 import com.intellij.openapi.fileTypes.LanguageFileType;
+import consulo.cucumber.api.icon.CucumberApiIconGroup;
 import consulo.ui.image.Image;
 
 /**
@@ -30,6 +31,6 @@ public class GherkinFileType extends LanguageFileType {
   }
 
   public Image getIcon() {
-    return icons.CucumberIcons.Cucumber;
+    return CucumberApiIconGroup.cucumber();
   }
 }

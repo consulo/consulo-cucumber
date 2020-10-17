@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<idea-plugin>
+<consulo-plugin>
 	<id>org.jetbrains.cucumber</id>
 	<name>Base Cucumber</name>
 	<description>Provides support of Cucumber language</description>
@@ -75,4 +75,4 @@
 
 		<extensionPoint name="steps.cucumberJvmExtensionPoint" interface="org.jetbrains.plugins.cucumber.CucumberJvmExtensionPoint"/>
 	</extensionPoints>
-</idea-plugin>
+</consulo-plugin>

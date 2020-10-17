@@ -3,6 +3,7 @@ package org.jetbrains.plugins.cucumber.groovy.steps;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import consulo.cucumber.api.icon.CucumberApiIconGroup;
 import org.jetbrains.plugins.cucumber.groovy.GrCucumberUtil;
 import org.jetbrains.plugins.groovy.lang.psi.api.statements.expressions.GrMethodCall;
 import com.intellij.codeHighlighting.Pass;
@@ -10,7 +11,6 @@ import com.intellij.codeInsight.daemon.LineMarkerInfo;
 import com.intellij.codeInsight.daemon.LineMarkerProvider;
 import com.intellij.psi.PsiElement;
 import com.intellij.util.Function;
-import icons.CucumberIcons;
 
 /**
  * @author Max Medvedev
@@ -25,7 +25,7 @@ public class GrCucumberLineMarkerProvider implements LineMarkerProvider
 	{
 		if(GrCucumberUtil.isStepDefinition(element))
 		{
-			return new LineMarkerInfo<>(((GrMethodCall) element), element.getTextRange().getStartOffset(), CucumberIcons.Cucumber, Pass.UPDATE_ALL, TOOLTIP_PROVIDER, null);
+			return new LineMarkerInfo<>(((GrMethodCall) element), element.getTextRange().getStartOffset(), CucumberApiIconGroup.cucumber(), Pass.UPDATE_ALL, TOOLTIP_PROVIDER, null);
 		}
 		else
 		{

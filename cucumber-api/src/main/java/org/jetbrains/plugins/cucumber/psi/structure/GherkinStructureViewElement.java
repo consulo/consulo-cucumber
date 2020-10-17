@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.Nonnull;
 
+import consulo.cucumber.api.icon.CucumberApiIconGroup;
 import org.jetbrains.plugins.cucumber.psi.GherkinFeature;
 import org.jetbrains.plugins.cucumber.psi.GherkinPsiElement;
 import org.jetbrains.plugins.cucumber.psi.GherkinPystring;
@@ -48,10 +49,10 @@ public class GherkinStructureViewElement extends PsiTreeElementBase<PsiElement> 
     final PsiElement element = getElement();
     if (element instanceof GherkinFeature
         || element instanceof GherkinStepsHolder) {
-      return icons.CucumberIcons.Steps_group_closed;
+      return CucumberApiIconGroup.steps_group_closed();
     }
     if (element instanceof GherkinStep) {
-      return icons.CucumberIcons.Cucumber;
+      return CucumberApiIconGroup.cucumber();
     }
     return null;
   }

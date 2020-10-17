@@ -3,8 +3,8 @@ package org.jetbrains.plugins.cucumber.java.run;
 import com.intellij.execution.configuration.ConfigurationFactoryEx;
 import com.intellij.execution.configurations.*;
 import com.intellij.openapi.project.Project;
+import consulo.cucumber.java.icon.CucumberJavaIconGroup;
 import consulo.ui.image.Image;
-import icons.CucumberJavaIcons;
 import org.jetbrains.annotations.NonNls;
 import javax.annotation.Nonnull;
 
@@ -52,7 +52,7 @@ public class CucumberJavaRunConfigurationType implements ConfigurationType {
 
   @Override
   public Image getIcon() {
-    return CucumberJavaIcons.CucumberJavaRunConfiguration;
+    return CucumberJavaIconGroup.cucumberJavaRunConfiguration();
   }
 
   @Nonnull
