@@ -1,13 +1,13 @@
 package org.jetbrains.plugins.cucumber.psi;
 
-import java.awt.Color;
-import java.awt.Font;
-
-import org.jetbrains.annotations.NonNls;
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
 import com.intellij.openapi.editor.HighlighterColors;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.editor.markup.TextAttributes;
+import consulo.ui.color.RGBColor;
+import org.jetbrains.annotations.NonNls;
+
+import java.awt.*;
 
 /**
  * @author Roman.Chernyatchik
@@ -77,16 +77,16 @@ public class GherkinHighlighter {
 	static {
 
 		GHERKIN_PYSTRING_ATTRS.setFontType(Font.BOLD);
-		GHERKIN_PYSTRING_ATTRS.setForegroundColor(new Color(0, 128, 128));
+		GHERKIN_PYSTRING_ATTRS.setForegroundColor(new RGBColor(0, 128, 128));
 
 		HEREDOC_CONTENT_DEFAULT_ATTRS.setFontType(Font.BOLD);
-		HEREDOC_CONTENT_DEFAULT_ATTRS.setForegroundColor(new Color(41, 123, 222));
+		HEREDOC_CONTENT_DEFAULT_ATTRS.setForegroundColor(new RGBColor(41, 123, 222));
 
 		TAG_ATTRS.setFontType(Font.BOLD);
-		TAG_ATTRS.setForegroundColor(new Color(102, 14, 122));
+		TAG_ATTRS.setForegroundColor(new RGBColor(102, 14, 122));
 
 		PARAMETER_DEFAULT_ATTRS.setFontType(Font.ITALIC);
-		PARAMETER_DEFAULT_ATTRS.setForegroundColor(new Color(195, 117, 34));
+		PARAMETER_DEFAULT_ATTRS.setForegroundColor(new RGBColor(195, 117, 34));
 	}
 
 	private GherkinHighlighter() {
