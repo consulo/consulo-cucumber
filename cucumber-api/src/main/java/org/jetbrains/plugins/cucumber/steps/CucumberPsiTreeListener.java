@@ -1,13 +1,12 @@
 package org.jetbrains.plugins.cucumber.steps;
 
-
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiTreeChangeAdapter;
 import com.intellij.psi.PsiTreeChangeEvent;
 import com.intellij.psi.util.PsiTreeUtil;
-import com.intellij.util.containers.HashMap;
-import javax.annotation.Nonnull;
 
+import javax.annotation.Nonnull;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
