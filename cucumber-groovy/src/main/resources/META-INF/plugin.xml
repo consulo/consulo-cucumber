@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<idea-plugin>
+<consulo-plugin>
 	<id>org.jetbrains.cucumber.groovy</id>
 	<name>Cucumber for Groovy</name>
 	<description>Provides support of Cucumber for Groovy</description>
@@ -8,7 +8,9 @@
 	<depends>org.jetbrains.cucumber.java</depends>
 	<vendor>JetBrains</vendor>
 	<category>Test Frameworks</category>
-
+	<tags>
+		<tag>test.framework</tag>
+	</tags>
 	<extensions defaultExtensionNs="com.intellij">
 		<referencesSearch implementation="org.jetbrains.plugins.cucumber.groovy.steps.search.GrCucumberStepDefinitionSearcher"/>
 		<findUsagesHandlerFactory implementation="org.jetbrains.plugins.cucumber.groovy.steps.search.GrStepFindUsageHandlerFactory"/>
@@ -27,4 +29,4 @@
 	<extensions defaultExtensionNs="org.intellij.groovy">
 		<membersContributor implementation="org.jetbrains.plugins.cucumber.groovy.resolve.noncode.CustomWorldContributor"/>
 	</extensions>
-</idea-plugin>
+</consulo-plugin>

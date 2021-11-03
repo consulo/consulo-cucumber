@@ -8,6 +8,9 @@
 	<depends>consulo.java</depends>
 	<category>Test Frameworks</category>
 	<vendor>JetBrains</vendor>
+	<tags>
+		<tag>test.framework</tag>
+	</tags>
 
 	<extensions defaultExtensionNs="consulo.java">
 		<methodReferencesSearch implementation="org.jetbrains.plugins.cucumber.java.steps.search.CucumberJavaMethodUsageSearcher"/>

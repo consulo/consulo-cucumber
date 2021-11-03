@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <consulo-plugin>
 	<id>org.jetbrains.cucumber</id>
-	<name>Base Cucumber</name>
+	<name>Cucumber</name>
 	<description>Provides support of Cucumber language</description>
 	<version>SNAPSHOT</version>
 	<vendor>JetBrains</vendor>
 	<category>Test Frameworks</category>
 	<depends optional="true">com.intellij.spellchecker</depends>
+
+	<tags>
+		<tag>test.framework</tag>
+		<tag>custom.language</tag>
+	</tags>
 
 	<extensions defaultExtensionNs="com.intellij.spellchecker">
 		<support language="Gherkin" implementationClass="org.jetbrains.plugins.cucumber.spellchecker.GherkinSpellcheckerStrategy"/>
