@@ -3,6 +3,7 @@ package org.jetbrains.plugins.cucumber.psi;
 import javax.annotation.Nonnull;
 import com.intellij.openapi.fileTypes.LanguageFileType;
 import consulo.cucumber.api.icon.CucumberApiIconGroup;
+import consulo.localize.LocalizeValue;
 import consulo.ui.image.Image;
 
 /**
@@ -21,8 +22,8 @@ public class GherkinFileType extends LanguageFileType {
   }
 
   @Nonnull
-  public String getDescription() {
-    return "Cucumber scenario files";
+  public LocalizeValue getDescription() {
+    return LocalizeValue.localizeTODO("Cucumber scenario files");
   }
 
   @Nonnull
