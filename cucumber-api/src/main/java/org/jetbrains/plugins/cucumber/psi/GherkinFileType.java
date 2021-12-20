@@ -1,10 +1,11 @@
 package org.jetbrains.plugins.cucumber.psi;
 
-import javax.annotation.Nonnull;
 import com.intellij.openapi.fileTypes.LanguageFileType;
 import consulo.cucumber.api.icon.CucumberApiIconGroup;
 import consulo.localize.LocalizeValue;
 import consulo.ui.image.Image;
+
+import javax.annotation.Nonnull;
 
 /**
  * @author yole

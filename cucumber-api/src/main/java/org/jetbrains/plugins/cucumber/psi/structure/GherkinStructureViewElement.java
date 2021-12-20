@@ -1,25 +1,21 @@
 package org.jetbrains.plugins.cucumber.psi.structure;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
-import javax.annotation.Nonnull;
-
-import consulo.cucumber.api.icon.CucumberApiIconGroup;
-import org.jetbrains.plugins.cucumber.psi.GherkinFeature;
-import org.jetbrains.plugins.cucumber.psi.GherkinPsiElement;
-import org.jetbrains.plugins.cucumber.psi.GherkinPystring;
-import org.jetbrains.plugins.cucumber.psi.GherkinStep;
-import org.jetbrains.plugins.cucumber.psi.GherkinStepsHolder;
-import org.jetbrains.plugins.cucumber.psi.impl.GherkinFeatureHeaderImpl;
-import org.jetbrains.plugins.cucumber.psi.impl.GherkinTableImpl;
-import org.jetbrains.plugins.cucumber.psi.impl.GherkinTagImpl;
 import com.intellij.ide.structureView.StructureViewTreeElement;
 import com.intellij.ide.structureView.impl.common.PsiTreeElementBase;
 import com.intellij.navigation.NavigationItem;
 import com.intellij.psi.PsiElement;
+import consulo.cucumber.api.icon.CucumberApiIconGroup;
+import consulo.platform.base.icon.PlatformIconGroup;
 import consulo.ui.image.Image;
+import org.jetbrains.plugins.cucumber.psi.*;
+import org.jetbrains.plugins.cucumber.psi.impl.GherkinFeatureHeaderImpl;
+import org.jetbrains.plugins.cucumber.psi.impl.GherkinTableImpl;
+import org.jetbrains.plugins.cucumber.psi.impl.GherkinTagImpl;
+
+import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * @author yole
@@ -49,7 +45,7 @@ public class GherkinStructureViewElement extends PsiTreeElementBase<PsiElement> 
     final PsiElement element = getElement();
     if (element instanceof GherkinFeature
         || element instanceof GherkinStepsHolder) {
-      return CucumberApiIconGroup.steps_group_closed();
+      return PlatformIconGroup.nodesFolder();
     }
     if (element instanceof GherkinStep) {
       return CucumberApiIconGroup.cucumber();
